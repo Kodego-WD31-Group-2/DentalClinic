@@ -10,6 +10,7 @@ module.exports = {
         "./src/**/*.{php,html,js,jsx,ts,tsx,vue}",
         "./resources/**/*.{php,html,js,jsx,ts,tsx,vue}",
         "./node_modules/@left4code/tw-starter/**/*.js",
+        "./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js",
         // ".//*.html",
     ],
     darkMode: "class",
@@ -83,6 +84,13 @@ module.exports = {
                     800: withOpacityValue("--color-darkmode-800"),
                     900: withOpacityValue("--color-darkmode-900"),
                 },
+            custom: {
+                1: "#054a7a",
+                2: "#94c8ea",
+                3: "#05385a",
+                4: "#0472b8",
+                5: "#7cbee2",
+            },
             },
             fontFamily: {
                 roboto: ["Roboto"],
@@ -102,7 +110,10 @@ module.exports = {
             },
         },
     },
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [
+        require("@tailwindcss/forms"),
+        require('tw-elements/dist/plugin')
+],
     variants: {
         extend: {
             boxShadow: ["dark"],

@@ -1,0 +1,96 @@
+/* :root {
+
+    --site-color-1: #054a7a;
+    --site-color-2: #94c8ea;
+    --site-color-3: #05385a;
+    --site-color-4: #0472b8;
+    --site-light: #ffffff;
+    --site-dark: #000000;
+    --site-highlight: #7cbee2;
+
+} */
+
+/* Responsive Design */
+/* @media (max-width: 768px) {
+    .form-group label {
+      text-align: left;
+    }
+  }
+   */
+/* Form Styling */
+/* form {
+    background-color: var(--site-light);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem var(--site-dark);
+  }
+  
+  .form-group {
+    margin-bottom: 2rem;
+  }
+  
+  .form-control {
+    font-size: 1.2rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border-color: var(--site-color-4);
+  }
+  
+  .form-control:focus {
+    border-color: var(--site-highlight);
+    box-shadow: 0 0 0 0.2rem var(--site-highlight);
+  }
+  
+  label {
+    color: var(--site-color-3);
+    font-weight: bold;
+  }
+  
+  button[type="submit"] {
+    background-color: var(--site-color-1);
+    color: var(--site-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border-color: var(--site-color-1);
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: var(--site-color-2);
+    border-color: var(--site-color-2);
+    cursor: pointer;
+  }
+
+  .container {
+  display: flex;
+  flex-direction: row;
+} */
+
+.tab-headers {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.tab-header {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.tab-header.active {
+    background-color: #eee;
+}
+
+.tab-content {
+    flex: 1;
+    padding: 10px;
+}
+
+.tab {
+    display: none;
+}
+
+.tab.active {
+    display: block;
+}
