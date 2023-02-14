@@ -1,9 +1,10 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Show Employees</title>
+    <title>Show Employee</title>
+@endsection
 
-
+@section('subcontent')
     <div class="container">
         <h3>Employees</h3>
         @if (session('success'))

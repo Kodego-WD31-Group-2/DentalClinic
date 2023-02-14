@@ -2,9 +2,9 @@
 
 @section('subhead')
     <title>Show Patient</title>
+@endsection
 
-
-
+@section('subcontent')
     <div class="container">
         <h3>Patients</h3>
         @if (session('success'))

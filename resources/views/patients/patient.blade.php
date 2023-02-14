@@ -2,8 +2,9 @@
 
 @section('subhead')
     <title>Patient</title>
+@endsection
 
-
+@section('subcontent')
     <div class="container">
         <h3>{{ $patient->first_name }} {{ $patient->last_name }}</h3>
         @if (session('success'))

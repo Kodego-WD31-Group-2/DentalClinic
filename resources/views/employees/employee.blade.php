@@ -1,9 +1,10 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Employee</title>
+    <title>Employees</title>
+@endsection
 
-
+@section('subcontent')
     <div class="container">
         <h3>{{ $employee->first_name }} {{ $employee->last_name }}</h3>
         @if (session('success'))

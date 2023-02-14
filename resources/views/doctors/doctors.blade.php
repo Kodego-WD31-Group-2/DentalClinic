@@ -2,7 +2,9 @@
 
 @section('subhead')
     <title>Doctors</title>
+@endsection
 
+@section('subcontent')
 <div class="container my-12 px-6 mx-auto">
    <section class="mb-12 text-gray-800 text-center">
       

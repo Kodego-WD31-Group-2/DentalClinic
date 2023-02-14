@@ -2,7 +2,9 @@
 
 @section('subhead')
     <title>Show Services</title>
+@endsection
 
+@section('subcontent')
     <div class="flex flex-col">
         <div class="overflow-none sm:mx-0.5 lg:mx-0.5">
           <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">

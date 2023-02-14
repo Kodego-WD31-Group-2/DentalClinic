@@ -2,7 +2,9 @@
 
 @section('subhead')
     <title>Add Patient</title>
+@endsection
 
+@section('subcontent')
     <div class="container">
         <h3>Add Patient</h3>
         @if ($errors->any())
