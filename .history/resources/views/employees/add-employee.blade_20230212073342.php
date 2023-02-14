@@ -1,10 +1,4 @@
-@extends('../layout/' . $layout)
-
-@section('subhead')
-    <title>Accordion - Midone - Tailwind HTML Admin Template</title>
-@endsection
-
-@section('subcontent')
+<x-layout>
     <div class="container">
         <h3>Add Employee</h3>
         @if ($errors->any())
@@ -34,4 +28,4 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    @endsection
+</x-layout>

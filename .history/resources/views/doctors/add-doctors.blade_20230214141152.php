@@ -55,5 +55,5 @@
         </div>
       </section>
   </div>
-{{-- </x-layout> --}}
+</x-layout>
 @endsection

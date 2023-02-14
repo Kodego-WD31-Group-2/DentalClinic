@@ -68,7 +68,8 @@
                         </li>
                     @endif
                 @endforeach
-            </ul>            
+            </ul>
+            
         </nav>
         @endauth
         <!-- END: Side Menu -->

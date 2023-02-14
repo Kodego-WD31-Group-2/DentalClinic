@@ -135,7 +135,7 @@ Route::get('/contacts', [HomeController::class, 'contacts']);
 Route::get('/dashboard', [PageController::class, 'dashboard']);
 
 
-Route::get('/book-appointment', [AppointmentController::class, 'appointment']);
+Route::get('/dashboard', [Appoint::class, 'dashboard']);
 
 
 //Services Routes

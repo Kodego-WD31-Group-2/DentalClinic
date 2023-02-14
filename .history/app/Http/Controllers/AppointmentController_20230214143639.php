@@ -22,7 +22,7 @@ class AppointmentController extends Controller
         return view('appointments.add-appointment');
     }
 
-    // Store Appointment Entry
+    // Store Patient Entry
     public function store(Request $request) {
         $formFields = $request->validate([
             'first_name' => 'required',
@@ -41,32 +41,32 @@ class AppointmentController extends Controller
             $formFields['appointment_image'] = $request->file('appointment_image')->store('appointment_images', 'public');
         }
 
-        Appointment::create($formFields);
+        Patient::create($formFields);
 
-        return redirect('/appointments/list')->with('message', 'Appointment created successfully');
+        return redirect('/appointments/list')->with('message', 'Patient created successfully');
     }
 
-    // Show All Appointments
+    // Show All Patients
     public function index() 
     {
-        $appointments = Appointment::all();
+        $appointments = Patient::all();
         return view('appointments.show-appointments', compact('appointments'));
     }
 
-    // Show A Appointment
-    public function show(Appointment $appointment) {
+    // Show A Patient
+    public function show(Patient $appointment) {
         return view('appointments.appointment', [
             'appointment' => $appointment
         ]);    
     }
 
     // Show Edit Form
-    public function edit(Appointment $appointment) {
+    public function edit(Patient $appointment) {
         return view('appointments.edit-appointment', ['appointment' => $appointment]);
     }
 
-    // Update Appointment Entry
-    public function update(Request $request, Appointment $appointment) {
+    // Update Patient Entry
+    public function update(Request $request, Patient $appointment) {
         $formFields = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
@@ -85,12 +85,12 @@ class AppointmentController extends Controller
 
         $appointment->update($formFields);
 
-        return redirect('/appointments/list')->with('message', 'Appointment updated successfully');
+        return redirect('/appointments/list')->with('message', 'Patient updated successfully');
     }
 
-    // Delete a Appointment Entry
-    public function destroy(Appointment $appointment) {
+    // Delete a Patient Entry
+    public function destroy(Patient $appointment) {
         $appointment->delete();
-        return redirect('/appointments/list')->with('message', 'Appointment deleted successfuly');
+        return redirect('/appointments/list')->with('message', 'Patient deleted successfuly');
     }
 }
