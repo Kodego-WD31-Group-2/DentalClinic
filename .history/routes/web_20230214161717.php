@@ -179,7 +179,7 @@ Route::delete('/patients/{patient}', [PatientsController::class,'destroy']);
 
 
 Route::get('/appointments/list', [AppointmentsController::class, 'index']);
-Route::get('/appointments/book-appointment', [AppointmentsController::class, 'add']);
+Route::get('/appointments/add', [AppointmentsController::class, 'add']);
 Route::post('/appointments/store', [AppointmentsController::class, 'store'])->name('appointments.store');
 Route::get('/appointments/{patient}', [AppointmentsController::class, 'show']);
 Route::get('/appointments/{patient}/edit', [AppointmentsController::class, 'edit']);

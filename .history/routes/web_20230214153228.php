@@ -7,7 +7,7 @@ use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AppointmentsController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\PatientsController;
@@ -178,14 +178,14 @@ Route::delete('/patients/{patient}', [PatientsController::class,'destroy']);
 
 
 
-Route::get('/appointments/list', [AppointmentsController::class, 'index']);
-Route::get('/appointments/book-appointment', [AppointmentsController::class, 'add']);
-Route::post('/appointments/store', [AppointmentsController::class, 'store'])->name('appointments.store');
-Route::get('/appointments/{patient}', [AppointmentsController::class, 'show']);
-Route::get('/appointments/{patient}/edit', [AppointmentsController::class, 'edit']);
-Route::put('/appointments/{patient}', [AppointmentsController::class, 'update'])->name('appointments.update');
-Route::delete('/appointments/{patient}', [AppointmentsController::class,'destroy']);
+Route::get('/appointments/list', [Controller::class, 'index']);
+Route::get('/appointments/add', [Controller::class, 'add']);
+Route::post('/appointments/store', [Controller::class, 'store'])->name('appointments.store');
+Route::get('/appointments/{patient}', [Controller::class, 'show']);
+Route::get('/appointments/{patient}/edit', [Controller::class, 'edit']);
+Route::put('/appointments/{patient}', [Controller::class, 'update'])->name('appointments.update');
+Route::delete('/appointments/{patient}', [Controller::class,'destroy']);
 
 
 
-// Route::get('/book-appointment', [AppointmentsController::class, 'appointment']);
+Route::get('/book-appointment', [AppointmentController::class, 'appointment']);

@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AppointmentController extends Controller
+class AppointmentsController extends Controller
 {
-        /**
+   /**
      * Display the appointment page.
      *
      * @return \Illuminate\Http\Response
@@ -19,7 +19,7 @@ class AppointmentController extends Controller
 
     // Show Add Page Form
     public function add() {
-        return view('appointments.add-appointment');
+        return view('appointment.form-appointment');
     }
 
     // Store Appointment Entry

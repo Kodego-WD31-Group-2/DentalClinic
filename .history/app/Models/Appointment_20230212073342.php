@@ -17,8 +17,6 @@ class Appointment extends Model
         'reason_for_visit',
     ];
 
-    protected $primaryKey = 'patient_id';
-
     // Relationships with Patients and Doctors
     public function patient() {
         return $this->belongsTo(Patient::class, 'patient_id');
