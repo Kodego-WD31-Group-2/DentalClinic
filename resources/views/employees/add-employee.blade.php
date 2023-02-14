@@ -1,10 +1,8 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Accordion - Midone - Tailwind HTML Admin Template</title>
-@endsection
+    <title>Add Employees</title>
 
-@section('subcontent')
     <div class="container">
         <h3>Add Employee</h3>
         @if ($errors->any())

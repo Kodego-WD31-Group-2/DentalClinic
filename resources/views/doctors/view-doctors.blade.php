@@ -1,4 +1,8 @@
-<x-layout>
+@extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>View Doctors</title>
+
 <div class="bg-custom-2">
   <div class="container pt-24 pb-24 px-6 mx-auto">
 
@@ -59,4 +63,4 @@
 
   </div>
 </div>
-</x-layout>
+@endsection

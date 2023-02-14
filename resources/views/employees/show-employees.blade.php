@@ -1,4 +1,8 @@
-<x-layout>
+@extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Show Employees</title>
+
 
     <div class="container">
         <h3>Employees</h3>
@@ -39,4 +43,4 @@
         </table>
     </div>
 
-</x-layout>
+    @endsection

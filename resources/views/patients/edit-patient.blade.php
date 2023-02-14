@@ -1,4 +1,8 @@
-<x-layout>
+@extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Edit Patient</title>
+
     <div class="container">
         <h3>Edit Patient</h3>
         @if ($errors->any())
@@ -62,4 +66,4 @@
                     </form>
                     @endif
                     </div>
-                    </x-layout>
+                    @endsection
