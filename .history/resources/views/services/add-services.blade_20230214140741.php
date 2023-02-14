@@ -43,9 +43,15 @@
    </div>
    
 @endsection
-{{-- </x-layout> --}}
+{{-- @endsection --}}
    
-   {{-- <x-layout>
+   {{-- @extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Add Patient</title>
+@endsection
+
+@section('subcontent')
    
    <form action="{{ route('services.store') }}" method="post" enctype="multipart/form-data">
        @csrf
@@ -64,6 +70,6 @@
        <button type="submit">Save</button>
    </form>
     
-   </x-layout>
+   @endsection
     --}}
    

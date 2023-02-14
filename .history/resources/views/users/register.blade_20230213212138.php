@@ -1,4 +1,10 @@
-<x-layout>
+@extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Add Patient</title>
+@endsection
+
+@section('subcontent')
   
   <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
   <header class="text-center">
@@ -94,4 +100,4 @@
       </div>
   </form>
   </x-card>
-</x-layout>
+@endsection

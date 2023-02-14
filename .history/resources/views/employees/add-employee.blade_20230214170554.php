@@ -1,4 +1,10 @@
-<x-layout>
+@extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Add Patient</title>
+@endsection
+
+@section('subcontent')
     <div class="container">
         <h3>Add Employee</h3>
         @if ($errors->any())

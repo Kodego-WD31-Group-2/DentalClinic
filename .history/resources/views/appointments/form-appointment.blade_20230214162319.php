@@ -1,4 +1,10 @@
-{{-- <x-layout>
+{{-- @extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Add Patient</title>
+@endsection
+
+@section('subcontent')
 
   <link href="{{ URL::asset('css/styles.css') }}" rel="stylesheet" type="text/css" >
 

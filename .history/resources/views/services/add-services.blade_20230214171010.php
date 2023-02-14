@@ -1,4 +1,10 @@
-<x-layout>
+@extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Add Patient</title>
+@endsection
+
+@section('subcontent')
    <div class="container my-12 px-6 mx-auto">
        <section class="mb-32 text-gray-800 text-center lg:text-left">
          <div class="px-6 py-12 md:px-12" style="background-color: hsl(0, 0%, 96%)">
@@ -37,7 +43,13 @@
    </div>
 </x-layout>
    
-   {{-- <x-layout>
+   {{-- @extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Add Patient</title>
+@endsection
+
+@section('subcontent')
    
    <form action="{{ route('services.store') }}" method="post" enctype="multipart/form-data">
        @csrf
