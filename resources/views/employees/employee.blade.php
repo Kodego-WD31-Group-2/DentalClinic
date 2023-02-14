@@ -1,4 +1,8 @@
-<x-layout>
+@extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Employee</title>
+
 
     <div class="container">
         <h3>{{ $employee->first_name }} {{ $employee->last_name }}</h3>
@@ -28,4 +32,4 @@
         </table>
     </div>
 
-</x-layout>
+    @endsection

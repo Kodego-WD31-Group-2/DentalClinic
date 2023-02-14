@@ -1,4 +1,8 @@
-<x-layout>
+@extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Show Doctors</title>
+
     <div class="container px-6 py-6 mx-auto">
         <section class="my-10 text-gray-800 text-center">
           <div class="grid sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-10 gap-x-6 lg:gap-x-12">
@@ -42,4 +46,4 @@
         </section>
       </div>
     </div> 
-</x-layout>
+    @endsection

@@ -1,4 +1,8 @@
-<x-layout>
+@extends('../layout/' . $layout)
+
+@section('subhead')
+    <title>Add Patient</title>
+
     <div class="container">
         <h3>Add Patient</h3>
         @if ($errors->any())
@@ -60,4 +64,4 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-</x-layout>
+    @endsection
