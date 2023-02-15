@@ -144,4 +144,4 @@
        </section>
       </div>
     </section>
-  </x-layout>
+  @endsection

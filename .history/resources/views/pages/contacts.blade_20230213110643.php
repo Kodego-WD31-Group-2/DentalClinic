@@ -131,4 +131,4 @@
     </section>
 
   </div>
-</x-layout>
+@endsection
