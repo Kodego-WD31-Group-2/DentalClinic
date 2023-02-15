@@ -31,13 +31,13 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-// Route::middleware('admin')->group(function () {
-//     Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
-// });
 
 //Admin Middleware
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
+    /// Enter Admin Pages Here
+});
+
+Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
     Route::post('doctors/store', [DoctorsController::class, 'store'])->name('doctors.store');
     Route::get('doctors/show', [DoctorsController::class, 'show'])->name('doctors.show');
     Route::get('doctors/{doctor}/edit', [DoctorsController::class, 'edit']);
@@ -50,7 +50,34 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/services/{service}/edit', [ServicesController::class, 'edit']);
     Route::put('/services/{service}', [ServicesController::class, 'update']);
     Route::delete('/services/{service}', [ServicesController::class,'destroy']);
-});
+    Route::get('/patients/list', [PatientsController::class, 'index']);
+    Route::get('/patients/add', [PatientsController::class, 'add']);
+    Route::post('/patients/store', [PatientsController::class, 'store'])->name('patients.store');
+    Route::get('/patients/{patient}', [PatientsController::class, 'show']);
+    Route::get('/patients/{patient}/edit', [PatientsController::class, 'edit']);
+    Route::put('/patients/{patient}', [PatientsController::class, 'update'])->name('patients.update');
+    Route::delete('/patients/{patient}', [PatientsController::class,'destroy']);
+    Route::get('/employees/list', [EmployeesController::class, 'index']);
+    Route::get('/employees/add', [EmployeesController::class, 'add']);
+    Route::post('/employees/store', [EmployeesController::class, 'store'])->name('employees.store');
+    Route::get('/employees/{employee}', [EmployeesController::class, 'show']);
+    Route::get('/employees/{employee}/edit', [EmployeesController::class, 'edit']);
+    Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->name('employees.update');
+    Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
+    Route::get('/appointments/list', [AppointmentsController::class, 'index']);
+    Route::get('/appointments/book-appointment', [AppointmentsController::class, 'add']);
+    Route::post('/appointments/store', [AppointmentsController::class, 'store'])->name('appointments.store');
+    Route::get('/appointments/{patient}', [AppointmentsController::class, 'show']);
+    Route::get('/appointments/{patient}/edit', [AppointmentsController::class, 'edit']);
+    Route::put('/appointments/{patient}', [AppointmentsController::class, 'update'])->name('appointments.update');
+    Route::delete('/appointments/{patient}', [AppointmentsController::class,'destroy']);
+    Route::get('/employees/list', [EmployeesController::class, 'index']);
+    Route::get('/employees/add', [EmployeesController::class, 'add']);
+    Route::post('/employees/store', [EmployeesController::class, 'store'])->name('employees.store');
+    Route::get('/employees/{employee}', [EmployeesController::class, 'show']);
+    Route::get('/employees/{employee}/edit', [EmployeesController::class, 'edit']);
+    Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->name('employees.update');
+    Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
 
 
 //Show Register / Create Form
@@ -168,7 +195,7 @@ Route::get('/services', [ServicesController::class, 'index']);
 // Route::delete('/services/{service}', [ServicesController::class,'destroy'])->middleware('auth');
 
 
-Route::get('/services/{service}', [ServicesController::class, 'view']);
+// Route::get('/services/{service}', [ServicesController::class, 'view']);
 
 Route::get('/employees/list', [EmployeesController::class, 'index']);
 Route::get('/employees/add', [EmployeesController::class, 'add']);
@@ -190,23 +217,17 @@ Route::get('doctors', [DoctorsController::class, 'index']);
 // Route::delete('doctors/{doctor}', [DoctorsController::class,'destroy'])->middleware('auth');
 
 
-Route::get('/patients/list', [PatientsController::class, 'index']);
-Route::get('/patients/add', [PatientsController::class, 'add']);
-Route::post('/patients/store', [PatientsController::class, 'store'])->name('patients.store');
-Route::get('/patients/{patient}', [PatientsController::class, 'show']);
-Route::get('/patients/{patient}/edit', [PatientsController::class, 'edit']);
-Route::put('/patients/{patient}', [PatientsController::class, 'update'])->name('patients.update');
-Route::delete('/patients/{patient}', [PatientsController::class,'destroy']);
+// Route::get('/patients/list', [PatientsController::class, 'index']);
+// Route::get('/patients/add', [PatientsController::class, 'add']);
+// Route::post('/patients/store', [PatientsController::class, 'store'])->name('patients.store');
+// Route::get('/patients/{patient}', [PatientsController::class, 'show']);
+// Route::get('/patients/{patient}/edit', [PatientsController::class, 'edit']);
+// Route::put('/patients/{patient}', [PatientsController::class, 'update'])->name('patients.update');
+// Route::delete('/patients/{patient}', [PatientsController::class,'destroy']);
 
 
 
-Route::get('/appointments/list', [AppointmentsController::class, 'index']);
-Route::get('/appointments/book-appointment', [AppointmentsController::class, 'add']);
-Route::post('/appointments/store', [AppointmentsController::class, 'store'])->name('appointments.store');
-Route::get('/appointments/{patient}', [AppointmentsController::class, 'show']);
-Route::get('/appointments/{patient}/edit', [AppointmentsController::class, 'edit']);
-Route::put('/appointments/{patient}', [AppointmentsController::class, 'update'])->name('appointments.update');
-Route::delete('/appointments/{patient}', [AppointmentsController::class,'destroy']);
+
 
 
 

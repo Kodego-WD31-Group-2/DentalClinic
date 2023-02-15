@@ -17,8 +17,9 @@ class CheckAdmin
     public function handle($request, Closure $next)
     {
         if (auth()->check() && auth()->user()->role != 'admin') {
-            return response('Access denied', 403);
-            // return redirect()->route('login');
+            // return response('Access denied', 403);
+            // return redirect()->route('pages.home');
+            return redirect('/home');
         }
 
         return $next($request);
