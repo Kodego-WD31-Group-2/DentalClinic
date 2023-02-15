@@ -140,7 +140,7 @@ Route::get('/dashboard', [PageController::class, 'dashboard']);
 Route::get('/services', [ServicesController::class, 'index']);
 Route::get('/services/add', [ServicesController::class, 'add'])->middleware('auth');
 Route::post('/services/store', [ServicesController::class, 'store'])->middleware('auth');
-Route::get('/services/{service}', [ServicesController::class, 'show'])->middleware('auth');
+Route::get('/services/show', [ServicesController::class, 'show'])->middleware('auth');
 Route::get('/services/{service}/edit', [ServicesController::class, 'edit'])->middleware('auth');
 Route::put('/services/{service}', [ServicesController::class, 'update'])->middleware('auth');
 Route::delete('/services/{service}', [ServicesController::class,'destroy'])->middleware('auth');
