@@ -56,22 +56,35 @@ class AppointmentsController extends Controller
     }
    
     // Show All Appointments
+    // public function index() 
+    // {
+    //     $appointments = Appointment::all();
+    //     return view('appointments.show-appointments', compact('appointments'));
+    // }  
+
     public function index() 
     {
-        $appointments = Appointment::all();
+        $appointments = Appointment::orderBy('appointment_date')
+            ->orderBy('appointment_time')
+            ->simplepaginate(20);
         return view('appointments.show-appointments', compact('appointments'));
-    }  
+    }
     
     // Show A Appointment
-    public function show(Appointment $appointment) {
-        return view('appointments.appointment', [
-            'appointment' => $appointment
-        ]);    
-    }
+    // public function show(Appointment $appointment) {
+    //     return view('appointments.appointment', [
+    //         'appointment' => $appointment
+    //     ]);    
+    // }
+ 
 
     // Show Edit Form
     // public function edit(Appointment $appointment) {
-    //     // return view('appointments.edit-appointment', ['appointment' => $appointment]);
+    //     return view('appointments.edit-appointment', compact('appointment'));
+    // }
+
+    // public function edit(Appointment $appointment) {
+    //     return view('appointments.edit-appointment', ['appointment' => $appointment]);
     //     return view('appointments.edit-appointment', ['appointment' => $appointment, 'doctors' => $doctor]);
     // }
     public function edit(Appointment $appointment) {
@@ -80,13 +93,11 @@ class AppointmentsController extends Controller
         return view('appointments.edit-appointment', compact('appointment', 'doctors', 'doctor'));
     }
     
-
-
     // Update Appointment Entry
     public function update(Request $request, Appointment $appointment) {
         $formFields = $request->validate([
             // 'patient_id' => 'required',
-            'doctor_id' => 'required',
+            // 'doctor_id' => 'required',
             'appointment_date' => 'required',
             'appointment_time' => 'required',
             'appointment_type' => 'required',
@@ -106,10 +117,11 @@ class AppointmentsController extends Controller
             'special_instructions' => 'nullable',
             'referral_source' => 'nullable',
             'hear_about_practice' => 'nullable',
-            'signature_confirm' => 'required|boolean',
-            'reminders_consent' => 'required|boolean',
-            'release_signature' => 'required|boolean',
-            'appointment_image' => 'image',  
+            // 'signature_confirm' => 'boolean',
+            // 'reminders_consent' => 'boolean',
+            // 'release_signature' => 'boolean',
+            // 'status' => 'required',
+            // 'appointment_image' => 'image',  
         ]);
 
         // if($request->hasFile('appointment_image')) {
