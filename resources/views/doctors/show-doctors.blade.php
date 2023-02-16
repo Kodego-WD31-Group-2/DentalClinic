@@ -5,47 +5,125 @@
 @endsection
 
 @section('subcontent')
+    <h2 class="intro-y text-lg font-medium mt-10">Product Grid</h2>
+    <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            <button class="btn btn-primary shadow-md mr-2"><a href="/services/add">Add New Services</a></button>
+            <div class="dropdown">
+                {{-- <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                    <span class="w-5 h-5 flex items-center justify-center">
+                        <i class="w-4 h-4" data-lucide="plus"></i>
+                    </span>
+                </button> --}}
+                {{-- <div class="dropdown-menu w-40">
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="" class="dropdown-item">
+                                <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="dropdown-item">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="dropdown-item">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF
+                            </a>
+                        </li>
+                    </ul>
+                </div> --}}
+            </div>
+            {{-- <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+                <div class="w-56 relative text-slate-500">
+                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
+                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+                </div>
+            </div> --}}
+        </div>
+        <!-- BEGIN: Users Layout -->
+        @section('subcontent')
     <div class="container px-6 py-6 mx-auto">
         <section class="my-10 text-gray-800 text-center">
-          <div class="grid sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-10 gap-x-6 lg:gap-x-12">
+          <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 gap-x-6 lg:gap-x-12">
             @foreach ($doctor as $doctor)
-            <div class="mb-6 lg:mb-0">
-              <div class="bg-white block rounded-lg shadow-lg">
-                <div class="relative overflow-hidden bg-no-repeat bg-cover">
-                  <img src='{{ asset('storage/' . $doctor->doctor_image) }}' class="w-full rounded-t-lg" />
-                  <svg class="absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"
-                    style="left: 0; bottom: 0">
-                    <path fill="#fff"
-                      d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-                    </path>
-                  </svg>
+                <div class="box">
+                    <div class="p-5">
+                        <div class="h-40 2xl:h-56 image-fit rounded-md overflow-hidden before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-black before:to-black/10">
+                            <img alt="Midone - HTML Admin Template" class="rounded-md" src="{{ file_exists(public_path('storage/' . $doctor->doctor_image)) ? asset('storage/' . $doctor->doctor_image) : asset($doctor->doctor_image) }}">
+                            
+                            <div class="absolute bottom-0 text-white px-5 pb-6 z-10">
+                                <a href="" class="block font-medium text-base">{{ $doctor->doctor }}</a>
+                            </div>
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-500 mt-5">
+                            <h2>{{ $doctor->description }}</h2>
+                        </div>
+                    </div>
+                    <div class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                        
+                        <a class="flex items-center mr-3" href="/doctors/{{$doctor->id}}/edit">
+                            <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
+                        </a>
+                        <form method="POST" action="/doctors/{{$doctor->id}}" class="flex items-center text-danger">
+                            <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>
+                            @csrf
+                                @method('DELETE')
+                                <button>Delete</button> 
+                        </form>
+                    </div>
                 </div>
-                <div class="p-6">
-                  <h5 class="text-lg font-bold mb-4">Dr. {{$doctor->first_name}} {{$doctor->last_name}}</h5>
-                  <p class="text-black-500 mb-4">{{$doctor->specialty}}</p>
-                <ul class="grid md:grid-cols-3 gap-2 gap-x-6 lg:gap-x-12">
-                  {{-- View Button --}}
-                  <li><a type="button" class="inline-block px-3 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" href="/doctors/{{$doctor->doctor_id}}/view">View</a></li>
-                  {{-- EDIT BUTTON --}}
-                  <li><a type="button" class="inline-block px-3 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" href="/doctors/{{$doctor->doctor_id}}/edit">Edit</a></li>
-                  {{-- DELETE BUTTON --}}
-                  <li><form method="POST" class="inline-block px-3 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" action="/doctors/{{$doctor->doctor_id}}">
-                    @csrf
-                    @method('DELETE')
-                      <button>DELETE</button>
-                  </form></li>
-                  {{-- <li><form method="POST" class="inline-block px-7 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" action="/doctors/{{$doctor->doctor_id}}">
-                    @csrf
-                    @method('DELETE')
-                      <button>Delete</button>
-                  </form></li> --}}
-                </ul>
-                </div>
-              </div>
- </div>
-            @endforeach
+
+        @endforeach
           </div>
         </section>
       </div>
     </div> 
-    @endsection
+@endsection
+        <!-- END: Users Layout -->
+        <!-- BEGIN: Pagination -->
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+            <nav class="flex justify-center w-full sm:w-auto sm:mr-auto">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="w-4 h-4" data-lucide="chevrons-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="w-4 h-4" data-lucide="chevron-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">...</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">...</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="w-4 h-4" data-lucide="chevron-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="w-4 h-4" data-lucide="chevrons-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- END: Pagination -->
+    </div>
+@endsection

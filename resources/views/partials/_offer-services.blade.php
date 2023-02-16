@@ -44,15 +44,14 @@ style="
 
     <div class="grid lg:grid-cols-3 gap-6">
       {{-- S1 --}}
-      @foreach  ($service as $service)
       <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
         style="background-position: 50%;">
-        <img src="{{ file_exists(public_path('storage/' . $service->service_image)) ? asset('storage/' . $service->service_image) : asset($service->service_image) }}"
+        <img src='{{ asset('assets/img/Services/checkup.jpg')}}'
           class="w-full transition duration-300 ease-linear align-middle" />
           <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
             style="background-color: rgba(0, 0, 0, 0.1)">
             <div class="flex justify-start items-end h-full">
-              <h5 class="text-2xl font-bold text-white m-6"></h5>
+              <h5 class="text-2xl font-bold text-white m-6">Consultation</h5>
             </div>
           </div>
           <div class="hover-overlay">
@@ -62,9 +61,8 @@ style="
           </div>
         </a>
       </div>
-      @endforeach
       {{-- S2 --}}
-      {{-- <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
+      <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
         style="background-position: 50%;">
         <img src='{{ asset('assets/img/Services/extraction.jpg')}}'
           class="w-full transition duration-300 ease-linear align-middle" />
@@ -80,9 +78,9 @@ style="
               style="background-color: rgba(253, 253, 253, 0.15)"></div>
           </div>
         </a>
-      </div> --}}
+      </div>
       {{-- S3 --}}
-      {{-- <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
+      <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
         style="background-position: 50%;">
         <img src='{{ asset('assets/img/Services/rootcanal.jpg')}}'
           class="w-full transition duration-300 ease-linear align-middle" />
@@ -98,9 +96,9 @@ style="
               style="background-color: rgba(253, 253, 253, 0.15)"></div>
           </div>
         </a>
-      </div> --}}
+      </div>
       {{-- S4 --}}
-      {{-- <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
+      <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
         style="background-position: 50%;">
         <img src='{{ asset('assets/img/Services/ortho.jpg')}}'
           class="w-full transition duration-300 ease-linear align-middle" />
@@ -116,9 +114,9 @@ style="
               style="background-color: rgba(253, 253, 253, 0.15)"></div>
           </div>
         </a>
-      </div> --}}
+      </div>
       {{-- S5 --}}
-      {{-- <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
+      <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
         style="background-position: 50%;">
         <img src='{{ asset('assets/img/Services/filling.jpg')}}'
           class="w-full transition duration-300 ease-linear align-middle" />
@@ -134,9 +132,9 @@ style="
               style="background-color: rgba(253, 253, 253, 0.15)"></div>
           </div>
         </a>
-      </div> --}}
+      </div>
       {{-- S6 --}}
-      {{-- <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
+      <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
         style="background-position: 50%;">
         <img src='{{ asset('assets/img/Services/cleaning.jpg')}}'
           class="w-full transition duration-300 ease-linear align-middle" />
@@ -152,7 +150,7 @@ style="
               style="background-color: rgba(253, 253, 253, 0.15)"></div>
           </div>
         </a>
-      </div> --}}
+      </div>
     </div>
     
   </section>

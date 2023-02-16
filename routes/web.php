@@ -97,7 +97,7 @@ Route::controller(AuthController::class)->middleware('loggedin')->group(function
 Route::middleware('auth')->group(function() {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::controller(PageController::class)->group(function() {
-        Route::get('/', 'dashboardOverview1')->name('dashboard-overview-1');
+        Route::get('dashboard-overview-1-page', 'dashboardOverview1')->name('dashboard-overview-1');
         Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');
         Route::get('dashboard-overview-3-page', 'dashboardOverview3')->name('dashboard-overview-3');
         Route::get('dashboard-overview-4-page', 'dashboardOverview4')->name('dashboard-overview-4');
@@ -124,7 +124,7 @@ Route::middleware('auth')->group(function() {
         Route::get('users-layout-1-page', 'usersLayout1')->name('users-layout-1');
         Route::get('users-layout-2-page', 'usersLayout2')->name('users-layout-2');
         Route::get('users-layout-3-page', 'usersLayout3')->name('users-layout-3');
-        Route::get('profile-overview-1-page', 'profileOverview1')->name('profile-overview-1');
+        Route::get('/', 'profileOverview1')->name('profile-overview-1');
         Route::get('profile-overview-2-page', 'profileOverview2')->name('profile-overview-2');
         Route::get('profile-overview-3-page', 'profileOverview3')->name('profile-overview-3');
         Route::get('wizard-layout-1-page', 'wizardLayout1')->name('wizard-layout-1');
@@ -177,7 +177,7 @@ Route::middleware('auth')->group(function() {
 });
 
 
-Route::get('/home', [HomeController::class, 'home']);
+Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 Route::get('/contacts', [HomeController::class, 'contacts']);
 
@@ -186,18 +186,19 @@ Route::get('/dashboard', [PageController::class, 'dashboard']);
 
 
 //Services Routes
-Route::get('/services', [ServicesController::class, 'index']);
-// Route::get('/services/add', [ServicesController::class, 'add'])->middleware('auth');
-// Route::post('/services/store', [ServicesController::class, 'store'])->middleware('auth');
-// Route::get('/services/{service}', [ServicesController::class, 'show'])->middleware('auth');
-// Route::get('/services/{service}/edit', [ServicesController::class, 'edit'])->middleware('auth');
-// Route::put('/services/{service}', [ServicesController::class, 'update'])->middleware('auth');
-// Route::delete('/services/{service}', [ServicesController::class,'destroy'])->middleware('auth');
+Route::get('/services', [ServicesController::class, 'index'])->name('services');
+Route::get('/services/add', [ServicesController::class, 'add'])->middleware('auth');
+Route::post('/services/store', [ServicesController::class, 'store'])->middleware('auth');
+Route::get('/services/show', [ServicesController::class, 'show'])->middleware('auth');
+Route::get('/services/{service}/edit', [ServicesController::class, 'edit'])->middleware('auth');
+Route::put('/services/{service}', [ServicesController::class, 'update'])->middleware('auth');
+Route::delete('/services/{service}', [ServicesController::class,'destroy'])->middleware('auth');
+Route::get('/services/offer', [ServicesController::class, 'offer'])->middleware('auth');
 
 
 // Route::get('/services/{service}', [ServicesController::class, 'view']);
 
-Route::get('/employees/list', [EmployeesController::class, 'index']);
+Route::get('/employees/list', [EmployeesController::class, 'index'])->name('employees');
 Route::get('/employees/add', [EmployeesController::class, 'add']);
 Route::post('/employees/store', [EmployeesController::class, 'store'])->name('employees.store');
 Route::get('/employees/{employee}', [EmployeesController::class, 'show']);
@@ -207,14 +208,14 @@ Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
 
 
 // Doctor Route
-Route::get('doctors', [DoctorsController::class, 'index']);
-// Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
-// Route::post('doctors/store', [DoctorsController::class, 'store'])->name('doctors.store')->middleware('auth');
-// Route::get('doctors/show', [DoctorsController::class, 'show'])->name('doctors.show')->middleware('auth');
-// Route::get('doctors/{doctor}/edit', [DoctorsController::class, 'edit'])->middleware('auth');
-// Route::get('doctors/{doctor}/view', [DoctorsController::class, 'view']);
-// Route::put('doctors/{doctor}', [DoctorsController::class, 'update'])->middleware('auth');
-// Route::delete('doctors/{doctor}', [DoctorsController::class,'destroy'])->middleware('auth');
+Route::get('doctors', [DoctorsController::class, 'index'])->name('doctors');
+Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
+Route::post('doctors/store', [DoctorsController::class, 'store'])->name('doctors.store')->middleware('auth');
+Route::get('doctors/show', [DoctorsController::class, 'show'])->name('doctors.show')->middleware('auth');
+Route::get('doctors/{doctor}/edit', [DoctorsController::class, 'edit'])->middleware('auth');
+Route::get('doctors/{doctor}/view', [DoctorsController::class, 'view']);
+Route::put('doctors/{doctor}', [DoctorsController::class, 'update'])->middleware('auth');
+Route::delete('doctors/{doctor}', [DoctorsController::class,'destroy'])->middleware('auth');
 
 
 // Route::get('/patients/list', [PatientsController::class, 'index']);
@@ -229,7 +230,7 @@ Route::get('doctors', [DoctorsController::class, 'index']);
 
 
 Route::get('/appointments/list', [AppointmentsController::class, 'index']);
-Route::get('/appointments/book-appointment', [AppointmentsController::class, 'add']);
+Route::get('/appointments/book-appointment', [AppointmentsController::class, 'add'])->name('book-appointment');
 Route::post('/appointments/store', [AppointmentsController::class, 'store'])->name('appointments.store');
 Route::get('/appointments/{appointment}', [AppointmentsController::class, 'show']);
 Route::get('/appointments/{appointment}/edit', [AppointmentsController::class, 'edit']);

@@ -38,10 +38,11 @@ class ServicesController extends Controller
             'service' => Service::latest()->paginate(10)
         ]);
     }
-
+    //Show All Services
     public function offer() {
-        $services = Service::all();
-        return view('services._service-offer', compact('services'));
+        return view('services.offer-services', [
+            'service' => Service::latest()->paginate(10)
+        ]);    
     }
 
     //Show A Service
@@ -57,6 +58,7 @@ class ServicesController extends Controller
             'service' => Service::latest()->paginate(10)
         ]);    
     }
+   
 
     //Show Edit Form
     public function edit(Service $service) {
