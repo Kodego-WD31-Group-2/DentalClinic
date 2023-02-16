@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('appointment_id');
             // $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('doctor_id');
+            $table->unsignedBigInteger('patient_id');
             $table->date('appointment_date');
             $table->string('appointment_time');
             $table->string('appointment_type')->nullable();
@@ -41,10 +42,10 @@ return new class extends Migration
             $table->boolean('release_signature')->default(true);
             $table->timestamps();
 
-            // $table->foreign('patient_id')
-            //     ->references('patient_id')
-            //     ->on('patients')
-            //     ->onDelete('cascade');
+            $table->foreign('patient_id')
+                ->references('patient_id')
+                ->on('patients')
+                ->onDelete('cascade');
 
             $table->foreign('doctor_id')
                 ->references('doctor_id')
