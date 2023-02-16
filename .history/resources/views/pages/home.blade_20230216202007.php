@@ -7,12 +7,10 @@
 @section('subcontent')
 <main>
 
+
+
+
     
-
-
-
-
-
     @include('partials._hero')
     @include('partials._features')
     @include('partials._services-offer')

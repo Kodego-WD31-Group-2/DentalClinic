@@ -85,11 +85,7 @@ class ServicesController extends Controller
         return redirect('/services')->with('message', 'Listing deleted successfuly');
     }
 
-    // public function ser()
-    // {
-    //     $services = Service::all();
-    //     return view('pages.home', compact('services'));
-    // }
+    
 
 
 

@@ -59,12 +59,5 @@ class HomeController extends Controller
         return view('pages.dashboard-overview-1');
     }
 
-
-        // public function index()
-        // {
-        //     $services = Service::getAvailableServices();
-        //     return view('home', ['services' => $services]);
-        // }
-    
     
 }

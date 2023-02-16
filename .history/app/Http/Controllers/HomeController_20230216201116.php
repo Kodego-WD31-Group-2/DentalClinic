@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,8 +14,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $services = Service::all();
-        return view('pages.home', compact('services'));
+        return view('pages.home');
     }
 
     /**
@@ -59,12 +57,13 @@ class HomeController extends Controller
         return view('pages.dashboard-overview-1');
     }
 
+    {
+        public function index()
+        {
+            $services = Service::getAvailableServices();
+            return view('home', ['services' => $services]);
+        }
+    }
 
-        // public function index()
-        // {
-        //     $services = Service::getAvailableServices();
-        //     return view('home', ['services' => $services]);
-        // }
-    
     
 }

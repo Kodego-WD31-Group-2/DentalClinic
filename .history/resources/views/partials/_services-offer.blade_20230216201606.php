@@ -42,7 +42,7 @@ style="
       </div>
     </div>
 
-    <div class="grid lg:grid-cols-3 gap-6 services">
+    <div class="grid lg:grid-cols-3 gap-6 ">
       {{-- S1 --}}
       @foreach  ($services as $service)
       <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"

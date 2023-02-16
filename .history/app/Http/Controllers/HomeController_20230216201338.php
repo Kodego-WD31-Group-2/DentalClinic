@@ -15,8 +15,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $services = Service::all();
-        return view('pages.home', compact('services'));
+        return view('pages.home');
     }
 
     /**
@@ -60,11 +59,11 @@ class HomeController extends Controller
     }
 
 
-        // public function index()
-        // {
-        //     $services = Service::getAvailableServices();
-        //     return view('home', ['services' => $services]);
-        // }
+        public function index()
+        {
+            $services = Service::getAvailableServices();
+            return view('home', ['services' => $services]);
+        }
     
     
 }

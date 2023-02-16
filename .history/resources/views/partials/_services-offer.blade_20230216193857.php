@@ -42,9 +42,9 @@ style="
       </div>
     </div>
 
-    <div class="grid lg:grid-cols-3 gap-6 services">
+    <div class="grid lg:grid-cols-3 gap-6">
       {{-- S1 --}}
-      @foreach  ($services as $service)
+      @foreach  ($service as $service)
       <div class="zoom shadow-lg rounded-lg relative overflow-hidden bg-no-repeat bg-cover"
         style="background-position: 50%;">
         <img src="{{ file_exists(public_path('storage/' . $service->service_image)) ? asset('storage/' . $service->service_image) : asset($service->service_image) }}"

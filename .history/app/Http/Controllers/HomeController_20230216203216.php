@@ -15,8 +15,8 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $services = Service::all();
-        return view('pages.home', compact('services'));
+        $services = Service::getAvailableServices();
+        return view('pages.home', ['services' => $services]);
     }
 
     /**
