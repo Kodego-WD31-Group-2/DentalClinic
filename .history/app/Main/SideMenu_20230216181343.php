@@ -387,7 +387,7 @@ class SideMenu
                         'title' => 'Reviews'
                     ],
                 ]
-            ],
+            // ],
             // 'inbox' => [
             //     'icon' => 'inbox',
             //     'route_name' => 'inbox',

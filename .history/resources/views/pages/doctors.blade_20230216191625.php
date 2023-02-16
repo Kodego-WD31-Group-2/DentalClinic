@@ -10,7 +10,6 @@
     <section>
       @auth
       
-      @else
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -93,10 +92,9 @@
           </path>
         </g>
       </svg>
-      @endauth
 
       {{-- Doctors Team Info --}}
-      <div class="container mx-auto px-6 md:px-6 xl:px-16" >
+      <div class="container mx-auto px-6 md:px-6 xl:px-16">
         <div class="text-center text-gray-800">
           <div class="block rounded-lg shadow-lg px-6 py-12 md:py-16 md:px-12" style="margin-top: 50px; background-color: hsla(0, 0%, 100%, 0.8);backdrop-filter: saturate(200%) blur(25px);">
             <h1 class="text-lg md:text-6xl xl:text-7xl font-bold tracking-tight mb-12">Meet The <span class="text-blue-600">Doctors Of Clinic X</span></h1>
