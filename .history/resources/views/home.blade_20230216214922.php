@@ -35,7 +35,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <body class="py-5 md:py-0">
     @include('../layout/components/mobile-menu')
     @include('../layout/components/top-bar')
-    <div class="flex overflow-hidden">
+    <div >
         <!-- BEGIN: Side Menu -->
         @auth
         <nav class="side-nav">
@@ -106,7 +106,6 @@ License: You must have a valid license purchased only from themeforest(the above
         @else
         <div class="home-custom">
         @endauth
-
             <main>
                 @include('partials._hero')
                 @include('partials._features')

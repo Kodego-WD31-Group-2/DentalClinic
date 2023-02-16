@@ -180,7 +180,7 @@ Route::get('/dashboard', [PageController::class, 'dashboard']);
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 
-Route::get('/home-test', [HomeController::class, 'try'])->name('home');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 
 

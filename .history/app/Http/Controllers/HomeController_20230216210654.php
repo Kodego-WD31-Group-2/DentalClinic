@@ -23,10 +23,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function try()
+    public function ()
     {
         $services = Service::all();
-        return view('home', compact('services'));
+        return view('pages.home', compact('services'));
     }
 
     /**

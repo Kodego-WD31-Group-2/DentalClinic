@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function try()
     {
         $services = Service::all();
-        return view('home', compact('services'));
+        return view('pages.home', compact('services'));
     }
 
     /**

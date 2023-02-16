@@ -104,8 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
         @auth
         <div class="content">
         @else
-        <div class="home-custom">
-        @endauth
+        <div class="content">
 
             <main>
                 @include('partials._hero')

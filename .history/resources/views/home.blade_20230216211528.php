@@ -20,7 +20,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="author" content="LEFT4CODE">
     
 
-    <title>Home - Smileville Dental Services</title>
+    @yield('head')
 
     <!-- BEGIN: CSS Assets-->
     @vite('resources/css/app.css')
@@ -101,18 +101,8 @@ License: You must have a valid license purchased only from themeforest(the above
         @endauth
         <!-- END: Side Menu -->
         <!-- BEGIN: Content -->
-        @auth
         <div class="content">
-        @else
-        <div class="home-custom">
-        @endauth
-
-            <main>
-                @include('partials._hero')
-                @include('partials._features')
-                @include('partials._services-offer')
-                @include('../layout/components/footer')  
-            </main>
+            @yield('subcontent')
         </div>
         <!-- END: Content -->
     </div>
