@@ -8,6 +8,7 @@
 <main>
     @include('partials._hero')
     @include('partials._features')
+    @include('partials._services-offer')
     @include('../layout/components/footer')  
 </main>
     {{-- <div class="intro-y flex items-center mt-8">      

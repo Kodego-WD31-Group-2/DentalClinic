@@ -24,6 +24,6 @@
 @section('subcontent')
     <div class="intro-y flex items-center mt-8">
         @include('partials._hero')
-        @include('partials._features') 
+        @include('partials._features')
     </div>
 @endsection
