@@ -39,6 +39,11 @@ class ServicesController extends Controller
         ]);
     }
 
+    public function offer() {
+        $services = Service::all();
+        return view('services._service-offer', compact('services'));
+    }
+
     //Show A Service
     public function view(Service $service) {
         return view('services.view-services', [
