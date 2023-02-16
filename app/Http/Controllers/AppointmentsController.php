@@ -70,9 +70,17 @@ class AppointmentsController extends Controller
     }
 
     // Show Edit Form
+    // public function edit(Appointment $appointment) {
+    //     // return view('appointments.edit-appointment', ['appointment' => $appointment]);
+    //     return view('appointments.edit-appointment', ['appointment' => $appointment, 'doctors' => $doctor]);
+    // }
     public function edit(Appointment $appointment) {
-        return view('appointments.edit-appointment', ['appointment' => $appointment]);
+        $doctors = Doctor::all();
+        $doctor = $appointment->doctor; // load the doctor for the appointment
+        return view('appointments.edit-appointment', compact('appointment', 'doctors', 'doctor'));
     }
+    
+
 
     // Update Appointment Entry
     public function update(Request $request, Appointment $appointment) {
