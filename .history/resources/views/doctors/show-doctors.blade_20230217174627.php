@@ -17,7 +17,7 @@
                         <i class="w-4 h-4" data-lucide="plus"></i>
                     </span>
                 </button>
-                <div class="dropdown-menu w-40">
+                {{-- <div class="dropdown-menu w-40">
                     <ul class="dropdown-content">
                         <li>
                             <a href="" class="dropdown-item">
@@ -25,12 +25,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/chat-page" class="dropdown-item">
+                            <a href="" class="dropdown-item">
                                 <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Send Message
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
             <div class="hidden md:block mx-auto text-slate-500"></div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
@@ -85,12 +85,8 @@
                         </div> --}}
                     </div>
                     <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <a href="/chat-page">
-                            <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                        </a>
-                        <a href="/doctors/{{$doctor->doctor_id}}/view">
-                            <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                        </a>
+                        <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
+                        <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
                     </div>
                 </div>
             </div>

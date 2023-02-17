@@ -88,8 +88,7 @@
                         <a href="/chat-page">
                             <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
                         </a>
-                        <a href="/doctors/{{$doctor->doctor_id}}/view">
-                            <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
+                        <a href="/doctors/{{$doctor->id}}">{{$doctor->doctor}}">
                         </a>
                     </div>
                 </div>

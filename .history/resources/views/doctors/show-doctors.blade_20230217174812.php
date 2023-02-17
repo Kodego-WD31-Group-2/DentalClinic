@@ -87,10 +87,9 @@
                     <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                         <a href="/chat-page">
                             <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
+
                         </a>
-                        <a href="/doctors/{{$doctor->doctor_id}}/view">
-                            <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                        </a>
+                        <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
                     </div>
                 </div>
             </div>

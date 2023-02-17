@@ -1,16 +1,14 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Doctors - Smileville Dental Services</title>
+    <title>Doctor - Smileville Dental Services</title>
 @endsection
 
 @section('subcontent')
     <h2 class="intro-y text-lg font-medium mt-10">Users Layout</h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="/doctors/add">
-                <button class="btn btn-primary shadow-md mr-2">Add New User</button>
-            </a>
+            <button class="btn btn-primary shadow-md mr-2">Add New User</button>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
@@ -25,14 +23,14 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/chat-page" class="dropdown-item">
+                            <a href="" class="dropdown-item">
                                 <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Send Message
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="hidden md:block mx-auto text-slate-500"></div>
+            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
                     <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
@@ -51,8 +49,8 @@
                                 <img alt="Midone - HTML Admin Template" class="rounded-md" src="{{ file_exists(public_path('storage/' . $doctor->doctor_image)) ? asset('storage/' . $doctor->doctor_image) : asset($doctor->doctor_image) }}">
                             </div>
                             <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                                <a href="" class="font-medium">Dr. {{ $doctor->first_name}} {{ $doctor->last_name}}</a>
-                                <div class="text-slate-500 text-xs mt-0.5">{{ $doctor->specialty}}</div>
+                                <a href="" class="font-medium">dfhdfhdfhhfd</a>
+                                <div class="text-slate-500 text-xs mt-0.5">xfhzdffhdfh</div>
                             </div>
                         </div>
                         <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
@@ -61,15 +59,11 @@
                             </a>
                             <div class="dropdown-menu w-40">
                                 <div class="dropdown-content">
-                                    <a href="/doctors/{{$doctor->doctor_id}}/edit" class="dropdown-item">
+                                    <a href="" class="dropdown-item">
                                         <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit
                                     </a>
-                                    <form method="POST" action="/doctors/{{$doctor->doctor_id}}" class="flex items-center text-danger">
-                                        <i data-lucide="trash" class="w-4 h-4 mr-2"></i>
-                                        @csrf
-                                            @method('DELETE')
-                                            <button>Delete</button> 
-                                    </form>
+                                    <a href="" class="dropdown-item">
+                                        <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
                                     </a>
                                 </div>
                             </div>
@@ -80,17 +74,13 @@
                         <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5">
                             <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $doctor->email }}
                         </div>
-                        {{-- <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1">
+                        <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1">
                             <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> {{ $doctor->email }}
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <a href="/chat-page">
-                            <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                        </a>
-                        <a href="/doctors/{{$doctor->doctor_id}}/view">
-                            <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                        </a>
+                        <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
+                        <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
                     </div>
                 </div>
             </div>
