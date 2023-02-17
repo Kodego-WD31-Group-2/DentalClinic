@@ -14,7 +14,9 @@ use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +96,11 @@ Route::controller(AuthController::class)->middleware('loggedin')->group(function
     Route::post('login', 'login')->name('login.check');
 });
 
+
+
+
+Route::get('chat', [ChatsController::class, 'chat'])->name('chats');
+
 Route::middleware('auth')->group(function() {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::controller(PageController::class)->group(function() {
@@ -116,7 +123,7 @@ Route::middleware('auth')->group(function() {
         Route::get('inbox-page', 'inbox')->name('inbox');
         Route::get('file-manager-page', 'fileManager')->name('file-manager');
         Route::get('point-of-sale-page', 'pointOfSale')->name('point-of-sale');
-        Route::get('chat-page', 'chat')->name('chat');
+        Route::get('pages.chat', 'chat')->name('chat');
         Route::get('post-page', 'post')->name('post');
         Route::get('calendar-page', 'calendar')->name('calendar');
         Route::get('crud-data-list-page', 'crudDataList')->name('crud-data-list');
@@ -207,6 +214,7 @@ Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->nam
 Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
 
 
+// Route::get('chat', [ChatsController::class, 'chat'])->name('chat');
 // Doctor Route
 Route::get('doctors', [DoctorsController::class, 'index'])->name('doctors');
 // Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
@@ -217,6 +225,8 @@ Route::get('doctors', [DoctorsController::class, 'index'])->name('doctors');
 // Route::put('doctors/{doctor}', [DoctorsController::class, 'update'])->middleware('auth');
 // Route::delete('doctors/{doctor}', [DoctorsController::class,'destroy'])->middleware('auth');
 
+
+// Route::get('pages.chat', [ChatsController::class, 'chat'])->name('chat');
 
 // Route::get('/patients/list', [PatientsController::class, 'index']);
 // Route::get('/patients/add', [PatientsController::class, 'add']);
