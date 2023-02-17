@@ -209,13 +209,13 @@ Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
 
 // Doctor Route
 Route::get('doctors', [DoctorsController::class, 'index'])->name('doctors');
-Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
-Route::post('doctors/store', [DoctorsController::class, 'store'])->name('doctors.store')->middleware('auth');
-Route::get('doctors/show', [DoctorsController::class, 'show'])->name('doctors.show')->middleware('auth');
-Route::get('doctors/{doctor}/edit', [DoctorsController::class, 'edit'])->middleware('auth');
-Route::get('doctors/{doctor}/view', [DoctorsController::class, 'view']);
-Route::put('doctors/{doctor}', [DoctorsController::class, 'update'])->middleware('auth');
-Route::delete('doctors/{doctor}', [DoctorsController::class,'destroy'])->middleware('auth');
+// Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
+// Route::post('doctors/store', [DoctorsController::class, 'store'])->name('doctors.store')->middleware('auth');
+// Route::get('doctors/show', [DoctorsController::class, 'show'])->name('doctors.show')->middleware('auth');
+// Route::get('doctors/{doctor}/edit', [DoctorsController::class, 'edit'])->middleware('auth');
+// Route::get('doctors/{doctor}/view', [DoctorsController::class, 'view']);
+// Route::put('doctors/{doctor}', [DoctorsController::class, 'update'])->middleware('auth');
+// Route::delete('doctors/{doctor}', [DoctorsController::class,'destroy'])->middleware('auth');
 
 
 // Route::get('/patients/list', [PatientsController::class, 'index']);
