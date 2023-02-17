@@ -70,12 +70,12 @@ class AppointmentsController extends Controller
         return view('appointments.show-appointments', compact('appointments'));
     }
     
-    // Show A Appointment
-    // public function show(Appointment $appointment) {
-    //     return view('appointments.appointment', [
-    //         'appointment' => $appointment
-    //     ]);    
-    // }
+    // // Show A Appointment
+    // // public function show(Appointment $appointment) {
+    // //     return view('appointments.appointment', [
+    // //         'appointment' => $appointment
+    // //     ]);    
+    // // }
  
 
     // Show Edit Form
@@ -83,10 +83,10 @@ class AppointmentsController extends Controller
     //     return view('appointments.edit-appointment', compact('appointment'));
     // }
 
-    // public function edit(Appointment $appointment) {
-    //     return view('appointments.edit-appointment', ['appointment' => $appointment]);
-    //     return view('appointments.edit-appointment', ['appointment' => $appointment, 'doctors' => $doctor]);
-    // }
+    // // public function edit(Appointment $appointment) {
+    // //     return view('appointments.edit-appointment', ['appointment' => $appointment]);
+    // //     return view('appointments.edit-appointment', ['appointment' => $appointment, 'doctors' => $doctor]);
+    // // }
     public function edit(Appointment $appointment) {
         $doctors = Doctor::all();
         $doctor = $appointment->doctor; // load the doctor for the appointment
@@ -94,44 +94,56 @@ class AppointmentsController extends Controller
     }
     
     // Update Appointment Entry
-    public function update(Request $request, Appointment $appointment) {
-        $formFields = $request->validate([
-            // 'patient_id' => 'required',
-            // 'doctor_id' => 'required',
-            'appointment_date' => 'required',
-            'appointment_time' => 'required',
-            'appointment_type' => 'required',
-            'reason' => 'required',
-            'dental_history' => 'nullable',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'gender' => 'required',
-            'dob' => 'required',
-            'medications' => 'nullable',
-            'allergies' => 'nullable',
-            'medical_conditions' => 'nullable',
-            'phone_number' => 'required',
-            'email' => 'required',
-            'emergency_contact_name' => 'nullable',
-            'emergency_contact_number' => 'nullable',
-            'special_instructions' => 'nullable',
-            'referral_source' => 'nullable',
-            'hear_about_practice' => 'nullable',
-            // 'signature_confirm' => 'boolean',
-            // 'reminders_consent' => 'boolean',
-            // 'release_signature' => 'boolean',
-            // 'status' => 'required',
-            // 'appointment_image' => 'image',  
-        ]);
+    public function update(Request $request, Appointment $appointment)
+    {
+    $validatedData = $request->validate([
+        'doctor_id' => 'exists:doctors,doctor_id',
+        'first_name' => 'required',
+        'last_name' => 'required',
+        'gender' => 'required',
+        'dob' => 'required',
+        'appointment_date' => 'required',
+        'appointment_time' => 'required',
+        'appointment_type' => 'required',
+        'reason' => 'required',
+        'dental_history' => 'nullable',
+        'medications' => 'nullable',
+        'allergies' => 'nullable',
+        'medical_conditions' => 'nullable',
+        'phone_number' => 'required',
+        'email' => 'required',
+        'emergency_contact_name' => 'nullable',
+        'emergency_contact_number' => 'nullable',
+        'special_instructions' => 'nullable',
+        'referral_source' => 'nullable',
+        'hear_about_practice' => 'nullable',
+    ]);
 
-        // if($request->hasFile('appointment_image')) {
-        //     $formFields['appointment_image'] = $request->file('appointment_image')->store('appointment_image', 'public');
-        // }
+    $appointment->doctor_id = $validatedData['doctor_id'];
+    $appointment->first_name = $validatedData['first_name'];
+    $appointment->last_name = $validatedData['last_name'];
+    $appointment->gender = $validatedData['gender'];
+    $appointment->dob = $validatedData['dob'];
+    $appointment->appointment_date = $validatedData['appointment_date'];
+    $appointment->appointment_time = $validatedData['appointment_time'];
+    $appointment->appointment_type = $validatedData['appointment_type'];
+    $appointment->reason = $validatedData['reason'];
+    $appointment->dental_history = $validatedData['dental_history'];
+    $appointment->medications = $validatedData['medications'];
+    $appointment->allergies = $validatedData['allergies'];
+    $appointment->medical_conditions = $validatedData['medical_conditions'];
+    $appointment->phone_number = $validatedData['phone_number'];
+    $appointment->email = $validatedData['email'];
+    $appointment->emergency_contact_name = $validatedData['emergency_contact_name'];
+    $appointment->emergency_contact_number = $validatedData['emergency_contact_number'];
+    $appointment->special_instructions = $validatedData['special_instructions'];
+    $appointment->referral_source = $validatedData['referral_source'];
+    $appointment->hear_about_practice = $validatedData['hear_about_practice'];
+    $appointment->save();
 
-        $appointment->update($formFields);
-        
-        return redirect('/appointments/list')->with('message', 'Appointment updated successfully');
+    return redirect('/appointments/list')->with('success', 'Appointment updated successfully.');
     }
+
 
     // Delete an Appointment Entry
     public function destroy(Appointment $appointment) {

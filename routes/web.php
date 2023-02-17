@@ -31,25 +31,45 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+//Public View
+Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/contacts', [HomeController::class, 'contacts']);
+
+Route::get('/services', [ServicesController::class, 'index'])->name('services');
+Route::get('doctors', [DoctorsController::class, 'index'])->name('doctors');
+Route::get('/appointments/book-appointment', [AppointmentsController::class, 'add'])->name('book-appointment');
+
+//Show Register / Create Form
+Route::get('/register', [AuthController::class, 'create'])->middleware('guest');
+
+//Create New User
+Route::post('/register', [AuthController::class, 'store']);
+
+Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
+Route::get('color-scheme-switcher/{color_scheme}', [ColorSchemeController::class, 'switch'])->name('color-scheme-switcher');
+
+Route::controller(AuthController::class)->middleware('loggedin')->group(function() {
+    Route::get('login', 'loginView')->name('login.index');
+    Route::post('login', 'login')->name('login.check');
+});
+
 
 //Admin Middleware
 Route::middleware(['auth', 'admin'])->group(function () {
-    /// Enter Admin Pages Here
-});
-
-Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
+    Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
     Route::post('doctors/store', [DoctorsController::class, 'store'])->name('doctors.store');
     Route::get('doctors/show', [DoctorsController::class, 'show'])->name('doctors.show');
     Route::get('doctors/{doctor}/edit', [DoctorsController::class, 'edit']);
     Route::get('doctors/{doctor}/view', [DoctorsController::class, 'view']);
     Route::put('doctors/{doctor}', [DoctorsController::class, 'update']);
     Route::delete('doctors/{doctor}', [DoctorsController::class,'destroy']);
-    Route::get('/services/add', [ServicesController::class, 'add']);
-    Route::post('/services/store', [ServicesController::class, 'store']);
-    Route::get('/services/{service}', [ServicesController::class, 'show']);
-    Route::get('/services/{service}/edit', [ServicesController::class, 'edit']);
-    Route::put('/services/{service}', [ServicesController::class, 'update']);
-    Route::delete('/services/{service}', [ServicesController::class,'destroy']);
+    Route::get('/services/add', [ServicesController::class, 'add'])->middleware('auth');
+    Route::post('/services/store', [ServicesController::class, 'store'])->middleware('auth');
+    Route::get('/services/show', [ServicesController::class, 'show'])->middleware('auth')->name('services-list');
+    Route::get('/services/{service}/edit', [ServicesController::class, 'edit'])->middleware('auth');
+    Route::put('/services/{service}', [ServicesController::class, 'update'])->middleware('auth');
+    Route::delete('/services/{service}', [ServicesController::class,'destroy'])->middleware('auth');
+    Route::get('/services/offer', [ServicesController::class, 'offer'])->middleware('auth');
     Route::get('/patients/list', [PatientsController::class, 'index']);
     Route::get('/patients/add', [PatientsController::class, 'add']);
     Route::post('/patients/store', [PatientsController::class, 'store'])->name('patients.store');
@@ -71,23 +91,30 @@ Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add'
     Route::get('/employees/{employee}/edit', [EmployeesController::class, 'edit']);
     Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->name('employees.update');
     Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
-
-
-//Show Register / Create Form
-Route::get('/register', [AuthController::class, 'create'])->middleware('guest');
-
-//Create New User
-Route::post('/register', [AuthController::class, 'store']);
-
-Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
-Route::get('color-scheme-switcher/{color_scheme}', [ColorSchemeController::class, 'switch'])->name('color-scheme-switcher');
-
-Route::controller(AuthController::class)->middleware('loggedin')->group(function() {
-    Route::get('login', 'loginView')->name('login.index');
-    Route::post('login', 'login')->name('login.check');
+    Route::get('/appointments/list', [AppointmentsController::class, 'index'])->name('appointments-list');
+    Route::post('/appointments/store', [AppointmentsController::class, 'store'])->name('appointments.store');
+    Route::get('/appointments/{appointment}/edit', [AppointmentsController::class, 'edit'])->name('appointments.edit');
+    Route::put('/appointments/{appointment}', [AppointmentsController::class, 'update'])->name('appointments.update');
+    Route::delete('/appointments/{appointment}', [AppointmentsController::class,'destroy'])->name('appointments.destroy');
+    Route::get('/employees/list', [EmployeesController::class, 'index'])->name('employees');
+    Route::get('/employees/add', [EmployeesController::class, 'add']);
+    Route::post('/employees/store', [EmployeesController::class, 'store'])->name('employees.store');
+    Route::get('/employees/{employee}', [EmployeesController::class, 'show']);
+    Route::get('/employees/{employee}/edit', [EmployeesController::class, 'edit']);
+    Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->name('employees.update');
+    Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
+    Route::get('/billings/list', [BillingsController::class, 'index'])->name('billings-list');
+    Route::get('/billings/book-billing', [BillingsController::class, 'add'])->name('add-billing');
+    // Route::pos('/billings/store', [BillingsController::class, 'store'])->name('billings.store');
+    Route::get('/billings/{billing}', [BillingsController::class, 'show'])->name('billing-details');
+    Route::get('/billings/{billing}/edit', [BillingsController::class, 'edit']);
+    Route::put('/billings/{billing}', [BillingsController::class, 'update'])->name('billings.update');
+    Route::delete('/billings/{billing}', [BillingsController::class,'destroy']);
 });
 
+// Auth View
 Route::middleware('auth')->group(function() {
+    Route::get('/dashboard', [PageController::class, 'dashboard']);
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::controller(PageController::class)->group(function() {
         Route::get('dashboard-overview-1-page', 'dashboardOverview1')->name('dashboard-overview-1');
@@ -170,82 +197,14 @@ Route::middleware('auth')->group(function() {
 });
 
 
-Route::get('/home', [HomeController::class, 'home'])->name('home');
-
-Route::get('/contacts', [HomeController::class, 'contacts']);
-
-Route::get('/dashboard', [PageController::class, 'dashboard']);
-
-
-Route::get('/home', [HomeController::class, 'home'])->name('home');
-
-
-// Route::get('/home-test', [HomeController::class, 'try'])->name('home');
 
 
 
 
 
-//Services Routes
-Route::get('/services', [ServicesController::class, 'index'])->name('services');
-Route::get('/services/add', [ServicesController::class, 'add'])->middleware('auth');
-Route::post('/services/store', [ServicesController::class, 'store'])->middleware('auth');
-Route::get('/services/show', [ServicesController::class, 'show'])->middleware('auth')->name('services-list');
-Route::get('/services/{service}/edit', [ServicesController::class, 'edit'])->middleware('auth');
-Route::put('/services/{service}', [ServicesController::class, 'update'])->middleware('auth');
-Route::delete('/services/{service}', [ServicesController::class,'destroy'])->middleware('auth');
-Route::get('/services/offer', [ServicesController::class, 'offer'])->middleware('auth');
-
-
-// Route::get('/services/{service}', [ServicesController::class, 'view']);
-
-Route::get('/employees/list', [EmployeesController::class, 'index'])->name('employees');
-Route::get('/employees/add', [EmployeesController::class, 'add']);
-Route::post('/employees/store', [EmployeesController::class, 'store'])->name('employees.store');
-Route::get('/employees/{employee}', [EmployeesController::class, 'show']);
-Route::get('/employees/{employee}/edit', [EmployeesController::class, 'edit']);
-Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->name('employees.update');
-Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
-
-
-// Doctor Route
-Route::get('doctors', [DoctorsController::class, 'index'])->name('doctors');
-// Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
-// Route::post('doctors/store', [DoctorsController::class, 'store'])->name('doctors.store')->middleware('auth');
-// Route::get('doctors/show', [DoctorsController::class, 'show'])->name('doctors.show')->middleware('auth');
-// Route::get('doctors/{doctor}/edit', [DoctorsController::class, 'edit'])->middleware('auth');
-// Route::get('doctors/{doctor}/view', [DoctorsController::class, 'view']);
-// Route::put('doctors/{doctor}', [DoctorsController::class, 'update'])->middleware('auth');
-// Route::delete('doctors/{doctor}', [DoctorsController::class,'destroy'])->middleware('auth');
-
-
-// Route::get('/patients/list', [PatientsController::class, 'index']);
-// Route::get('/patients/add', [PatientsController::class, 'add']);
-// Route::post('/patients/store', [PatientsController::class, 'store'])->name('patients.store');
-// Route::get('/patients/{patient}', [PatientsController::class, 'show']);
-// Route::get('/patients/{patient}/edit', [PatientsController::class, 'edit']);
-// Route::put('/patients/{patient}', [PatientsController::class, 'update'])->name('patients.update');
-// Route::delete('/patients/{patient}', [PatientsController::class,'destroy']);
 
 
 
-Route::get('/appointments/list', [AppointmentsController::class, 'index'])->name('appointments-list');
-Route::get('/appointments/book-appointment', [AppointmentsController::class, 'add'])->name('book-appointment');
-Route::post('/appointments/store', [AppointmentsController::class, 'store'])->name('appointments.store');
-// Route::get('/appointments/{appointment}', [AppointmentsController::class, 'show']);
-Route::get('/appointments/{appointment}/edit', [AppointmentsController::class, 'edit'])->name('appointments.edit');
-Route::put('/appointments/{appointment}', [AppointmentsController::class, 'update'])->name('appointments.update');
-Route::delete('/appointments/{appointment}', [AppointmentsController::class,'destroy'])->name('appointments.destroy');
-
-
-Route::get('/billings/list', [BillingsController::class, 'index'])->name('billings-list');
-Route::get('/billings/book-billing', [BillingsController::class, 'add'])->name('add-billing');
-// Route::pos('/billings/store', [BillingsController::class, 'store'])->name('billings.store');
-Route::get('/billings/{billing}', [BillingsController::class, 'show'])->name('billing-details');
-Route::get('/billings/{billing}/edit', [BillingsController::class, 'edit']);
-Route::put('/billings/{billing}', [BillingsController::class, 'update'])->name('billings.update');
-Route::delete('/billings/{billing}', [BillingsController::class,'destroy']);
 
 
 
-// Route::get('/book-appointment', [AppointmentsController::class, 'appointment']);

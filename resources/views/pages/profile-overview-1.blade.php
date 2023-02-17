@@ -6,7 +6,7 @@
 
 @section('subcontent')
     <div class="intro-y flex items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">Profile Layout</h2>
+        <h2 class="text-lg font-medium mr-auto">Profile Layout You</h2>
     </div>
     <!-- BEGIN: Profile Info -->
     <div class="intro-y box px-5 pt-5 mt-5">

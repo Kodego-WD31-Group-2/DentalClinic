@@ -971,6 +971,13 @@ class SideMenu
             unset($menu['inbox']);
         }
 
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            unset($menu['doctors']);
+            unset($menu['services']);
+            unset($menu['book-appointment']);
+            
+        }
+
         return $menu;
     }
 }

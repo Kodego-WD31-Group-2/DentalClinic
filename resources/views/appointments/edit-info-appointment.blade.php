@@ -14,15 +14,15 @@
      </div>  
    </div>
    <div class="flex-1">       
-     {{-- <div class="form-group">
-       <label for="doctor_id" class="block text-sm font-medium text-custom-2 p-2">Doctor's Name:</label>
-       <select name="doctor_id" class="form-select mt-1 block w-full border-blue-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>    
-         <option>{{ old('doctor', $doctor->first_name) }} {{ old('doctor', $doctor->last_name) }}</option>
-         @foreach($doctors as $doctor)
-           <option value="{{ $doctor->doctor_id }}" {{ old('doctor_id') == $doctor->doctor_id ? 'selected' : '' }}>{{ $doctor->first_name }} {{ $doctor->last_name }}</option>
-         @endforeach
-       </select>
-     </div> --}}
+     <div class="form-group">
+      <label for="doctor_id" class="block text-sm font-medium text-custom-2 p-2">Doctor's Name:</label>
+      <select name="doctor_id" class="form-select mt-1 block w-full border-blue-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500">    
+        <option value="{{ $appointment->doctor_id }}">{{ old('doctor', $doctor->first_name) }} {{ old('doctor', $doctor->last_name) }}</option>
+        @foreach($doctors as $doctor)
+          <option value="{{ $doctor->doctor_id }}" {{ old('doctor_id') == $doctor->doctor_id ? 'selected' : '' }}>{{ $doctor->first_name }} {{ $doctor->last_name }}</option>
+        @endforeach
+      </select>
+     </div>
      <div class="form-group">
        <label for="appointment_type" class="block text-sm font-medium text-custom-2 p-2">Type of Appointment:</label>
        <select id="appointment_type" name="appointment_type" class="form-select mt-1 block w-full border-blue-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>    
