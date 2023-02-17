@@ -4,7 +4,14 @@
     <title>Chat - Smileville Dental Services</title>
 @endsection
 
-@section('subcontent')
+@foreach ($chat as $chat)
+  <div class="chat-message">
+    <p>{{ $chat->chat_message }}</p>
+    <small>Posted by {{$chat->first_name}} on {{$chat->last_name}}</small>
+  </div>
+@endforeach
+
+{{-- @section('subcontent')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Chat</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
@@ -80,6 +87,7 @@
                     </ul>
                 </div>
             </div>
+            {{$chat->first_name}}
             <div class="tab-content">
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
                     <div class="pr-1">
@@ -93,10 +101,10 @@
                                     @foreach (array_slice($fakers, 0, 10) as $faker)
                                         <a href="" class="w-10 mr-4 cursor-pointer">
                                             <div class="w-10 h-10 flex-none image-fit rounded-full">
-                                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $faker['photos'][0]) }}">
+                                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="">
                                                 <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                                             </div>
-                                            <div class="text-xs text-slate-500 truncate text-center mt-2">{{ $faker['users'][0]['name'] }}</div>
+                                            <div class="text-xs text-slate-500 truncate text-center mt-2">{{$chat->firstname}}</div>
                                         </a>
                                     @endforeach
                                 </div>
@@ -1991,4 +1999,4 @@
         </div>
         <!-- END: Chat Content -->
     </div>
-@endsection
+@endsection --}}
