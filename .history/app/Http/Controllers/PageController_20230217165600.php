@@ -200,6 +200,8 @@ class PageController extends Controller
         $chats = Chat::all();
         return view('pages/chat', compact('chats'));
 
+        
+        // return view('pages.chat', compact('chats'));
     }
 
     /**

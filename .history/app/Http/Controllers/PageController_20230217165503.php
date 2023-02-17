@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Chat;
 
 class PageController extends Controller
 {
@@ -197,9 +196,11 @@ class PageController extends Controller
      */
     public function chat()
     {
-        $chats = Chat::all();
-        return view('pages/chat', compact('chats'));
+        return view('pages/chat');
 
+        
+        $chats = Chat::all();
+        return view('pages.chat', compact('chats'));
     }
 
     /**

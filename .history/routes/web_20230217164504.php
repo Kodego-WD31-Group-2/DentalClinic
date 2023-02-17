@@ -117,7 +117,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 
-// Route::get('/chat-page', [ChatsController::class, 'chat'])->name('chats');
+// Route::get('chat', [ChatsController::class, 'chat'])->name('chats');
 
 
 
@@ -234,7 +234,7 @@ Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->nam
 Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
 
 
-// Route::get('/chat', [ChatsController::class, 'chat'])->name('chats');
+Route::get('/chat', [ChatsController::class, 'chat'])->name('chats');
 
 
 // Doctor Route
