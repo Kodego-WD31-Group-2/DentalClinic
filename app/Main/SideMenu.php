@@ -2,6 +2,8 @@
 
 namespace App\Main;
 
+use Illuminate\Support\Facades\Auth;
+
 class SideMenu
 {
     /**
@@ -12,7 +14,7 @@ class SideMenu
      */
     public static function menu()
     {
-        return [
+        $menu = [
             'home' => [
                 'icon' => 'home',
                 'route_name' => 'home',
@@ -961,5 +963,14 @@ class SideMenu
             //     ]
             // ]
         ];
+
+        if (!Auth::check() || Auth::user()->role != 'admin') {
+            unset($menu['management']);
+            unset($menu['dashboard']);
+            unset($menu['billing']);
+            unset($menu['inbox']);
+        }
+
+        return $menu;
     }
 }
