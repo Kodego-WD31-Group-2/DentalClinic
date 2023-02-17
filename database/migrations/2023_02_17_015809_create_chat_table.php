@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id('chat_id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('chat_email');
+            $table->string('chat_email')->unique();;
             $table->string('chat_message');
-            $table->string('chat_image');
+            $table->string('chat_photo');
+            $table->string('chat_hours')->nullable();
+            $table->string('chat_minutes');
             $table->timestamps();
         });
     }

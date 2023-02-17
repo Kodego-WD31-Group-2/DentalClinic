@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Chat - Smileville Dental Services</title>
+    <title>Chat - Smileville Dental Service</title>
 @endsection
 
 {{-- @foreach ($chats as $chat)
@@ -12,34 +12,7 @@
 @endforeach --}}
 
 
-<div class="container">
-    <h3>Chats</h3>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                {{-- <th>Image</th> --}}
-                {{-- <th width="280px">Action</th> --}}
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($chats as $chat)
-                <tr>
-                    <td>{{ $chat->chat_id }}</td>
-                    <td>{{ $chat->first_name }}</td>
-                    <td>{{ $chat->last_name }}</td>
-                </tr>
- @endforeach
-        </tbody>
-    </table>
-</div>
+
 
 
 @section('subcontent')
@@ -118,7 +91,6 @@
                     </ul>
                 </div>
             </div>
-            {{$chat->first_name}}
             <div class="tab-content">
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
                     <div class="pr-1">
@@ -129,13 +101,13 @@
                             </div>
                             <div class="overflow-x-auto scrollbar-hidden">
                                 <div class="flex mt-5">
-                                    @foreach (array_slice($fakers, 0, 10) as $faker)
+                                    @foreach ($chats as $chat)
                                         <a href="" class="w-10 mr-4 cursor-pointer">
                                             <div class="w-10 h-10 flex-none image-fit rounded-full">
-                                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="">
+                                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
                                                 <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                                             </div>
-                                            <div class="text-xs text-slate-500 truncate text-center mt-2">{{$chat->firstname}}</div>
+                                            <div class="text-xs text-slate-500 truncate text-center mt-2">{{$chat->firstname}} {{ $chat->last_name }}</div>
                                         </a>
                                     @endforeach
                                 </div>

@@ -9,7 +9,7 @@ class Chat extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'first_name', 'last_name', 'chat_email', 'chat_message', 'chat_image' 
+        'first_name', 'last_name', 'chat_email', 'chat_message', 'chat_photo', 'chat_hours', 'chat_minutes',
         
     ];
 
