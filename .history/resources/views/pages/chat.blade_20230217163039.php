@@ -13,7 +13,7 @@
 
 
 <div class="container">
-    <h3>Chats</h3>
+    <h3>Employees</h3>
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -35,6 +35,16 @@
                     <td>{{ $chat->chat_id }}</td>
                     <td>{{ $chat->first_name }}</td>
                     <td>{{ $chat->last_name }}</td>
+                    {{-- <td><img src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}" width="200"></td> --}}
+                    <td>
+                        <form action="{{ url('chats/'.$chat->id) }}" method="POST">
+                            <a class="btn btn-primary" href="{{ url('chats/'.$chat->id) }}">View</a>
+                            <a class="btn btn-primary" href="{{ url('chats/'.$chat->id.'/edit') }}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
  @endforeach
         </tbody>
@@ -42,7 +52,7 @@
 </div>
 
 
-@section('subcontent')
+{{-- @section('subcontent')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Chat</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
@@ -2030,4 +2040,4 @@
         </div>
         <!-- END: Chat Content -->
     </div>
-@endsection
+@endsection --}}

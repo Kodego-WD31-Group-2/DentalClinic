@@ -35,6 +35,7 @@
                     <td>{{ $chat->chat_id }}</td>
                     <td>{{ $chat->first_name }}</td>
                     <td>{{ $chat->last_name }}</td>
+
                 </tr>
  @endforeach
         </tbody>

@@ -117,7 +117,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 
-// Route::get('/chat-page', [ChatsController::class, 'chat'])->name('chats');
+Route::get('/chat-page', [ChatsController::class, 'chat'])->name('chats');
 
 
 

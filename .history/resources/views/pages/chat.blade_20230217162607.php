@@ -4,45 +4,16 @@
     <title>Chat - Smileville Dental Services</title>
 @endsection
 
-{{-- @foreach ($chats as $chat)
+@foreach ($chats as $chat)
   <div class="chat-message">
     <p>{{ $chat->chat_message }}</p>
     <small>Posted by {{$chat->first_name}} on {{$chat->last_name}}</small>
   </div>
-@endforeach --}}
+@endforeach
 
 
-<div class="container">
-    <h3>Chats</h3>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                {{-- <th>Image</th> --}}
-                {{-- <th width="280px">Action</th> --}}
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($chats as $chat)
-                <tr>
-                    <td>{{ $chat->chat_id }}</td>
-                    <td>{{ $chat->first_name }}</td>
-                    <td>{{ $chat->last_name }}</td>
-                </tr>
- @endforeach
-        </tbody>
-    </table>
-</div>
 
-
-@section('subcontent')
+{{-- @section('subcontent')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Chat</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
@@ -2030,4 +2001,4 @@
         </div>
         <!-- END: Chat Content -->
     </div>
-@endsection
+@endsection --}}

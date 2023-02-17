@@ -35,6 +35,16 @@
                     <td>{{ $chat->chat_id }}</td>
                     <td>{{ $chat->first_name }}</td>
                     <td>{{ $chat->last_name }}</td>
+                    {{-- <td><img src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}" width="200"></td> --}}
+                    {{-- <td>
+                        <form action="{{ url('chats/'.$chat->id) }}" method="POST">
+                            <a class="btn btn-primary" href="{{ url('chats/'.$chat->id) }}">View</a>
+                            <a class="btn btn-primary" href="{{ url('chats/'.$chat->id.'/edit') }}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td> --}}
                 </tr>
  @endforeach
         </tbody>
