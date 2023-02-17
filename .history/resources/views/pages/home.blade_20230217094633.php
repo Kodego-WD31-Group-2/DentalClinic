@@ -7,7 +7,6 @@
 @section('subcontent')
 <main>
     @include('partials._hero')
-    @include('partials._offer-services')
     @include('partials._features')
     @include('../layout/components/footer')  
 </main>

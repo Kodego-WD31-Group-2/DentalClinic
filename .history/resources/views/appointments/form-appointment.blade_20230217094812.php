@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Book an Appointment - Smileville Dental Services</title>
+    <title>Seller List - Smileville Dental Services</title>
 @endsection
 
 @section('subcontent')
