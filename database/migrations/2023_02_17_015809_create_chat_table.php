@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('chat_email')->unique();;
             $table->string('chat_message');
-            $table->string('chat_photo');
+            $table->string('chat_image');
+            $table->string('chat_notification');
             $table->string('chat_hours')->nullable();
             $table->string('chat_minutes');
             $table->timestamps();
