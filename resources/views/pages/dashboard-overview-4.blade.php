@@ -11,7 +11,7 @@
                 <!-- BEGIN: General Report -->
                 <div class="col-span-12 xl:col-span-9 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">General Report</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">General Report 1</h2>
                         <a href="" class="ml-auto text-primary truncate">Show More</a>
                     </div>
                     <div class="report-box-2 intro-y mt-5">

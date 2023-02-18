@@ -99,27 +99,24 @@ import Chart from "chart.js/auto";
     }
 
     if ($("#report-pie-chart").length) {
+        let malePercentage = $("#report-pie-chart").data("male-percentage");
+        let femalePercentage = $("#report-pie-chart").data("female-percentage");
+
         let ctx = $("#report-pie-chart")[0].getContext("2d");
         let myPieChart = new Chart(ctx, {
             type: "pie",
             data: {
-                labels: [
-                    "31 - 50 Years old",
-                    ">= 50 Years old",
-                    "17 - 30 Years old",
-                ],
+                labels: ["Male", "Female"],
                 datasets: [
                     {
-                        data: [15, 10, 65],
+                        data: [malePercentage, femalePercentage],
                         backgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
                             colors.primary(0.9),
+                            colors.warning(0.9),
                         ],
                         hoverBackgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
                             colors.primary(0.9),
+                            colors.warning(0.9),
                         ],
                         borderWidth: 5,
                         borderColor: $("html").hasClass("dark")
@@ -144,23 +141,17 @@ import Chart from "chart.js/auto";
         let myDoughnutChart = new Chart(ctx, {
             type: "doughnut",
             data: {
-                labels: [
-                    "31 - 50 Years old",
-                    ">= 50 Years old",
-                    "17 - 30 Years old",
-                ],
+                labels: ["Male", "Female"],
                 datasets: [
                     {
-                        data: [15, 10, 65],
+                        data: [15, 10],
                         backgroundColor: [
                             colors.pending(0.9),
                             colors.warning(0.9),
-                            colors.primary(0.9),
                         ],
                         hoverBackgroundColor: [
                             colors.pending(0.9),
                             colors.warning(0.9),
-                            colors.primary(0.9),
                         ],
                         borderWidth: 5,
                         borderColor: $("html").hasClass("dark")

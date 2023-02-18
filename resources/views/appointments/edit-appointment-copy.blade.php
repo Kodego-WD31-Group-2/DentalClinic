@@ -25,7 +25,7 @@
       <div class="container my-24 px-6 mx-auto">
       
         <!-- Section: Design Block -->
-        <section class="mb-32 text-gray-800 text-center md:text-left">
+        <section class="mb-32 text-gray-800 text-center md:text-left mt-32">
           <div class="block rounded-lg shadow-lg bg-gray-800">
             <div class="flex flex-wrap items-center bg-custom-1 p-10 rounded">
               <div class="grow-0 shrink-0 basis-auto block lg:flex w-full lg:w-6/12 xl:w-4/12 bg-custom-5 flex justify-center p-20 rounded">

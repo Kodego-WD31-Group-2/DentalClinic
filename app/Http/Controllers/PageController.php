@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
+use App\Models\Appointment;
 use App\Http\Controllers\Controller;
 
 class PageController extends Controller
@@ -14,12 +16,13 @@ class PageController extends Controller
      */
     public function dashboardOverview1()
     {
+        $appointmentsToday = Appointment::whereDate('appointment_date', today())->count();
         return view('pages/dashboard-overview-1', [
             // Specify the base layout.
             // Eg: 'side-menu', 'simple-menu', 'top-menu', 'login'
             // The default value is 'side-menu'
-
-            // 'layout' => 'side-menu'
+            'appointmentsToday' => $appointmentsToday,
+            'layout' => 'side-menu'
         ]);
     }
 
@@ -31,8 +34,44 @@ class PageController extends Controller
      */
     public function dashboardOverview2()
     {
-        return view('pages/dashboard-overview-2');
+        //Today's Appointment
+        $appointmentsToday = Appointment::whereDate('appointment_date', today())->count();
+        $appointmentsPendingToday = Appointment::whereDate('appointment_date', today())->where('status', 'pending')->count();
+        $appointmentsCompletedToday = Appointment::whereDate('appointment_date', today())->where('status', 'completed')->count();
+        $appointmentsCancelledToday = Appointment::whereDate('appointment_date', today())->where('status', 'cancelled')->count();
+        //All Appointment
+        $totalAppointments = Appointment::count();
+        $appointmentsPending = Appointment::where('status', 'pending')->count();
+        $appointmentsCompleted = Appointment::where('status', 'completed')->count();
+        $appointmentsCancelled = Appointment::where('status', 'cancelled')->count();
+        //List of Patients for Today
+        $appointmentsTodayList = Appointment::whereDate('appointment_date', today())->select('first_name', 'last_name')->get();
+        // Gender
+        $maleCount = Patient::where('gender', 'male')->count();
+        $femaleCount = Patient::where('gender', 'female')->count();
+
+        $total = $maleCount + $femaleCount;
+        $malePercentage = $total > 0 ? round($maleCount / $total * 100, 2) : 0;
+        $femalePercentage = $total > 0 ? round($femaleCount / $total * 100, 2) : 0;
+
+        return view('pages/dashboard-overview-2', [
+            'appointmentsToday' => $appointmentsToday,
+            'appointmentsPendingToday' => $appointmentsPendingToday,
+            'appointmentsCompletedToday' => $appointmentsCompletedToday,
+            'appointmentsCancelledToday' => $appointmentsCancelledToday,
+            'totalAppointments' => $totalAppointments,
+            'appointmentsPending' => $appointmentsPending,
+            'appointmentsCompleted' => $appointmentsCompleted,
+            'appointmentsCancelled' => $appointmentsCancelled,
+            'appointmentsTodayList' => $appointmentsTodayList,
+            'maleCount' => $maleCount,
+            'femaleCount' => $femaleCount,
+            'malePercentage' => $malePercentage,
+            'femalePercentage' => $femalePercentage,
+            'layout' => 'side-menu'
+        ]);
     }
+
 
     /**
      * Show specified view.
