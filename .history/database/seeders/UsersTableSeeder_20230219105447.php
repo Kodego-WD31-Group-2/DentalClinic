@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
                 'role' => 'admin',
             ],
             [
-                'name' => 'Guest User',
+                'name' => 'Regular User',
                 'email' => 'user@user.com',
                 'password' => bcrypt('password'),
                 'role' => 'user',
