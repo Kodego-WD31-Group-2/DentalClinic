@@ -9,7 +9,7 @@
 <link href="{{ URL::asset('css/styles.css') }}" rel="stylesheet" type="text/css" >
 
 
-    <div class="container">
+    <div class="container my-6 px-6 mx-auto">
       @if ($errors->any())
       <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -21,7 +21,7 @@
       </div>
       @endif
       @if (isset($appointment))
-      <div class="container my-12 px-6 mx-auto">
+      {{-- <div class="container my-12 px-6 mx-auto"> --}}
       
         <!-- Section: Design Block -->
         <section class="mb-32 text-gray-800 text-center md:text-left">
@@ -157,4 +157,4 @@ nextButtons.forEach((nextButton) => {
 
 
     
-    @endsection
+@endsection

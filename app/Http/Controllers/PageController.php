@@ -52,19 +52,11 @@ class PageController extends Controller
         $appointmentsCancelled = Appointment::where('status', 'cancelled')->count();
 
         //Appointment by Doctors
-        // $appointmentsByDoctor = Appointment::select('doctor_id', DB::raw('COUNT(*) as count'))
-        // ->groupBy('doctor_id')
-        // ->get();
-        
-
         $appointmentsByDoctor = DB::table('doctors')
         ->select('doctors.first_name', 'doctors.last_name', 'doctors.specialty', DB::raw('COUNT(appointments.doctor_id) as total_appointments'))
         ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
         ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
         ->get();
-
-
-
 
         //List of Patients for Today
         $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
@@ -76,10 +68,22 @@ class PageController extends Controller
         // Gender
         $maleCount = Patient::where('gender', 'male')->count();
         $femaleCount = Patient::where('gender', 'female')->count();
-
         $total = $maleCount + $femaleCount;
         $malePercentage = $total > 0 ? round($maleCount / $total * 100, 2) : 0;
         $femalePercentage = $total > 0 ? round($femaleCount / $total * 100, 2) : 0;
+
+        //Service Type
+        $regularCheckup = Appointment::where('appointment_type', 'Regular Checkup')->count();
+        $emergency = Appointment::where('appointment_type', 'Emergency')->count();
+        $cleaning = Appointment::where('appointment_type', 'Cleaning')->count();
+        $regularCheckupPercentage = $total > 0 ? round($regularCheckup / $totalAppointments * 100, 2) : 0;
+        $emergencyPercentage = $total > 0 ? round($emergency / $totalAppointments * 100, 2) : 0;
+        $cleaningPercentage = $total > 0 ? round($cleaning / $totalAppointments * 100, 2) : 0;
+
+        //Appointment Chart
+        $completedPercentage = $total > 0 ? round($appointmentsCompleted / $totalAppointments * 100, 2) : 0;
+        $pendingPercentage = $total > 0 ? round($appointmentsPending / $totalAppointments * 100, 2) : 0;
+        $cancelledPercentage = $total > 0 ? round($appointmentsCancelled / $totalAppointments * 100, 2) : 0;
 
         return view('pages/dashboard-overview-2', [
             'appointmentsToday' => $appointmentsToday,
@@ -92,6 +96,15 @@ class PageController extends Controller
             'appointmentsCancelled' => $appointmentsCancelled,
             'appointmentsTodayList' => $appointmentsTodayList,
             'appointmentsByDoctor' => $appointmentsByDoctor,
+            'regularCheckup' => $regularCheckup,
+            'emergency' => $emergency,
+            'cleaning' => $cleaning,
+            'regularCheckupPercentage' => $regularCheckupPercentage,
+            'emergencyPercentage' => $emergencyPercentage,
+            'cleaningPercentage' => $cleaningPercentage,
+            'completedPercentage' => $completedPercentage,
+            'pendingPercentage' => $pendingPercentage,
+            'cancelledPercentage' => $cancelledPercentage,
             'doctors' => $doctors,
             'maleCount' => $maleCount,
             'femaleCount' => $femaleCount,

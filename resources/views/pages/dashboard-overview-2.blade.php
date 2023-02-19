@@ -865,68 +865,68 @@
                 <!-- BEGIN: Patients by Gender -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Patients by Gender</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">Appointment by Service Type</h2>
                         <a href="" class="ml-auto text-primary truncate">Show More</a>
                     </div>
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
                             <div class="h-[213px]">
-                                <canvas id="report-pie-chart" data-male-percentage="{{ $malePercentage }}" data-female-percentage="{{ $femalePercentage }}">></canvas>
+                                <canvas id="report-pie-chart" data-regularcheckup-percentage="{{ $regularCheckupPercentage }}" data-emergency-percentage="{{ $emergencyPercentage }}" data-cleaning-percentage="{{ $cleaningPercentage }}">></canvas>
                             </div>
                         </div>
                         <div class="w-52 sm:w-auto mx-auto mt-8">
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                <span class="truncate">Male</span>
-                                <span class="font-medium ml-auto">62%</span>
+                                <span class="truncate">Regular Checkup</span>
+                                <span class="font-medium ml-auto">{{ $regularCheckupPercentage }}%</span>
                             </div>
                             <div class="flex items-center mt-4">
-                                <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
-                                <span class="truncate">Female</span>
-                                <span class="font-medium ml-auto">33%</span>
+                                <div class="w-2 h-2 bg-danger rounded-full mr-3"></div>
+                                <span class="truncate">Emergency</span>
+                                <span class="font-medium ml-auto">{{ $emergencyPercentage }}%</span>
                             </div>
-                            {{-- <div class="flex items-center mt-4">
+                            <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
-                                <span class="truncate">>= 50 Years old</span>
-                                <span class="font-medium ml-auto">10%</span>
-                            </div> --}}
+                                <span class="truncate">Cleaning</span>
+                                <span class="font-medium ml-auto">{{ $cleaningPercentage }}%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- END: Patients by Gender -->
-                <!-- BEGIN: Sales Report -->
+                <!-- BEGIN: Appointment Chart -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Sales Report</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">Appointment Chart</h2>
                         <a href="" class="ml-auto text-primary truncate">Show More</a>
                     </div>
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
                             <div class="h-[213px]">
-                                <canvas id="report-donut-chart"></canvas>
+                                <canvas id="report-donut-chart" data-completed-percentage="{{ $completedPercentage }}" data-pending-percentage="{{ $pendingPercentage }}" data-cancelled-percentage="{{ $cancelledPercentage }}"></canvas>
                             </div>
                         </div>
                         <div class="w-52 sm:w-auto mx-auto mt-8">
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                <span class="truncate">17 - 30 Years old</span>
-                                <span class="font-medium ml-auto">62%</span>
+                                <span class="truncate">Completed</span>
+                                <span class="font-medium ml-auto">{{ $completedPercentage }}%</span>
                             </div>
                             <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
-                                <span class="truncate">31 - 50 Years old</span>
-                                <span class="font-medium ml-auto">33%</span>
+                                <span class="truncate">Pending</span>
+                                <span class="font-medium ml-auto">{{ $pendingPercentage }}%</span>
                             </div>
                             <div class="flex items-center mt-4">
-                                <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
-                                <span class="truncate">>= 50 Years old</span>
-                                <span class="font-medium ml-auto">10%</span>
+                                <div class="w-2 h-2 bg-danger rounded-full mr-3"></div>
+                                <span class="truncate">Cancelled</span>
+                                <span class="font-medium ml-auto">{{ $cancelledPercentage }}%</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- END: Sales Report -->
-                <!-- BEGIN: Appt by Doc -->
+                <!-- BEGIN: Prev Appt by Doc -->
                 {{-- <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Appointments by Doctor</h2>
@@ -961,22 +961,7 @@
                         </div>   
                     </div> 
                 </div> --}}
-                <!-- END: Appt by Doc -->
-                <!-- BEGIN: Official Store -->
-                {{-- <div class="col-span-12 xl:col-span-8 mt-6">
-                    <div class="intro-y block sm:flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Official Store</h2>
-                        <div class="sm:ml-auto mt-3 sm:mt-0 relative text-slate-500">
-                            <i data-lucide="map-pin" class="w-4 h-4 z-10 absolute my-auto inset-y-0 ml-3 left-0"></i>
-                            <input type="text" class="form-control sm:w-56 box pl-10" placeholder="Filter by city">
-                        </div>
-                    </div>
-                    <div class="intro-y box p-5 mt-12 sm:mt-5">
-                        <div>250 Official stores in 21 countries, click the marker to see location details.</div>
-                        <div class="report-maps mt-5 bg-slate-200 rounded-md" data-center="-6.2425342, 106.8626478" data-sources="/build/assets/json/location.json"></div>
-                    </div>
-                </div> --}}
-                <!-- END: Official Store -->
+                <!-- END: Prev Appt by Doc -->
                 <!-- BEGIN: App Doc -->
                 <div class="col-span-12 xl:col-span-12 mt-6">
                     <div class="intro-y flex items-center h-10">
@@ -1317,31 +1302,31 @@
                             <div class="box zoom-in">
                                 <div class="tiny-slider" id="important-notes">
                                     <div class="p-5">
-                                        <div class="text-base font-medium truncate">Lorem Ipsum is simply dummy text</div>
-                                        <div class="text-slate-400 mt-1">20 Hours ago</div>
-                                        <div class="text-slate-500 text-justify mt-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
-                                        <div class="font-medium flex mt-5">
+                                        <div class="text-base font-medium truncate">Safe Work Environment</div>
+                                        <div class="text-slate-400 mt-1">Office Director</div>
+                                        <div class="text-slate-500 text-justify mt-1">We want to remind you of the importance of maintaining a safe work environment. Please be sure to follow all safety procedures and report any concerns or incidents to your supervisor immediately. Thank you for your commitment to maintaining a safe workplace.</div>
+                                        {{-- <div class="font-medium flex mt-5">
                                             <button type="button" class="btn btn-secondary py-1 px-2">View Notes</button>
                                             <button type="button" class="btn btn-outline-secondary py-1 px-2 ml-auto ml-auto">Dismiss</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="p-5">
-                                        <div class="text-base font-medium truncate">Lorem Ipsum is simply dummy text</div>
-                                        <div class="text-slate-400 mt-1">20 Hours ago</div>
-                                        <div class="text-slate-500 text-justify mt-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
-                                        <div class="font-medium flex mt-5">
+                                        <div class="text-base font-medium truncate">Work Schedule Changes</div>
+                                        <div class="text-slate-400 mt-1">Office Scheduler</div>
+                                        <div class="text-slate-500 text-justify mt-1">we would like to inform you that there will be a change in your work schedule starting March 1, 2023. Your new schedule will be from 9AM to 6PM and we appreciate your flexibility in accommodating this change.</div>
+                                        {{-- <div class="font-medium flex mt-5">
                                             <button type="button" class="btn btn-secondary py-1 px-2">View Notes</button>
                                             <button type="button" class="btn btn-outline-secondary py-1 px-2 ml-auto ml-auto">Dismiss</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="p-5">
-                                        <div class="text-base font-medium truncate">Lorem Ipsum is simply dummy text</div>
-                                        <div class="text-slate-400 mt-1">20 Hours ago</div>
-                                        <div class="text-slate-500 text-justify mt-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
-                                        <div class="font-medium flex mt-5">
+                                        <div class="text-base font-medium truncate">Employee Appreciation Notice</div>
+                                        <div class="text-slate-400 mt-1">Human Resources</div>
+                                        <div class="text-slate-500 text-justify mt-1">To All Employees: We would like to express our appreciation for your hard work and dedication to our dental clinic. Your efforts have contributed to our success and we want to thank you for being a valuable member of our team.</div>
+                                        {{-- <div class="font-medium flex mt-5">
                                             <button type="button" class="btn btn-secondary py-1 px-2">View Notes</button>
                                             <button type="button" class="btn btn-outline-secondary py-1 px-2 ml-auto ml-auto">Dismiss</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -1351,17 +1336,17 @@
                     <!-- BEGIN: Schedules -->
                     <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 xl:col-start-1 xl:row-start-2 2xl:col-start-auto 2xl:row-start-auto mt-3">
                         <div class="intro-x flex items-center h-10">
-                            <h2 class="text-lg font-medium truncate mr-5">Schedules</h2>
-                            <a href="" class="ml-auto text-primary truncate flex items-center">
+                            <h2 class="text-lg font-medium truncate mr-5">Calendar</h2>
+                            {{-- <a href="" class="ml-auto text-primary truncate flex items-center">
                                 <i data-lucide="plus" class="w-4 h-4 mr-1"></i> Add New Schedules
-                            </a>
+                            </a> --}}
                         </div>
                         <div class="mt-5">
                             <div class="intro-x box">
                                 <div class="p-5">
                                     <div class="flex">
                                         <i data-lucide="chevron-left" class="w-5 h-5 text-slate-500"></i>
-                                        <div class="font-medium text-base mx-auto">April</div>
+                                        <div class="font-medium text-base mx-auto">{{date('F')}}</div>
                                         <i data-lucide="chevron-right" class="w-5 h-5 text-slate-500"></i>
                                     </div>
                                     <div class="grid grid-cols-7 gap-4 mt-5 text-center">
@@ -1416,7 +1401,7 @@
                                         <div class="py-0.5 rounded relative text-slate-500">9</div>
                                     </div>
                                 </div>
-                                <div class="border-t border-slate-200/60 p-5">
+                                {{-- <div class="border-t border-slate-200/60 p-5">
                                     <div class="flex items-center">
                                         <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                                         <span class="truncate">UI/UX Workshop</span>
@@ -1432,7 +1417,7 @@
                                         <span class="truncate">Laravel Rest API</span>
                                         <span class="font-medium xl:ml-auto">31th</span>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

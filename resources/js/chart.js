@@ -99,23 +99,36 @@ import Chart from "chart.js/auto";
     }
 
     if ($("#report-pie-chart").length) {
-        let malePercentage = $("#report-pie-chart").data("male-percentage");
-        let femalePercentage = $("#report-pie-chart").data("female-percentage");
+        let regularCheckupPercentage = $("#report-pie-chart").data(
+            "regularcheckup-percentage"
+        );
+        let emergencyPercentage = $("#report-pie-chart").data(
+            "emergency-percentage"
+        );
+        let cleaningPercentage = $("#report-pie-chart").data(
+            "cleaning-percentage"
+        );
 
         let ctx = $("#report-pie-chart")[0].getContext("2d");
         let myPieChart = new Chart(ctx, {
             type: "pie",
             data: {
-                labels: ["Male", "Female"],
+                labels: ["Regular Checkup", "Emergency", "Cleaning"],
                 datasets: [
                     {
-                        data: [malePercentage, femalePercentage],
+                        data: [
+                            regularCheckupPercentage,
+                            emergencyPercentage,
+                            cleaningPercentage,
+                        ],
                         backgroundColor: [
                             colors.primary(0.9),
+                            colors.danger(0.9),
                             colors.warning(0.9),
                         ],
                         hoverBackgroundColor: [
                             colors.primary(0.9),
+                            colors.danger(0.9),
                             colors.warning(0.9),
                         ],
                         borderWidth: 5,
@@ -137,23 +150,37 @@ import Chart from "chart.js/auto";
     }
 
     if ($("#report-donut-chart").length) {
+        let completedPercentage = $("#report-donut-chart").data(
+            "completed-percentage"
+        );
+        let pendingPercentage = $("#report-donut-chart").data(
+            "pending-percentage"
+        );
+        let cancelledPercentage = $("#report-donut-chart").data(
+            "cancelled-percentage"
+        );
+
         let ctx = $("#report-donut-chart")[0].getContext("2d");
         let myDoughnutChart = new Chart(ctx, {
             type: "doughnut",
             data: {
-                labels: ["Male", "Female"],
+                labels: ["Completed", "Pending", "Cancelled"],
                 datasets: [
                     {
-                        data: [15, 10, 5],
+                        data: [
+                            completedPercentage,
+                            pendingPercentage,
+                            cancelledPercentage,
+                        ],
                         backgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
                             colors.primary(0.9),
+                            colors.warning(0.9),
+                            colors.danger(0.9),
                         ],
                         hoverBackgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
                             colors.primary(0.9),
+                            colors.warning(0.9),
+                            colors.danger(0.9),
                         ],
                         borderWidth: 5,
                         borderColor: $("html").hasClass("dark")
