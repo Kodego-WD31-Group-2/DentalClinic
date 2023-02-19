@@ -347,24 +347,21 @@ class PageController extends Controller
     }
 
     /**
- * Show specified view.
- *
- * @param  \Illuminate\Http\Request  $request
- * @return \Illuminate\Http\Response
- */
-public function profileOverview1()
-{
-    // Retrieve the currently logged in user
-    $user = Auth::user();
-    
-    // Retrieve the patients connected to the user
-    $patients = Patient::where('user_id', $user->id)->get();
-    
-    // Pass the data to the view
-    return view('pages/profile-overview-1', [
-        'patients' => $patients,
-    ]);
-}
+     * Show specified view.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function profileOverview1()
+    {
+        $user = Auth::user();
+        $patient = Patient::where('user_id', $user->id)->first();
+        $data = [
+            'user' => $user,
+            'patient' => $patient
+        ];
+        return view('pages/profile-overview-2', $data);
+    }
 
     /**
      * Show specified view.

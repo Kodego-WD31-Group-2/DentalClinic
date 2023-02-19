@@ -53,7 +53,6 @@ return new class extends Migration
             ->references('doctor_id')
             ->on('doctors')
             ->onDelete('cascade');
-
         });
     }
 

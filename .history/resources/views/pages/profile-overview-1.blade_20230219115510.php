@@ -310,18 +310,18 @@
                         </button>
                     </div>
                     <div class="p-5">
-                        @foreach ($patients as $patient)
-                        <div class="relative flex items-center mt-4">
+                        @foreach
+                        <div class="relative flex items-center">
                             <div class="w-12 h-12 flex-none image-fit">
-                                <img alt="{{ $patient->first_name }} {{ $patient->last_name }}" class="rounded-full" src="{{ file_exists(public_path('storage/' . $patient->patient_image)) ? asset('storage/' . $patient->patient_image) : asset($patient->patient_image) }}">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
                             </div>
                             <div class="ml-4 mr-auto">
-                                <a href="" class="font-medium">{{ $patient->first_name }} {{ $patient->last_name }}</a>
-                                <div class="text-slate-500 mr-5 sm:mr-5">{{ $patient->email }}</div>
+                                <a href="" class="font-medium">{{ $fakers[0]['users'][0]['name'] }}</a>
+                                <div class="text-slate-500 mr-5 sm:mr-5">Bootstrap 4 HTML Admin Template</div>
                             </div>
-                            <div class="font-medium text-slate-600 dark:text-slate-500">{{ $patient->gender }}</div>
+                            <div class="font-medium text-slate-600 dark:text-slate-500">+$19</div>
                         </div>
-                    @endforeach
+                        @en
                     </div>
                 </div>
                 <!-- END: Daily Sales -->

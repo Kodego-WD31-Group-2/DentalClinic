@@ -313,7 +313,7 @@
                         @foreach ($patients as $patient)
                         <div class="relative flex items-center mt-4">
                             <div class="w-12 h-12 flex-none image-fit">
-                                <img alt="{{ $patient->first_name }} {{ $patient->last_name }}" class="rounded-full" src="{{ file_exists(public_path('storage/' . $patient->patient_image)) ? asset('storage/' . $patient->patient_image) : asset($patient->patient_image) }}">
+                                <img alt="{{ $patient->first_name }} {{ $patient->last_name }}" class="rounded-full" src="{{ file_exists(public_path('storage/' . $patient->patient_image)) ? asset('storage/' . Auth::user()->photo) : asset(Auth::user()->photo) }}">
                             </div>
                             <div class="ml-4 mr-auto">
                                 <a href="" class="font-medium">{{ $patient->first_name }} {{ $patient->last_name }}</a>

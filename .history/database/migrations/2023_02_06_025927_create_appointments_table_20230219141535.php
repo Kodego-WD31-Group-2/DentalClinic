@@ -40,8 +40,6 @@ return new class extends Migration
             $table->boolean('signature_confirm')->default(true);
             $table->boolean('reminders_consent')->default(true);
             $table->boolean('release_signature')->default(true);
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');   
             $table->timestamps();
 
             // $table->foreign('patient_id')
@@ -50,10 +48,14 @@ return new class extends Migration
             //     ->onDelete('cascade');
 
             $table->foreign('doctor_id')
-            ->references('doctor_id')
-            ->on('doctors')
-            ->onDelete('cascade');
+                ->references('doctor_id')
+                ->on('doctors')
+                ->onDelete('cascade');
 
+                $table->foreign('D_id')
+                    ->references('doctor_id')
+                    ->on('doctors')
+                    ->onDelete('cascade');
         });
     }
 

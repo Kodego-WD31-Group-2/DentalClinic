@@ -84,7 +84,7 @@ class User extends Authenticatable
     /**
      * Define a one-to-many relationship with the Patient model.
      */
-    public function appointments()
+    public function appointmentss()
     {
         return $this->hasMany(Appointment::class);
     }

@@ -4,7 +4,7 @@
       <label for="appointment_date" class="block text-sm font-medium text-custom-2 p-2">Preferred Appointment Date:</label>
       <input type="date" id="appointment_date" name="appointment_date" class="form-select mt-1 block w-full border-blue-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500" value="{{ old('appointment_date') }}" required>
     </div>
-    
+    @auth
     <div class="form-group">
       <label for="appointment_time" class="block text-sm font-medium text-custom-2 p-2">Preferred Appointment Time:</label>
       <select id="appointment_time" name="appointment_time" class="form-select mt-1 block w-full border-blue-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>

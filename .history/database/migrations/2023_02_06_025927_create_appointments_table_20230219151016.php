@@ -52,8 +52,12 @@ return new class extends Migration
             $table->foreign('doctor_id')
             ->references('doctor_id')
             ->on('doctors')
-            ->onDelete('cascade');
 
+            $table->foreign('doctor_id')
+            ->references('doctor_id')
+            ->on('doctors')
+            ->onDelete('cascade');
+            ->onDelete('cascade');
         });
     }
 

@@ -48,12 +48,6 @@ return new class extends Migration
             //     ->references('patient_id')
             //     ->on('patients')
             //     ->onDelete('cascade');
-
-            $table->foreign('doctor_id')
-            ->references('doctor_id')
-            ->on('doctors')
-            ->onDelete('cascade');
-
         });
     }
 

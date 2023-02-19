@@ -50,10 +50,11 @@ return new class extends Migration
             //     ->onDelete('cascade');
 
             $table->foreign('doctor_id')
-            ->references('doctor_id')
-            ->on('doctors')
-            ->onDelete('cascade');
-
+                ->references('doctor_id')
+                ->on('doctors')
+                ->onDelete('cascade');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');   
         });
     }
 

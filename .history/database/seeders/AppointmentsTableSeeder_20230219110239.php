@@ -43,8 +43,7 @@ class AppointmentsTableSeeder extends Seeder
                 'signature_confirm' => $faker->boolean,
                 'reminders_consent' => $faker->boolean,
                 'release_signature' => $faker->boolean,
-                'status' => $faker->randomElement(['pending', 'completed', 'cancelled']),
-                'user_id' => $faker->numberBetween(2, 27),
+                'hear_about_practice' => $faker->randomElement(['pending', 'completed', 'cancelled', 'Advertisement', 'Other']),
             ]);
         }
     }
