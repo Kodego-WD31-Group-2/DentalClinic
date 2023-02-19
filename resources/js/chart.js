@@ -144,14 +144,16 @@ import Chart from "chart.js/auto";
                 labels: ["Male", "Female"],
                 datasets: [
                     {
-                        data: [15, 10],
+                        data: [15, 10, 5],
                         backgroundColor: [
                             colors.pending(0.9),
                             colors.warning(0.9),
+                            colors.primary(0.9),
                         ],
                         hoverBackgroundColor: [
                             colors.pending(0.9),
                             colors.warning(0.9),
+                            colors.primary(0.9),
                         ],
                         borderWidth: 5,
                         borderColor: $("html").hasClass("dark")
