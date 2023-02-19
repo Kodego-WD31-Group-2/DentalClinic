@@ -21,14 +21,14 @@
         <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
             <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
                 <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
-                    <img  class="rounded-full" src="{{ file_exists(public_path('storage/' . $loggedInUser->photo)) ? asset('storage/' . $loggedInUser->photo) : asset($loggedInUser->photo) }}" width="200">
+                    <img  class="rounded-full" src="{{ file_exists(public_path('storage/' . $loggedInUser->photo)) ? asset('storage/' . $loggedInUser->photo) : asset($loggedInUser->photo) }}"onerror="this.onerror=null; this.src='{{ asset('assets/img/NoImg.svg') }}'" width="200">
                     <div class="absolute mb-1 mr-1 flex items-center justify-center bottom-0 right-0 bg-primary rounded-full p-2">
                         <i class="w-4 h-4 text-white" data-lucide="camera"></i>
                     </div>
                 </div>
                 <div class="ml-5">
                     <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{ $loggedInUser->name }}</div>
-                    <div class="text-slate-500">{{ $fakers[0]['jobs'][0] }}</div>
+                    <div class="text-slate-500">{{ $loggedInUser->role }}</div>
                 </div>
             </div>
             <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">

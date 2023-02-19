@@ -545,9 +545,23 @@ class PageController extends Controller
      */
     public function updateProfile()
     {
-        $users = User::all();
-        return view('pages/update-profile');
-        
+        $user = User::all();
+
+    // Retrieve the currently authenticated user and pass their user model to the view
+    $user = Auth::user();
+
+    return view('pages.update-profile', [
+        'users' => $user,
+        'loggedInUser' => $user,
+    ]);
+
+    // Check if the user has a profile photo and set the image URL accordingly
+    $image = $user->profile_photo_path ? asset('storage/'.$user->profile_photo_path) : asset('assets/img/user-2-svgrepo-com.svg');
+
+    return view('pages.update-profile', [
+        'user' => $user,
+        'image' => $image,
+    ]);
     }
 
     /**

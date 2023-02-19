@@ -112,7 +112,7 @@
         <!-- BEGIN: Account Menu -->
         <div class="intro-x dropdown w-8 h-8">
             <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
-              <img  class="rounded-full" src="{{ file_exists(public_path('storage/' . Auth::user()->photo)) ? asset('storage/' . Auth::user()->photo) : asset(Auth::user()->photo) }}" width="50">
+              <img  class="rounded-full" src="{{ file_exists(public_path('storage/' . Auth::user()->photo)) ? asset('storage/' . Auth::user()->photo) : asset(Auth::user()->photo) }}" onerror="this.onerror=null; this.src='{{ asset('assets/img/NoImg.svg') }}'" width="50">
             </div>
             <div class="dropdown-menu w-56">
                 <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
