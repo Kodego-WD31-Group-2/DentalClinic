@@ -11,7 +11,7 @@
                 <!-- BEGIN: General Report -->
                 <div class="col-span-12 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">General Report - Summary</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">General Report</h2>
                         <a href="" class="ml-auto flex items-center text-primary">
                             <i data-lucide="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data
                         </a>
@@ -28,7 +28,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $appointmentsToday }}</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">4.710</div>
                                     <div class="text-base text-slate-500 mt-1">Item Sales</div>
                                 </div>
                             </div>

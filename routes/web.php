@@ -40,6 +40,7 @@ Route::get('/contacts', [HomeController::class, 'contacts']);
 Route::get('/services', [ServicesController::class, 'index'])->name('services');
 Route::get('doctors', [DoctorsController::class, 'index'])->name('doctors');
 Route::get('/appointments/book-appointment', [AppointmentsController::class, 'add'])->name('book-appointment');
+Route::post('/appointments/store', [AppointmentsController::class, 'store'])->name('appointments.store');
 
 //Show Register / Create Form
 Route::get('/register', [AuthController::class, 'create'])->middleware('guest');
@@ -94,7 +95,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->name('employees.update');
     Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
     Route::get('/appointments/list', [AppointmentsController::class, 'index'])->name('appointments-list');
-    Route::post('/appointments/store', [AppointmentsController::class, 'store'])->name('appointments.store');
+    
     Route::get('/appointments/{appointment}/edit', [AppointmentsController::class, 'edit'])->name('appointments.edit');
     Route::put('/appointments/{appointment}', [AppointmentsController::class, 'update'])->name('appointments.update');
     Route::delete('/appointments/{appointment}', [AppointmentsController::class,'destroy'])->name('appointments.destroy');
@@ -225,20 +226,20 @@ Route::middleware('auth')->group(function() {
 
 // Route::get('/services/{service}', [ServicesController::class, 'view']);
 
-Route::get('/employees/list', [EmployeesController::class, 'index'])->name('employees');
-Route::get('/employees/add', [EmployeesController::class, 'add']);
-Route::post('/employees/store', [EmployeesController::class, 'store'])->name('employees.store');
-Route::get('/employees/{employee}', [EmployeesController::class, 'show']);
-Route::get('/employees/{employee}/edit', [EmployeesController::class, 'edit']);
-Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->name('employees.update');
-Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
+// Route::get('/employees/list', [EmployeesController::class, 'index'])->name('employees');
+// Route::get('/employees/add', [EmployeesController::class, 'add']);
+// Route::post('/employees/store', [EmployeesController::class, 'store'])->name('employees.store');
+// Route::get('/employees/{employee}', [EmployeesController::class, 'show']);
+// Route::get('/employees/{employee}/edit', [EmployeesController::class, 'edit']);
+// Route::put('/employees/{employee}', [EmployeesController::class, 'update'])->name('employees.update');
+// Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
 
 
 // Route::get('/chat', [ChatsController::class, 'chat'])->name('chats');
 
 
 // Doctor Route
-Route::get('doctors', [DoctorsController::class, 'index'])->name('doctors');
+
 // Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
 // Route::post('doctors/store', [DoctorsController::class, 'store'])->name('doctors.store')->middleware('auth');
 // Route::get('doctors/show', [DoctorsController::class, 'show'])->name('doctors.show')->middleware('auth');

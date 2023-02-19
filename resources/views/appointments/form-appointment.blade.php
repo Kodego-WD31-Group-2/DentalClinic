@@ -34,13 +34,13 @@
     <link href="{{ URL::asset('css/styles.css') }}" rel="stylesheet" type="text/css" >
 
   <!-- Container for demo purpose -->
-<div class="container my-24 px-6 mx-auto">
+<div class="container my-6 px-6 mx-auto">
 
   <!-- Section: Design Block -->
-  <section class="mb-32 text-gray-800 text-center md:text-left">
+  <section class="mb-6 text-gray-800 text-center md:text-left">
     <div class="block rounded-lg shadow-lg bg-gray-800">
-      <div class="flex flex-wrap items-center bg-custom-1 p-10 rounded">
-        <div class="grow-0 shrink-0 basis-auto block lg:flex w-full lg:w-6/12 xl:w-4/12 bg-custom-5 flex justify-center p-20 rounded">
+      <div class="flex flex-wrap items-center bg-custom-1 p-10 rounded-xl">
+        <div class="grow-0 shrink-0 basis-auto block lg:flex w-full lg:w-6/12 xl:w-4/12 bg-custom-5 flex justify-center p-20 rounded-xl">
           <div class="tab-headers flex border-b border-gray-300">
             <div class="tab-header rounded active cursor-pointer px-4 py-2 text-gray-500 font-medium" data-tab="1">Appointment Information</div>
             <div class="tab-header rounded cursor-pointer px-4 py-2 text-gray-500 font-medium" data-tab="2">Patient Information</div>

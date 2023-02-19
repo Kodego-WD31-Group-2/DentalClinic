@@ -42,11 +42,14 @@
    <label for="dental_history" class="block text-sm font-medium text-custom-2 p-2">Previous Dental History:</label>
    <textarea id="dental_history" name="dental_history" class="form-textarea mt-1 block w-full border-blue-300 focus:border-blue-500 rounded-md shadow-sm" rows="3">{{ old('dental_history', $appointment->dental_history) }} </textarea>
  </div>
- <div class="flex items-center justify-center">
-  {{-- <select class="form-select mt-2 sm:mr-2" aria-label="Default select example">
-    <option value="Pending" {{ $appointment->status == 'pending' ? 'selected' : '' }}>Pending</option>
-    <option value="completed" {{ $appointment->status == 'completed' ? 'selected' : '' }}>Completed</option>
-    <option value="cancelled" {{ $appointment->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
- </select> --}}
+<div class="form-group">
+  <label for="status" class="block text-sm font-medium text-custom-2 p-2">Status:</label>
+  <select id="status" class="form-select mt-2 sm:mr-2" aria-label="Default select example" name="status">
+    <option value="Pending" {{ old('status', $appointment->status) == 'Pending' ? 'selected' : '' }}>Pending</option>
+    <option value="completed" {{ old('status', $appointment->status) == 'completed' ? 'selected' : '' }}>Completed</option>
+    <option value="cancelled" {{ old('status', $appointment->status) == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+  </select>
 </div>
+
+
  
