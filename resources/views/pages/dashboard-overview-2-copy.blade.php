@@ -862,7 +862,7 @@
                     </div>
                 </div> --}}
                 <!-- END: Sales Report -->
-                <!-- BEGIN: Patients by Gender -->
+                <!-- BEGIN: Weekly Top Seller -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Patients by Gender</h2>
@@ -893,7 +893,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: Patients by Gender -->
+                <!-- END: Weekly Top Seller -->
                 <!-- BEGIN: Sales Report -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
@@ -926,44 +926,8 @@
                     </div>
                 </div>
                 <!-- END: Sales Report -->
-                <!-- BEGIN: Appt by Doc -->
-                {{-- <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
-                    <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Appointments by Doctor</h2>
-                        <a href="" class="ml-auto text-primary truncate">Show More</a>
-                    </div>
-                    <div class="intro-y box mt-5">
-                        </div>
-                        <div class="p-5" id="bordered-table">
-                            <div class="preview">
-                                <div class="overflow-x-auto">
-                                    <table class="table table-bordered">
-                                        <thead class="bg-custom-1 text-white">
-                                            <tr>
-                                                <th class="whitespace-nowrap">Doctor</th>
-                                                <th class="whitespace-nowrap">Specialty</th>
-                                                <th class="whitespace-nowrap">Total Appointments</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($appointmentsByDoctor as $doctor)
-                                            <tr>
-                                                <td>Dr. {{ ($doctor->first_name) }} {{ $doctor->last_name }}</td>
-                                                <td>{{ $doctor->specialty }}</td>
-                                                <td>{{ $doctor->total_appointments }}</td>                                    
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>   
-                    </div> 
-                </div> --}}
-                <!-- END: Appt by Doc -->
                 <!-- BEGIN: Official Store -->
-                {{-- <div class="col-span-12 xl:col-span-8 mt-6">
+                <div class="col-span-12 xl:col-span-8 mt-6">
                     <div class="intro-y block sm:flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Official Store</h2>
                         <div class="sm:ml-auto mt-3 sm:mt-0 relative text-slate-500">
@@ -975,34 +939,34 @@
                         <div>250 Official stores in 21 countries, click the marker to see location details.</div>
                         <div class="report-maps mt-5 bg-slate-200 rounded-md" data-center="-6.2425342, 106.8626478" data-sources="/build/assets/json/location.json"></div>
                     </div>
-                </div> --}}
+                </div>
                 <!-- END: Official Store -->
-                <!-- BEGIN: App Doc -->
-                <div class="col-span-12 xl:col-span-12 mt-6">
+                <!-- BEGIN: Weekly Best Sellers -->
+                <div class="col-span-12 xl:col-span-4 mt-6">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Appointments by Doctors</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">Weekly Best Sellers</h2>
                     </div>
                     <div class="mt-5">
-                        @foreach ($appointmentsByDoctor as $doctor)
+                        @foreach (array_slice($fakers, 0, 4) as $faker)
                             <div class="intro-y">
                                 <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                    {{-- <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
+                                    <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
                                         <img alt="Midone - HTML Admin Template" src="{{ asset('build/assets/images/' . $faker['photos'][0]) }}">
-                                    </div> --}}
-                                    <div class="ml-4 mr-auto">
-                                        <div class="font-medium">Dr. {{ ($doctor->first_name) }} {{ $doctor->last_name }}</div>
-                                        <div class="text-slate-500 text-xs mt-0.5">{{ $doctor->specialty }}</div>
                                     </div>
-                                    <div class="py-1 px-2 rounded-full text-xs bg-success text-white cursor-pointer font-medium">{{ $doctor->total_appointments }} Appointments</div>
+                                    <div class="ml-4 mr-auto">
+                                        <div class="font-medium">{{ $faker['users'][0]['name'] }}</div>
+                                        <div class="text-slate-500 text-xs mt-0.5">{{ $faker['dates'][0] }}</div>
+                                    </div>
+                                    <div class="py-1 px-2 rounded-full text-xs bg-success text-white cursor-pointer font-medium">137 Sales</div>
                                 </div>
                             </div>
                         @endforeach
                         <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">View More</a>
                     </div>
                 </div>
-                <!-- END: App Doc -->
+                <!-- END: Weekly Best Sellers -->
                 <!-- BEGIN: General Report -->
-                {{-- <div class="col-span-12 grid grid-cols-12 gap-6 mt-8">
+                <div class="col-span-12 grid grid-cols-12 gap-6 mt-8">
                     <div class="col-span-12 sm:col-span-6 2xl:col-span-3 intro-y">
                         <div class="box p-5 zoom-in">
                             <div class="flex items-center">
@@ -1061,10 +1025,10 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <!-- END: General Report -->
                 <!-- BEGIN: Weekly Top Products -->
-                {{-- <div class="col-span-12 mt-6">
+                <div class="col-span-12 mt-6">
                     <div class="intro-y block sm:flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Weekly Top Products</h2>
                         <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
@@ -1175,7 +1139,7 @@
                             <option>50</option>
                         </select>
                     </div>
-                </div> --}}
+                </div>
                 <!-- END: Weekly Top Products -->
             </div>
         </div>

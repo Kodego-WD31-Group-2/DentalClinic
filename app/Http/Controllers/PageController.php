@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Models\Appointment;
+use App\Models\Doctor;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class PageController extends Controller
@@ -39,13 +41,35 @@ class PageController extends Controller
         $appointmentsPendingToday = Appointment::whereDate('appointment_date', today())->where('status', 'pending')->count();
         $appointmentsCompletedToday = Appointment::whereDate('appointment_date', today())->where('status', 'completed')->count();
         $appointmentsCancelledToday = Appointment::whereDate('appointment_date', today())->where('status', 'cancelled')->count();
+
         //All Appointment
         $totalAppointments = Appointment::count();
         $appointmentsPending = Appointment::where('status', 'pending')->count();
         $appointmentsCompleted = Appointment::where('status', 'completed')->count();
         $appointmentsCancelled = Appointment::where('status', 'cancelled')->count();
+
+        //Appointment by Doctors
+        // $appointmentsByDoctor = Appointment::select('doctor_id', DB::raw('COUNT(*) as count'))
+        // ->groupBy('doctor_id')
+        // ->get();
+        
+
+        $appointmentsByDoctor = DB::table('doctors')
+        ->select('doctors.first_name', 'doctors.last_name', 'doctors.specialty', DB::raw('COUNT(appointments.doctor_id) as total_appointments'))
+        ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
+        ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
+        ->get();
+
+
+
+
         //List of Patients for Today
-        $appointmentsTodayList = Appointment::whereDate('appointment_date', today())->select('first_name', 'last_name')->get();
+        $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
+        ->select('appointments.first_name', 'appointments.last_name', 'appointments.appointment_type', 'appointments.status', 'doctors.first_name AS doctor_first_name', 'doctors.last_name AS doctor_last_name')
+        ->join('doctors', 'appointments.doctor_id', '=', 'doctors.doctor_id')
+        ->get();
+        $doctors = Doctor::all();
+
         // Gender
         $maleCount = Patient::where('gender', 'male')->count();
         $femaleCount = Patient::where('gender', 'female')->count();
@@ -64,6 +88,8 @@ class PageController extends Controller
             'appointmentsCompleted' => $appointmentsCompleted,
             'appointmentsCancelled' => $appointmentsCancelled,
             'appointmentsTodayList' => $appointmentsTodayList,
+            'appointmentsByDoctor' => $appointmentsByDoctor,
+            'doctors' => $doctors,
             'maleCount' => $maleCount,
             'femaleCount' => $femaleCount,
             'malePercentage' => $malePercentage,

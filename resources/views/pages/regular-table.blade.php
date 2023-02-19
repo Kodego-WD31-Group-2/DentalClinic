@@ -848,51 +848,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="source-code hidden">
-                        <button data-target="#copy-striped-rows-table" class="copy-code btn py-1 px-2 btn-outline-secondary">
-                            <i data-lucide="file" class="w-4 h-4 mr-2"></i> Copy example code
-                        </button>
-                        <div class="overflow-y-auto mt-3 rounded-md">
-                            <pre class="source-preview" id="copy-striped-rows-table">
-                                <code class="html">
-                                    {{ str_replace('>', 'HTMLCloseTag', str_replace('<', 'HTMLOpenTag', '
-                                        <div class="overflow-x-auto">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="whitespace-nowrap">#</th>
-                                                        <th class="whitespace-nowrap">First Name</th>
-                                                        <th class="whitespace-nowrap">Last Name</th>
-                                                        <th class="whitespace-nowrap">Username</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Angelina</td>
-                                                        <td>Jolie</td>
-                                                        <td>@angelinajolie</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Brad</td>
-                                                        <td>Pitt</td>
-                                                        <td>@bradpitt</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Charlie</td>
-                                                        <td>Hunnam</td>
-                                                        <td>@charliehunnam</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    ')) }}
-                                </code>
-                            </pre>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <!-- END: Striped Rows -->
