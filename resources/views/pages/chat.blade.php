@@ -12,34 +12,7 @@
 @endforeach --}}
 
 
-<div class="container">
-    <h3>Chats</h3>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                {{-- <th>Image</th> --}}
-                {{-- <th width="280px">Action</th> --}}
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($chats as $chat)
-                <tr>
-                    <td>{{ $chat->chat_id }}</td>
-                    <td>{{ $chat->first_name }}</td>
-                    <td>{{ $chat->last_name }}</td>
-                </tr>
- @endforeach
-        </tbody>
-    </table>
-</div>
+
 
 
 @section('subcontent')
@@ -89,7 +62,7 @@
                                 Chats
                             </button>
                         </li>
-                        <li id="friends-tab" class="nav-item flex-1" role="presentation">
+                        {{-- <li id="friends-tab" class="nav-item flex-1" role="presentation">
                             <button
                                 class="nav-link w-full py-2"
                                 data-tw-toggle="pill"
@@ -101,7 +74,7 @@
                             >
                                 Friends
                             </button>
-                        </li>
+                        </li> --}}
                         <li id="profile-tab" class="nav-item flex-1" role="presentation">
                             <button
                                 class="nav-link w-full py-2"
@@ -118,7 +91,6 @@
                     </ul>
                 </div>
             </div>
-            {{$chat->first_name}}
             <div class="tab-content">
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
                     <div class="pr-1">
@@ -129,13 +101,13 @@
                             </div>
                             <div class="overflow-x-auto scrollbar-hidden">
                                 <div class="flex mt-5">
-                                    @foreach (array_slice($fakers, 0, 10) as $faker)
+                                    @foreach ($chats as $chat)
                                         <a href="" class="w-10 mr-4 cursor-pointer">
                                             <div class="w-10 h-10 flex-none image-fit rounded-full">
-                                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="">
+                                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
                                                 <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                                             </div>
-                                            <div class="text-xs text-slate-500 truncate text-center mt-2">{{$chat->firstname}}</div>
+                                            <div class="text-xs text-slate-500 truncate text-center mt-2">{{$chat->firstname}} {{ $chat->last_name }}</div>
                                         </a>
                                     @endforeach
                                 </div>
@@ -143,22 +115,20 @@
                         </div>
                     </div>
                     <div class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4">
-                        @foreach (array_slice($fakers, 0, 10) as $key => $faker)
-                            <div class="intro-x cursor-pointer box relative flex items-center p-5 {{ $key ? 'mt-5' : '' }}">
+                        @foreach ($chats as $chat)
+                            <div class="intro-x cursor-pointer box relative flex items-center p-5 {{ $chat ? 'mt-5' : '' }}">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $faker['photos'][0]) }}">
+                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
                                     <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                                 </div>
                                 <div class="ml-2 overflow-hidden">
                                     <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium">{{ $faker['users'][0]['name'] }}</a>
-                                        <div class="text-xs text-slate-400 ml-auto">{{ $faker['times'][0] }}</div>
+                                        <a href="" class="font-medium">{{$chat->first_name}} {{$chat->last_name}}</a>
+                                        <div class="text-xs text-slate-400 ml-auto">{{$chat->chat_hours}}:{{$chat->chat_minutes}}</div>
                                     </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">{{ $faker['news'][0]['short_content'] }}</div>
+                                    <div class="w-full truncate text-slate-500 mt-0.5">{{$chat->chat_message}}</div>
                                 </div>
-                                @if ($faker['true_false'][0])
-                                    <div class="w-5 h-5 flex items-center justify-center absolute top-0 right-0 text-xs text-white rounded-full bg-primary font-medium -mt-1 -mr-1">{{ $faker['notification_count'] }}</div>
-                                @endif
+                                    <div class="w-5 h-5 flex items-center justify-center absolute top-0 right-0 text-xs text-white rounded-full bg-primary font-medium -mt-1 -mr-1">{{ $chat->chat_notification }}</div>
                             </div>
                         @endforeach
                     </div>
@@ -173,16 +143,17 @@
                             <button type="button" class="btn btn-primary w-full mt-3">Invite Friends</button>
                         </div>
                     </div>
-                    <div class="chat__user-list overflow-y-auto scrollbar-hidden pr-1 pt-1">
+                    {{-- chat list --}}
+                    {{-- <div class="chat__user-list overflow-y-auto scrollbar-hidden pr-1 pt-1">
                         <div class="mt-4 text-slate-500">A</div>
                         <div class="cursor-pointer box relative flex items-center p-5 mt-5">
                             <div class="w-12 h-12 flex-none image-fit mr-1">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
                                 <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                             </div>
                             <div class="ml-2 overflow-hidden">
                                 <div class="flex items-center">
-                                    <a href="" class="font-medium">{{ $fakers[0]['users'][0]['name'] }}</a>
+                                    <a href="" class="font-medium">{{$chat->first_name}} {{$chat->last_name}}</a>
                                 </div>
                                 <div class="w-full truncate text-slate-500 mt-0.5">Last seen 2 hours ago</div>
                             </div>
@@ -240,12 +211,12 @@
                         <div class="mt-4 text-slate-500">B</div>
                         <div class="cursor-pointer box relative flex items-center p-5 mt-5">
                             <div class="w-12 h-12 flex-none image-fit mr-1">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[2]['photos'][0]) }}">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
                                 <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                             </div>
                             <div class="ml-2 overflow-hidden">
                                 <div class="flex items-center">
-                                    <a href="" class="font-medium">{{ $fakers[2]['users'][0]['name'] }}</a>
+                                    <a href="" class="font-medium">{{$chat->first_name}} {{$chat->last_name}}</a>
                                 </div>
                                 <div class="w-full truncate text-slate-500 mt-0.5">Last seen 2 hours ago</div>
                             </div>
@@ -331,8 +302,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
+                {{-- tab profile --}}
                 <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="pr-1">
                         <div class="box px-5 py-10 mt-5">
@@ -340,7 +312,7 @@
                                 <img alt="Midone - HTML Admin Template" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
                             </div>
                             <div class="text-center mt-3">
-                                <div class="font-medium text-lg">{{ $fakers[0]['users'][0]['name'] }}</div>
+                                <div class="font-medium text-lg">{{$chat->first_name}} {{$chat->last_name}}</div>
                                 <div class="text-slate-500 mt-1">Tailwind HTML Admin Template</div>
                             </div>
                         </div>
@@ -362,7 +334,7 @@
                             <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 py-5">
                                 <div>
                                     <div class="text-slate-500">Email</div>
-                                    <div class="mt-1">{{ $fakers[0]['users'][0]['email'] }}</div>
+                                    <div class="mt-1">{{$chat->chat_email}}</div>
                                 </div>
                                 <i data-lucide="mail" class="w-4 h-4 text-slate-500 ml-auto"></i>
                             </div>
@@ -390,7 +362,7 @@
                                 <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
                             </div>
                             <div class="ml-3 mr-auto">
-                                <div class="font-medium text-base">{{ $fakers[0]['users'][0]['name'] }}</div>
+                                <div class="font-medium text-base">{{$chat->first_name}} {{$chat->last_name}}</div>
                                 <div class="text-slate-500 text-xs sm:text-sm">Hey, I am using chat <span class="mx-1">•</span> Online</div>
                             </div>
                         </div>
@@ -423,12 +395,13 @@
                         </div>
                     </div>
                     <div class="overflow-y-scroll scrollbar-hidden px-5 pt-5 flex-1">
+                        {{-- P  --}}
                         <div class="chat__box__text-box flex items-end float-left mb-4">
                             <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">
                                 <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
                             </div>
                             <div class="bg-slate-100 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">
-                                Lorem ipsum sit amen dolor, lorem ipsum sit amen dolor
+                                Hello can Someone assist me?
                                 <div class="mt-1 text-xs text-slate-500">2 mins ago</div>
                             </div>
                             <div class="hidden sm:block dropdown ml-3 my-auto">
@@ -452,6 +425,7 @@
                             </div>
                         </div>
                         <div class="clear-both"></div>
+                        {{-- C 1 --}}
                         <div class="chat__box__text-box flex items-end float-right mb-4">
                             <div class="hidden sm:block dropdown mr-3 my-auto">
                                 <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
@@ -473,50 +447,22 @@
                                 </div>
                             </div>
                             <div class="bg-primary px-4 py-3 text-white rounded-l-md rounded-t-md">
-                                Lorem ipsum sit amen dolor, lorem ipsum sit amen dolor
+                                Hello, this is Smith from ABC Dental. How can I assist you today?
                                 <div class="mt-1 text-xs text-white text-opacity-80">1 mins ago</div>
                             </div>
                             <div class="w-10 h-10 hidden sm:block flex-none image-fit relative ml-5">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[1]['photos'][0]) }}">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
                             </div>
                         </div>
                         <div class="clear-both"></div>
-                        <div class="chat__box__text-box flex items-end float-right mb-4">
-                            <div class="hidden sm:block dropdown mr-3 my-auto">
-                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
-                                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
-                                </a>
-                                <div class="dropdown-menu w-40">
-                                    <ul class="dropdown-content">
-                                        <li>
-                                            <a href="" class="dropdown-item">
-                                                <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="dropdown-item">
-                                                <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bg-primary px-4 py-3 text-white rounded-l-md rounded-t-md">
-                                Lorem ipsum sit amen dolor, lorem ipsum sit amen dolor
-                                <div class="mt-1 text-xs text-white text-opacity-80">59 secs ago</div>
-                            </div>
-                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative ml-5">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[1]['photos'][0]) }}">
-                            </div>
-                        </div>
-                        <div class="clear-both"></div>
-                        <div class="text-slate-400 dark:text-slate-500 text-xs text-center mb-10 mt-5">12 June 2020</div>
+                        {{-- p 2 --}}
                         <div class="chat__box__text-box flex items-end float-left mb-4">
                             <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">
                                 <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
                             </div>
                             <div class="bg-slate-100 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">
-                                Lorem ipsum sit amen dolor, lorem ipsum sit amen dolor
+                                Hi Smith, I have been experiencing some pain in my back molars and would like to schedule an appointment to get them checked out.
+
                                 <div class="mt-1 text-xs text-slate-500">10 secs ago</div>
                             </div>
                             <div class="hidden sm:block dropdown ml-3 my-auto">
@@ -540,6 +486,7 @@
                             </div>
                         </div>
                         <div class="clear-both"></div>
+                        {{-- C 3 --}}
                         <div class="chat__box__text-box flex items-end float-right mb-4">
                             <div class="hidden sm:block dropdown mr-3 my-auto">
                                 <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
@@ -561,17 +508,264 @@
                                 </div>
                             </div>
                             <div class="bg-primary px-4 py-3 text-white rounded-l-md rounded-t-md">
-                                Lorem ipsum
-                                <div class="mt-1 text-xs text-white text-opacity-80">1 secs ago</div>
+                                Of course, we can schedule an appointment for you. May I know when you would be available to come in?
+
+                                <div class="mt-1 text-xs text-white text-opacity-80">1 mins ago</div>
                             </div>
                             <div class="w-10 h-10 hidden sm:block flex-none image-fit relative ml-5">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[1]['photos'][0]) }}">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
                             </div>
                         </div>
                         <div class="clear-both"></div>
+                        {{-- P 4 --}}
                         <div class="chat__box__text-box flex items-end float-left mb-4">
                             <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">
                                 <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
+                            </div>
+                            <div class="bg-slate-100 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">
+                                How about next Tuesday at 2 PM?
+
+                                <div class="mt-1 text-xs text-slate-500">2 mins ago</div>
+                            </div>
+                            <div class="hidden sm:block dropdown ml-3 my-auto">
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                                </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                        {{-- C 5 --}}
+                        <div class="chat__box__text-box flex items-end float-right mb-4">
+                            <div class="hidden sm:block dropdown mr-3 my-auto">
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                                </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="bg-primary px-4 py-3 text-white rounded-l-md rounded-t-md">
+                                Unfortunately, we are fully booked next Tuesday. Would Thursday at 10 AM work for you instead?
+
+                                <div class="mt-1 text-xs text-white text-opacity-80">1 mins ago</div>
+                            </div>
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative ml-5">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                        {{-- P 6 --}}
+                        <div class="chat__box__text-box flex items-end float-left mb-4">
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
+                            </div>
+                            <div class="bg-slate-100 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">
+                                Yes, that works for me. How long will the appointment take?
+                                <div class="mt-1 text-xs text-slate-500">2 mins ago</div>
+                            </div>
+                            <div class="hidden sm:block dropdown ml-3 my-auto">
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                                </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                        {{-- C 7 --}}
+                        <div class="chat__box__text-box flex items-end float-right mb-4">
+                            <div class="hidden sm:block dropdown mr-3 my-auto">
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                                </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="bg-primary px-4 py-3 text-white rounded-l-md rounded-t-md">
+                                The appointment usually takes about an hour. We will perform an examination and take X-rays if necessary.
+
+                                <div class="mt-1 text-xs text-white text-opacity-80">1 mins ago</div>
+                            </div>
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative ml-5">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                        {{-- P 8 --}}
+                        <div class="chat__box__text-box flex items-end float-left mb-4">
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
+                            </div>
+                            <div class="bg-slate-100 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">
+                                Alright, that sounds good. Do I need to prepare anything for the appointment?
+                                <div class="mt-1 text-xs text-slate-500">2 mins ago</div>
+                            </div>
+                            <div class="hidden sm:block dropdown ml-3 my-auto">
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                                </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                        {{-- C 9 --}}
+                        <div class="chat__box__text-box flex items-end float-right mb-4">
+                            <div class="hidden sm:block dropdown mr-3 my-auto">
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                                </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="bg-primary px-4 py-3 text-white rounded-l-md rounded-t-md">
+                                Just bring your dental insurance card and any previous dental records that you may have. Also, please avoid eating or drinking anything for at least an hour before the appointment.
+                                <div class="mt-1 text-xs text-white text-opacity-80">1 mins ago</div>
+                            </div>
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative ml-5">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                        {{-- P 10 --}}
+                        <div class="chat__box__text-box flex items-end float-left mb-4">
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
+                            </div>
+                            <div class="bg-slate-100 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">
+                                Got it, thanks for letting me know. See you on Thursday at 10 AM!
+                                <div class="mt-1 text-xs text-slate-500">2 mins ago</div>
+                            </div>
+                            <div class="hidden sm:block dropdown ml-3 my-auto">
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                                </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                        {{-- C 11 --}}
+                        <div class="chat__box__text-box flex items-end float-right mb-4">
+                            <div class="hidden sm:block dropdown mr-3 my-auto">
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                                </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="dropdown-item">
+                                                <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="bg-primary px-4 py-3 text-white rounded-l-md rounded-t-md">
+                                Great, see you then. Have a good day!
+                                <div class="mt-1 text-xs text-white text-opacity-80">1 mins ago</div>
+                            </div>
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative ml-5">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                        <div class="text-slate-400 dark:text-slate-500 text-md text-center mb-10 mt-5">Chat ended</div>
+                        {{-- P --}}
+                        {{-- <div class="clear-both"></div>
+                        <div class="chat__box__text-box flex items-end float-left mb-4">
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ file_exists(public_path('storage/' . $chat->chat_image)) ? asset('storage/' . $chat->chat_image) : asset($chat->chat_image) }}">
                             </div>
                             <div class="bg-slate-100 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">
                                 {{ $fakers[0]['users'][0]['name'] }} is typing
@@ -581,7 +775,7 @@
                                     <span>.</span>
                                 </span>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="pt-4 pb-10 sm:py-4 flex items-center border-t border-slate-200/60 dark:border-darkmode-400">
                         <textarea class="chat__box__input form-control dark:bg-darkmode-600 h-16 resize-none border-transparent px-5 py-3 shadow-none focus:border-transparent focus:ring-0" rows="1" placeholder="Type your message..."></textarea>
@@ -2020,7 +2214,7 @@
                             <img alt="Midone - HTML Admin Template" src="{{ asset('build/assets/images/' . $fakers[0]['photos'][0]) }}">
                         </div>
                         <div class="mt-3">
-                            <div class="font-medium">Hey, {{ $fakers[0]['users'][0]['name'] }}!</div>
+                            <div class="font-medium">Hey, {{$chat->first_name}} {{$chat->last_name}}!</div>
                             <div class="text-slate-500 mt-1">Please select a chat to start messaging.</div>
                         </div>
                     </div>

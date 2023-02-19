@@ -1,11 +1,11 @@
 <?php
 
 namespace Database\Seeders;
-
 use App\Models\Chat;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ChatTableSeeder extends Seeder
+class ChatsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,6 +22,9 @@ class ChatTableSeeder extends Seeder
                 'last_name' => $faker->lastName,
                 'chat_message' => $faker->sentence(10),
                 'chat_email' => $faker->email,
+                'chat_hours' => $faker->numberBetween(0, 12),
+                'chat_minutes' => $faker->numberBetween(0, 59),
+                'chat_notification' => $faker->numberBetween(0, 10),
                 'chat_image' => $faker->imageUrl(640, 480),
             ]);
         }
