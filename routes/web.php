@@ -118,12 +118,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 
-Route::get('chat', [ChatsController::class, 'chat'])->name('chats');
+// Route::get('/chat-page', [ChatsController::class, 'chat'])->name('chats');
 
 
 
 
-Route::get('chat', [ChatsController::class, 'chat'])->name('chats');
+// Route::get('chat', [ChatsController::class, 'chat'])->name('chats');
 
 // Auth View
 Route::middleware('auth')->group(function() {
@@ -149,7 +149,7 @@ Route::middleware('auth')->group(function() {
         Route::get('inbox-page', 'inbox')->name('inbox');
         Route::get('file-manager-page', 'fileManager')->name('file-manager');
         Route::get('point-of-sale-page', 'pointOfSale')->name('point-of-sale');
-        Route::get('pages.chat', 'chat')->name('chat');
+        Route::get('chat-page', 'chat')->name('chat');
         Route::get('post-page', 'post')->name('post');
         Route::get('calendar-page', 'calendar')->name('calendar');
         Route::get('crud-data-list-page', 'crudDataList')->name('crud-data-list');
@@ -235,7 +235,9 @@ Route::middleware('auth')->group(function() {
 // Route::delete('/employees/{employee}', [EmployeesController::class,'destroy']);
 
 
-// Route::get('chat', [ChatsController::class, 'chat'])->name('chat');
+// Route::get('/chat', [ChatsController::class, 'chat'])->name('chats');
+
+
 // Doctor Route
 
 // Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');

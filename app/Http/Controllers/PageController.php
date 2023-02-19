@@ -7,6 +7,9 @@ use App\Models\Appointment;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Chat;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -261,7 +264,9 @@ class PageController extends Controller
      */
     public function chat()
     {
-        return view('pages/chat');
+        $chats = Chat::all();
+        return view('pages/chat', compact('chats'));
+
     }
 
     /**
@@ -349,7 +354,15 @@ class PageController extends Controller
      */
     public function profileOverview1()
     {
-        return view('pages/profile-overview-1');
+        $users = User::select('first_name', 'last_name')->get();
+
+    // Retrieve the currently authenticated user and pass their user model to the view
+    $user = Auth::user();
+
+    return view('pages.profile-overview-1', [
+        'users' => $users,
+        'loggedInUser' => $user,
+    ]);
     }
 
     /**
@@ -558,7 +571,9 @@ class PageController extends Controller
      */
     public function updateProfile()
     {
+        $users = User::all();
         return view('pages/update-profile');
+        
     }
 
     /**
