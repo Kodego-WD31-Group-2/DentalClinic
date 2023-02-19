@@ -1208,7 +1208,7 @@
                     </div>
                     <!-- END: Today's Appointment -->
                     <!-- BEGIN: Recent Activities -->
-                    <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 mt-3">
+                    {{-- <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 mt-3">
                         <div class="intro-x flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">Recent Activities</h2>
                             <a href="" class="ml-auto text-primary truncate">Show More</a>
@@ -1285,7 +1285,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- END: Recent Activities -->
                     <!-- BEGIN: Important Notes -->
                     <div class="col-span-12 md:col-span-6 xl:col-span-12 xl:col-start-1 xl:row-start-1 2xl:col-start-auto 2xl:row-start-auto mt-3">
