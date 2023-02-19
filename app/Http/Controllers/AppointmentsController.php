@@ -140,7 +140,7 @@ class AppointmentsController extends Controller
     $appointment->special_instructions = $validatedData['special_instructions'];
     $appointment->referral_source = $validatedData['referral_source'];
     $appointment->hear_about_practice = $validatedData['hear_about_practice'];
-    $appointment->status = $validatedData['status'];
+    $appointment->status = strtolower($validatedData['status']);
     $appointment->save();
 
     return redirect('/appointments/list')->with('success', 'Appointment updated successfully.');
