@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('billings', function (Blueprint $table) {
             $table->increments('billing_id');
+            // $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('appointment_id');
             $table->decimal('total_cost', 8, 2);
             $table->string('payment_method');
