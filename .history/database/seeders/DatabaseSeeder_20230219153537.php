@@ -17,12 +17,12 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(DoctorsTableSeeder::class);
-        $this->call(PatientAppointmentSeeder::class);
-        // $this->call(AppointmentsTableSeeder::class);
+        $this->call(AppointmentsTableSeeder::class);
+        $this->call(AppointmentsTableSeeder::class);
         $this->call(BillingsTableSeeder::class);
         $this->call(ServicesTableSeeder::class);
         $this->call(EmployeesTableSeeder::class);
         $this->call(ChatsTableSeeder::class);
-        // $this->call(PatientsTableSeeder::class);
+        $this->call(PatientsTableSeeder::class);
     }
 }

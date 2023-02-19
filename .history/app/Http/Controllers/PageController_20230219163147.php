@@ -368,16 +368,18 @@ public function profileOverview1()
     
     // Retrieve the completed and cancelled appointments connected to the user
     $previousAppointments = Appointment::where('user_id', $user->id)
-        ->whereIn('status', ['completed', 'cancelled'])
-        ->orderBy('appointment_date', 'desc')
-        ->get();
+            ->whereIn('status', ['completed', 'cancelled'])
+            ->orderBy('appointment_date', 'desc')
+            ->get();
+        
+    
+    
     
     // Pass the data to the view
     return view('pages/profile-overview-1', [
         'patients' => $patients,
         'appointments' => $appointments,
         'pendingAppointments' => $pendingAppointments,
-        'previousAppointments' => $previousAppointments,
     ]);
 }
 

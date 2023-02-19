@@ -361,23 +361,12 @@ public function profileOverview1()
     $patients = Patient::where('user_id', $user->id)->get();
     $appointments = Appointment::where('user_id', $user->id)->get();
     
-    // Retrieve the pending appointments for the user
-    $pendingAppointments = Appointment::where('user_id', $user->id)
-        ->where('status', 'pending')
-        ->get();
     
-    // Retrieve the completed and cancelled appointments connected to the user
-    $previousAppointments = Appointment::where('user_id', $user->id)
-        ->whereIn('status', ['completed', 'cancelled'])
-        ->orderBy('appointment_date', 'desc')
-        ->get();
     
     // Pass the data to the view
     return view('pages/profile-overview-1', [
         'patients' => $patients,
         'appointments' => $appointments,
-        'pendingAppointments' => $pendingAppointments,
-        'previousAppointments' => $previousAppointments,
     ]);
 }
 

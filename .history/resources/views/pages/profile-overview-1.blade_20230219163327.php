@@ -241,7 +241,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach                                
+                                @endforeach
+                                
                                 <a href="" class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a>
                             </div>
                         </div>

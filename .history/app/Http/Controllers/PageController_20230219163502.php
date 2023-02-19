@@ -370,7 +370,9 @@ public function profileOverview1()
     $previousAppointments = Appointment::where('user_id', $user->id)
         ->whereIn('status', ['completed', 'cancelled'])
         ->orderBy('appointment_date', 'desc')
-        ->get();
+        ->get();    
+    
+    
     
     // Pass the data to the view
     return view('pages/profile-overview-1', [

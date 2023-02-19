@@ -145,7 +145,7 @@
                         </div>
                     </div>
                     <div class="p-5">
-                        @foreach ($pendingAppointments as $appointment)
+                        @foreach ($appointments as $appointment)@foreach ($pendingAppointments as $appointment)
                         <div class="flex flex-col sm:flex-row">
                             <div class="mr-auto">
                                 <a href="" class="font-medium">{{ $appointment->appointment_date }}</a>
@@ -219,29 +219,33 @@
                     <div class="p-5">
                         <div class="tab-content">
                             <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
-                                @foreach ($previousAppointments as $appointment)
-                                    <div class="flex flex-col sm:flex-row">
-                                        <div class="mr-auto">
-                                            <a href="" class="font-medium">{{ $appointment->appointment_date }}</a>
-                                            <div class="text-slate-500 mt-1">{{ $appointment->appointment_time }}</div>
-                                        </div>
-                                        <div class="flex">
-                                            <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
-                                                <div class="h-[30px]">
-                                                    <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                                <div class="font-medium">{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
-                                                @if ($appointment->status == 'completed')
-                                                    <div class="bg-success/20 text-success rounded px-2 mt-1.5">Completed</div>
-                                                @elseif ($appointment->status == 'cancelled')
-                                                    <div class="bg-danger/20 text-danger rounded px-2 mt-1.5">Cancelled</div>
-                                                @endif
-                                            </div>
-                                        </div>
+                                <div>
+                                    <div class="flex">
+                                        <div class="mr-auto">Pending Tasks</div>
+                                        <div>20%</div>
                                     </div>
-                                @endforeach                                
+                                    <div class="progress h-1 mt-2">
+                                        <div class="progress-bar w-1/2 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-5">
+                                    <div class="flex">
+                                        <div class="mr-auto">Completed Tasks</div>
+                                        <div>2 / 20</div>
+                                    </div>
+                                    <div class="progress h-1 mt-2">
+                                        <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-5">
+                                    <div class="flex">
+                                        <div class="mr-auto">Tasks In Progress</div>
+                                        <div>42</div>
+                                    </div>
+                                    <div class="progress h-1 mt-2">
+                                        <div class="progress-bar w-3/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
                                 <a href="" class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a>
                             </div>
                         </div>

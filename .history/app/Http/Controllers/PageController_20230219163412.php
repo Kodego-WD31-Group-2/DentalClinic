@@ -371,6 +371,9 @@ public function profileOverview1()
         ->whereIn('status', ['completed', 'cancelled'])
         ->orderBy('appointment_date', 'desc')
         ->get();
+        
+    
+    
     
     // Pass the data to the view
     return view('pages/profile-overview-1', [

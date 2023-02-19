@@ -220,28 +220,30 @@
                         <div class="tab-content">
                             <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
                                 @foreach ($previousAppointments as $appointment)
-                                    <div class="flex flex-col sm:flex-row">
-                                        <div class="mr-auto">
-                                            <a href="" class="font-medium">{{ $appointment->appointment_date }}</a>
-                                            <div class="text-slate-500 mt-1">{{ $appointment->appointment_time }}</div>
-                                        </div>
-                                        <div class="flex">
-                                            <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
-                                                <div class="h-[30px]">
-                                                    <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                                <div class="font-medium">{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
-                                                @if ($appointment->status == 'completed')
-                                                    <div class="bg-success/20 text-success rounded px-2 mt-1.5">Completed</div>
-                                                @elseif ($appointment->status == 'cancelled')
-                                                    <div class="bg-danger/20 text-danger rounded px-2 mt-1.5">Cancelled</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach                                
+    <div class="flex flex-col sm:flex-row">
+        <div class="mr-auto">
+            <a href="" class="font-medium">{{ $appointment->appointment_date }}</a>
+            <div class="text-slate-500 mt-1">{{ $appointment->appointment_time }}</div>
+        </div>
+        <div class="flex">
+            <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
+                <div class="h-[30px]">
+                    <canvas class="simple-line-chart-1" data-random="true"></canvas>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="font-medium">{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
+                @if ($appointment->status == 'completed')
+                    <div class="bg-success/20 text-success rounded px-2 mt-1.5">Completed</div>
+                @elseif ($appointment->status == 'cancelled')
+                    <div class="bg-danger/20 text-danger rounded px-2 mt-1.5">Cancelled</div>
+                @endif
+            </div>
+        </div>
+    </div>
+@endforeach
+
+                                
                                 <a href="" class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a>
                             </div>
                         </div>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('appointment_id');
             // $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('doctor_id');
+            // $table->unsignedBigInteger('patient_id');
             $table->date('appointment_date');
             $table->string('appointment_time');
             $table->string('appointment_type')->nullable();
