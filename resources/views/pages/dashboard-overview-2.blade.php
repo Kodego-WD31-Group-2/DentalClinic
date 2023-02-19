@@ -762,7 +762,7 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $totalAppointments }}</div>
-                                    <div class="text-base text-slate-500 mt-1 text-center">Total Appointments</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">Total of Appointments</div>
                                 </div>
                             </div>
                         </div>
