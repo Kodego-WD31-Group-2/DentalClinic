@@ -257,6 +257,8 @@ Route::middleware('auth')->group(function() {
 
 //Contacts Controller
 Route::get('/contact', [ContactsController::class, 'index']);
+Route::get('/contact/add-contact', [ContactsController::class, 'add']);
+
 
 
 
