@@ -14,15 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('billings', function (Blueprint $table) {
-            $table->increments('billing_id');
+            $table->id();
             $table->unsignedBigInteger('appointment_id');
             $table->decimal('total_cost', 8, 2);
             $table->string('payment_method');
             $table->string('insurance_provider')->nullable();
             $table->timestamps();
-
-            $table->foreign('appointment_id')->references('appointment_id')->on('appointments')->onDelete('cascade');
+        
+            $table->foreign('appointment_id')->references('id')->on('appointments')->onDelete('cascade');
         });
+        
     }
 
     /**

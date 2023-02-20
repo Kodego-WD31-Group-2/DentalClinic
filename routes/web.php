@@ -15,6 +15,7 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RegisterController;
 
 
@@ -254,7 +255,8 @@ Route::middleware('auth')->group(function() {
 // Route::get('pages.chat', [ChatsController::class, 'chat'])->name('chat');
 
 
-
+//Contacts Controller
+Route::get('/contact', [ContactsController::class, 'index']);
 
 
 

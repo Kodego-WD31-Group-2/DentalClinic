@@ -13,13 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('billing_items', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('billing_items');
+    }
+};
