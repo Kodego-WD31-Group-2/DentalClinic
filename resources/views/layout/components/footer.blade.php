@@ -30,13 +30,13 @@
           <a href="/services" class="text-white">Services</a>
         </p>
         <p class="mb-4">
-          <a href="#!" class="text-white">Doctors</a>
+          <a href="/doctors" class="text-white">Doctors</a>
         </p>
         <p class="mb-4">
-          <a href="/contact" class="text-white">Contact Us</a>
+          <a href="/contact/add-contact" class="text-white">Contact Us</a>
         </p>
         <p>
-          <a href="#!" class="text-white">Book an Appointment</a>
+          <a href="/appointments/book-appointment" class="text-white">Book an Appointment</a>
         </p>
       </div>
       <div class="">
