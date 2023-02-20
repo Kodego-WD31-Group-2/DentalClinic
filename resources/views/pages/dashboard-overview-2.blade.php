@@ -673,20 +673,20 @@
                             <i data-lucide="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data
                         </a>
                     </div>
-                    <div class="grid grid-cols-12 gap-6 mt-5">
+                    <div class="grid grid-cols-12 gap-6 mt-5 ">
                         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                             <div class="report-box zoom-in">
-                                <div class="box p-5 bg-custom-1">
+                                <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="shopping-cart" class="report-box__icon text-white"></i>
+                                        <i data-lucide="clipboard" class="report-box__icon text-primary"></i>
                                         <div class="ml-auto">
-                                            <div class="report-box__indicator bg-success tooltip cursor-pointer" title="33% Higher than last month">
+                                            <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="33% Higher than last month">
                                                 33% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6 text-center text-white">{{ $appointmentsToday }}</div>
-                                    <div class="text-base text-slate-500 mt-1 text-center text-white">Today's Total Appointments</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $appointmentsToday }}</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">Today's Total Appointments</div>
                                 </div>
                             </div>
                         </div>
@@ -694,7 +694,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="credit-card" class="report-box__icon text-pending"></i>
+                                        <i data-lucide="clipboard-check" class="report-box__icon text-pending"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="2% Lower than last month">
                                                 2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i>
@@ -710,7 +710,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="monitor" class="report-box__icon text-warning"></i>
+                                        <i data-lucide="clipboard-list" class="report-box__icon text-warning"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="12% Higher than last month">
                                                 12% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
@@ -726,7 +726,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="user" class="report-box__icon text-success"></i>
+                                        <i data-lucide="clipboard-x" class="report-box__icon text-success"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month">
                                                 22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
@@ -754,7 +754,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="shopping-cart" class="report-box__icon text-primary"></i>
+                                        <i data-lucide="clipboard" class="report-box__icon text-primary"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="33% Higher than last month">
                                                 33% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
@@ -770,7 +770,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="credit-card" class="report-box__icon text-pending"></i>
+                                        <i data-lucide="clipboard-check" class="report-box__icon text-pending"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="2% Lower than last month">
                                                 2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i>
@@ -786,7 +786,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="monitor" class="report-box__icon text-warning"></i>
+                                        <i data-lucide="clipboard-list" class="report-box__icon text-warning"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="12% Higher than last month">
                                                 12% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
@@ -802,7 +802,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="user" class="report-box__icon text-success"></i>
+                                        <i data-lucide="clipboard-x " class="report-box__icon text-success"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month">
                                                 22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
