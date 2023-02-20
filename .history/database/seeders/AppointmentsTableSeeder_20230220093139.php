@@ -17,7 +17,7 @@ class AppointmentsTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('en_PH');
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             Appointment::create([
                 // 'patient_id' => $faker->numberBetween(1, 50),
                 'doctor_id' => $faker->numberBetween(1, 9),

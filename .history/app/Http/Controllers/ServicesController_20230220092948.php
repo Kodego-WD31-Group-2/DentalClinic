@@ -35,7 +35,7 @@ class ServicesController extends Controller
     //Show All Services
     public function index() {
         return view('pages.services',[
-            'service' => Service::latest()->paginate(20)
+            'service' => Service::latest()->paginate()
         ]);
     }
     //Show All Services
