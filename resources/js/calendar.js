@@ -67,6 +67,7 @@ import listPlugin from "@fullcalendar/list";
                     end: "2021-01-27",
                 },
             ],
+
             drop: function (info) {
                 if (
                     $("#checkbox-events").length &&
