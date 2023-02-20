@@ -43,16 +43,18 @@ class AppointmentsController extends Controller
             'signature_confirm' => 'required|boolean',
             'reminders_consent' => 'required|boolean',
             'release_signature' => 'required|boolean',
+            'user_id' => 'nullable'
             // 'appointment_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         // if($request->hasFile('appointment_image')) {
         //     $formFields['appointment_image'] = $request->file('appointment_image')->store('appointment_images', 'public');
         // }
+        // $formFields['user_id'] = '2'; // add user_id field with default value of 2
         
         Appointment::create($formFields);
         
-        return redirect('/home')->with('message', 'Appointment created successfully');
+        return redirect('/appointments/list')->with('message', 'Appointment created successfully');
     }
    
     // Show All Appointments

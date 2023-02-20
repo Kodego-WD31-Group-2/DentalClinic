@@ -33,7 +33,8 @@ class Appointment extends Model
         'hear_about_practice',
         'signature_confirm',
         'reminders_consent',
-        'release_signature'
+        'release_signature',
+        
     ];
 
     protected $primaryKey = 'appointment_id';

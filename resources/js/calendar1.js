@@ -36,49 +36,37 @@ import listPlugin from "@fullcalendar/list";
                 center: "title",
                 right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
             },
-            initialDate: "2023-02-20",
+            initialDate: "2021-01-12",
             navLinks: true,
             editable: true,
             dayMaxEvents: true,
             events: [
-                {
-                    title: "Vue Vixens Day",
-                    start: "2021-01-05",
-                    end: "2021-01-08",
-                },
-                {
-                    title: "VueConfUS",
-                    start: "2021-01-11",
-                    end: "2021-01-15",
-                },
-                {
-                    title: "VueJS Amsterdam",
-                    start: "2021-01-17",
-                    end: "2021-01-21",
-                },
-                {
-                    title: "Vue Fes Japan 2019",
-                    start: "2021-01-21",
-                    end: "2021-01-24",
-                },
-                {
-                    title: "Laracon 2021",
-                    start: "2021-01-24",
-                    end: "2021-01-27",
-                },
+                // {
+                //     title: "Vue Vixens Day",
+                //     start: "2021-01-05",
+                //     end: "2021-01-08",
+                // },
+                // {
+                //     title: "VueConfUS",
+                //     start: "2021-01-11",
+                //     end: "2021-01-15",
+                // },
+                // {
+                //     title: "VueJS Amsterdam",
+                //     start: "2021-01-17",
+                //     end: "2021-01-21",
+                // },
+                // {
+                //     title: "Vue Fes Japan 2019",
+                //     start: "2021-01-21",
+                //     end: "2021-01-24",
+                // },
+                // {
+                //     title: "Laracon 2021",
+                //     start: "2021-01-24",
+                //     end: "2021-01-27",
+                // },
             ],
-
-            dayCellDidMount: function (info) {
-                let today = new Date();
-                if (
-                    info.date.getDate() === today.getDate() &&
-                    info.date.getMonth() === today.getMonth() &&
-                    info.date.getFullYear() === today.getFullYear()
-                ) {
-                    // info.el.style.backgroundColor = "rgb(29, 92, 99)";
-                    // info.el.style.color = "white";
-                }
-            },
 
             drop: function (info) {
                 if (
