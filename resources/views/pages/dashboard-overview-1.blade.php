@@ -21,7 +21,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="shopping-cart" class="report-box__icon text-primary"></i>
+                                        <i data-lucide="clipboard" class="report-box__icon text-primary"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="33% Higher than last month">
                                                 33% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
@@ -37,7 +37,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="credit-card" class="report-box__icon text-pending"></i>
+                                        <i data-lucide="clipboard-list" class="report-box__icon text-pending"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="2% Lower than last month">
                                                 2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i>
@@ -53,7 +53,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="monitor" class="report-box__icon text-warning"></i>
+                                        <i data-lucide="bar-chart" class="report-box__icon text-warning"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="12% Higher than last month">
                                                 12% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>

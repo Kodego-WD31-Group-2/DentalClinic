@@ -13,7 +13,7 @@ class PatientAppointmentSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('en_PH');
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $patient = Patient::create([
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,

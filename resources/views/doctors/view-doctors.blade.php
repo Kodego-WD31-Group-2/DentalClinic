@@ -21,7 +21,7 @@
       <div class="flex flex-wrap">
         <div class="grow-0 shrink-0 basis-auto w-full lg:w-5/12 mb-12 lg:mb-0">
           <div class="flex lg:py-12">
-            <img src='{{ asset('storage/'. $doctor->doctor_image)}}' class="h-2/4 rounded-lg shadow-lg"
+            <img src='{{ file_exists(public_path('storage/' . $doctor->doctor_image)) ? asset('storage/' . $doctor->doctor_image) : asset($doctor->doctor_image) }}' class="h-2/4 rounded-lg shadow-lg"
               id="image" style="z-index: 10" alt="" />
           </div>
         </div>
