@@ -8,6 +8,7 @@ use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AppointmentsController;
+use App\Http\Controllers\BillingsController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\PatientsController;
@@ -17,7 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +116,24 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/billings/{billing}', [BillingsController::class, 'update'])->name('billings.update');
     Route::delete('/billings/{billing}', [BillingsController::class,'destroy']);
 });
+
+
+Route::get('/fee-schedule', [BillingsController::class, 'feeschedule'])->name('fee-schedule');
+
+
+// Route::get('/transaction-items', [BillingsController::class, 'showTransactionItems'])->name('transaction-items.index');
+
+
+Route::get('/transaction-items', [TransactionController::class, 'index'])->name('transactions.index');
+Route::get('/transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
+Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
+Route::get('/transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
+Route::get('/transactions/{transaction}/edit', [TransactionController::class, 'edit'])->name('transactions.edit');
+Route::put('/transactions/{transaction}', [TransactionController::class, 'update'])->name('transactions.update');
+Route::delete('/transactions/{transaction}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+Route::get('/transaction-list', [TransactionController::class, 'transactions'])->name('transactions.transactions');
+
+
 
 
 
