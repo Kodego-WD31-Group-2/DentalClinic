@@ -52,7 +52,7 @@
                     <tr>
                         <th class="text-center whitespace-nowrap">TRANSACTION ID</th>
                         <th class="text-center whitespace-nowrap">APPOINTMENT ID</th>
-                        <th class="text-center whitespace-nowrap">FIRST NAME</th>
+                        <th class="text-center whitespace-nowrap">NAME</th>
                         <th class="text-center whitespace-nowrap">TOTAL COST</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
                     </tr>
@@ -62,11 +62,15 @@
                             <tr class="intro-x">
                                 <td class="text-center">{{ $transaction->id }}</td>
                                 <td class="text-center">{{ $transaction->appointment_id }}</td>
-                                <td class="text-center">{{ optional($transaction->appointment)->first_name }}</td>
+                                <td class="text-center">{{ $transaction->appointment->name }}</td>
 
-                                {{-- <td class="text-center">{{ $transaction->appointment->first_name}}</td> --}}
+                                {{-- <td class="text-center">{{ $transaction->appointment->first_name ?? '' }} {{ $transaction->appointment->last_name ?? '' }}</td> --}}
+
+                                {{-- <td class="text-center">{{ $transaction->total_cost }}</td> --}}
                                 <td class="text-center">{{ $transaction->getTotalCostAttribute() }}</td>
 
+
+                                {{-- <td class="text-center">{{ $transaction->transactionItems()->sum('cost') }}</td> --}}
                                 <td class="table-report__action w-56">
                                     <div class="flex justify-center items-center">
                                         <a class="flex items-center mr-3" href="{{ route('transactions.edit', $transaction->id) }}">
@@ -87,7 +91,41 @@
             </table>
         </div>
         <!-- END: Data List -->
-
+        {{-- <!-- BEGIN: Data List -->
+<div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+    <table class="table table-report -mt-2">
+        <thead>
+            <tr>
+                <th class="text-center whitespace-nowrap">TRANSACTION ID</th>
+                <th class="text-center whitespace-nowrap">TOTAL COST</th>
+                <th class="text-center whitespace-nowrap">ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($transactions as $transaction)
+                <tr class="intro-x">
+                    <td class="text-center">{{ $transaction->id }}</td>
+                    <td class="text-center">{{ $transaction->total_cost }}</td>
+                    <td class="table-report__action w-56">
+                        <div class="flex justify-center items-center">
+                            <a class="flex items-center mr-3" href="{{ route('transactions.edit', $transaction->id) }}">
+                                <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
+                            </a>
+                            <form action="{{ route('transactions.destroy', $transaction->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="flex items-center text-danger" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+<!-- END: Data List --> --}}
 
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
