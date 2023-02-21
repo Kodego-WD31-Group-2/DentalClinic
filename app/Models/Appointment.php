@@ -37,6 +37,24 @@ class Appointment extends Model
         
     ];
 
+    public function scopeFilter($query, array $filters) {
+
+        // if ($filters['search'] ?? false) {
+        //     $query->where('first_name', 'like', '%' . $filters['search'] . '%' )
+        //         ->orWhere('last_name', 'like', '%' . $filters['search'] . '%' );
+        // }
+        if ($filters['search'] ?? false) {
+            $query->where(function ($query) use ($filters) {
+                $query->where('first_name', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('last_name', 'like', '%' . $filters['search'] . '%')
+                    ->orWhereHas('doctor', function ($query) use ($filters) {
+                        $query->where('first_name', 'like', '%' . $filters['search'] . '%')
+                            ->orWhere('last_name', 'like', '%' . $filters['search'] . '%');
+                    });
+            });
+        }
+    }
+
     protected $primaryKey = 'appointment_id';
 
     // Relationships with Patients and Doctors

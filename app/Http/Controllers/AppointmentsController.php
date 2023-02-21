@@ -66,9 +66,15 @@ class AppointmentsController extends Controller
 
     public function index() 
     {
+        // $filters = [
+        //     'search' => $request->input('search'),
+        // ];
+
         $appointments = Appointment::orderBy('appointment_date')
             ->orderBy('appointment_time')
+            ->filter(request()->only('search'))
             ->simplepaginate(20);
+
         return view('appointments.show-appointments', compact('appointments'));
     }
     

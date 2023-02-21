@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>CRUD Data List - Smileville Dental Services</title>
+    <title>Appointments Listing - Smileville Dental Services</title>
 @endsection
 
 @section('subcontent')
@@ -12,8 +12,10 @@
             <div class="hidden md:block mx-auto text-slate-500">{{-- Showing 1 to 10 of 150 entries --}}</div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+                    <form action="{{ route('appointments-list') }}" method="GET">
+                        <input type="text" class="form-control w-56 box pr-10" placeholder="Search..." name="search">
+                        <button type="submit" class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"><i class="fa fa-search"></i></button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -48,13 +50,28 @@
                                 <p class="font-medium whitespace-nowrap">{{ $appointment->appointment_type }}</p>
                             </td>
                             <td class="w-40">
-                                <div class="flex items-center justify-center {{-- {{ $faker['true_false'][0] ? 'text-success' : 'text-danger' }} --}}">
+                                <div class="flex items-center justify-center">
                                     {{-- <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> {{ $faker['true_false'][0] ? 'Active' : 'Inactive' }} --}}
-                                    <select class="form-select mt-2 sm:mr-2" aria-label="Default select example">
+                                    {{-- <select class="form-select mt-2 sm:mr-2" aria-label="Default select example">
                                       <option value="Pending" {{ $appointment->status == 'pending' ? 'selected' : '' }}>Pending</option>
                                       <option value="completed" {{ $appointment->status == 'completed' ? 'selected' : '' }}>Completed</option>
                                       <option value="cancelled" {{ $appointment->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                                  </select>
+                                  </select> --}}
+                                   @if($appointment->status === 'completed')
+                                        <a class="flex items-center mr-3 text-green-700" >
+                                            <i data-lucide="check-square" class="w-4 h-4 mr-1"> </i>Completed
+                                        </a>
+                                    @elseif($appointment->status === 'pending')
+                                        <a class="flex items-center mr-3 text-yellow-500" >
+                                            <i data-lucide="clipboard-list" class="w-4 h-4 mr-1"></i> Pending
+                                        </a>
+                                    @elseif($appointment->status === 'cancelled')
+                                        <a class="flex items-center mr-3 text-red-700">
+                                            <i data-lucide="slash" class="w-4 h-4 mr-1"></i> Cancelled
+                                        </a>
+                                    @else
+                                        <span>{{ $status }}</span>
+                                    @endif
                                 </div>
                             </td>
                             <td class="table-report__action w-56">
