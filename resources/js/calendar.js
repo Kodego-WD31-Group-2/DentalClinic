@@ -36,7 +36,7 @@ import listPlugin from "@fullcalendar/list";
                 center: "title",
                 right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
             },
-            initialDate: "2021-01-12",
+            initialDate: "2023-02-20",
             navLinks: true,
             editable: true,
             dayMaxEvents: true,
@@ -67,6 +67,18 @@ import listPlugin from "@fullcalendar/list";
                     end: "2021-01-27",
                 },
             ],
+
+            dayCellDidMount: function (info) {
+                let today = new Date();
+                if (
+                    info.date.getDate() === today.getDate() &&
+                    info.date.getMonth() === today.getMonth() &&
+                    info.date.getFullYear() === today.getFullYear()
+                ) {
+                    // info.el.style.backgroundColor = "rgb(29, 92, 99)";
+                    // info.el.style.color = "white";
+                }
+            },
 
             drop: function (info) {
                 if (

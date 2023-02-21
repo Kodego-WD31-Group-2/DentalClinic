@@ -33,8 +33,27 @@ class Appointment extends Model
         'hear_about_practice',
         'signature_confirm',
         'reminders_consent',
-        'release_signature'
+        'release_signature',
+        
     ];
+
+    public function scopeFilter($query, array $filters) {
+
+        // if ($filters['search'] ?? false) {
+        //     $query->where('first_name', 'like', '%' . $filters['search'] . '%' )
+        //         ->orWhere('last_name', 'like', '%' . $filters['search'] . '%' );
+        // }
+        if ($filters['search'] ?? false) {
+            $query->where(function ($query) use ($filters) {
+                $query->where('first_name', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('last_name', 'like', '%' . $filters['search'] . '%')
+                    ->orWhereHas('doctor', function ($query) use ($filters) {
+                        $query->where('first_name', 'like', '%' . $filters['search'] . '%')
+                            ->orWhere('last_name', 'like', '%' . $filters['search'] . '%');
+                    });
+            });
+        }
+    }
 
     protected $primaryKey = 'appointment_id';
 
