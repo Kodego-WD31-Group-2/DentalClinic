@@ -20,7 +20,7 @@
   
       <div class="flex flex-wrap">
         <div class="grow-0 shrink-0 basis-auto w-full lg:w-5/12 mb-12 lg:mb-0">
-          <div class="flex lg:py-12">
+          <div class="flex lg:py-12 justify-center">
             <img src="{{ file_exists(public_path('storage/' . $doctor->doctor_image)) ? asset('storage/' . $doctor->doctor_image) : asset($doctor->doctor_image) }}" class="h-2/4 rounded-lg shadow-lg"
               id="image" style="z-index: 10" alt="" />
           </div>
@@ -30,7 +30,7 @@
           <div
             class="bg-custom-4 h-full rounded-lg p-6 lg:pl-12 text-white flex items-center text-center lg:text-left">
             <div class="lg:pl-12">
-              <h2 class="text-3xl font-bold mb-5">Dr. {{$doctor->first_name}} {{$doctor->last_name}}</h2>
+              <h2 class="text-3xl font-bold mb-5">{{$doctor->first_name}} {{$doctor->last_name}}</h2>
               <h2 class="text-lg font-bold mb-10">{{$doctor->specialty}}</h2>
               <div class="flex flex-col md:flex-row md:justify-around xl:justify-start mb-6 mx-auto">
                 <p class="flex items-center mb-4 md:mb-2 lg:mb-0 mx-auto md:mx-0 xl:mr-20">

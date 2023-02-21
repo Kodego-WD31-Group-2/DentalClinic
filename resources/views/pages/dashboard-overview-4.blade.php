@@ -5,7 +5,7 @@
 @endsection
 
 @section('subcontent')
-    <div class="grid grid-cols-12 gap-6">
+    {{-- <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 2xl:col-span-9">
             <div class="grid grid-cols-12 gap-6">
                 <!-- BEGIN: General Report -->
@@ -758,5 +758,45 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+    <div class="shadow-lg rounded-lg overflow-hidden">
+        <div class="py-3 px-5 bg-gray-50">Bar chart</div>
+        <canvas class="p-10" id="chartBar"></canvas>
+      </div>
+      
+      <!-- Required chart.js -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <!-- Chart bar -->
+      <script>
+        const labelsBarChart = [
+          "Male",
+          "Female",
+          "Child",
+          "Adult",
+          "Senior",
+        ];
+        const dataBarChart = {
+          labels: labelsBarChart,
+          datasets: [
+            {
+              label: "List",
+              backgroundColor: "hsl(252, 82.9%, 67.8%)",
+              borderColor: "hsl(252, 82.9%, 67.8%)",
+              data: [{{$maleCount}}, {{$femaleCount}}, {{$minorCount}}, {{$adultCount}}, {{$seniorCount}}],
+            },
+          ],
+        };
+      
+        const configBarChart = {
+          type: "bar",
+          data: dataBarChart,
+          options: {},
+        };
+      
+        var chartBar = new Chart(
+          document.getElementById("chartBar"),
+          configBarChart
+        );
+      </script>
 @endsection

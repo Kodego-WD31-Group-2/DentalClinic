@@ -106,10 +106,6 @@ class PageController extends Controller
             'pendingPercentage' => $pendingPercentage,
             'cancelledPercentage' => $cancelledPercentage,
             'doctors' => $doctors,
-            'maleCount' => $maleCount,
-            'femaleCount' => $femaleCount,
-            'malePercentage' => $malePercentage,
-            'femalePercentage' => $femalePercentage,
             'layout' => 'side-menu'
         ]);
     }
@@ -134,7 +130,66 @@ class PageController extends Controller
      */
     public function dashboardOverview4()
     {
-        return view('pages/dashboard-overview-4');
+        //Gender
+        $maleCount = Patient::where('gender', 'male')->count();
+        $femaleCount = Patient::where('gender', 'female')->count();
+        $total = $maleCount + $femaleCount;
+        $malePercentage = $total > 0 ? round($maleCount / $total * 100, 2) : 0;
+        $femalePercentage = $total > 0 ? round($femaleCount / $total * 100, 2) : 0;
+
+
+        // Age Sorter
+        $minorCount = Patient::whereRaw("DATE_ADD(date_of_birth, INTERVAL 18 YEAR) > CURDATE()")->count();
+        $adultCount = Patient::whereRaw("DATE_ADD(date_of_birth, INTERVAL 18 YEAR) <= CURDATE()")->count();
+        $seniorCount = Patient::whereRaw("DATE_ADD(date_of_birth, INTERVAL 60 YEAR) <= CURDATE()")->count();
+        $total = $minorCount + $adultCount + $seniorCount;
+        $minorPercentage = $total > 0 ? round($minorCount / $total * 100, 2) : 0;
+        $adultPercentage = $total > 0 ? round($adultCount / $total * 100, 2) : 0;
+        $seniorPercentage = $total > 0 ? round($seniorCount / $total * 100, 2) : 0;
+
+        $currentYear = date('Y');
+        $patients = Patient::all();
+        $ageGroups = [
+            'below18' => ['count' => 0, 'percentage' => 0],
+            '18to30' => ['count' => 0, 'percentage' => 0],
+            '31to45' => ['count' => 0, 'percentage' => 0],
+            'above45' => ['count' => 0, 'percentage' => 0],
+            'senior' => ['count' => 0, 'percentage' => 0],
+        ];
+        foreach ($patients as $patient) {
+            $age = $currentYear - date('Y', strtotime($patient->date_of_birth));
+            if ($age < 18) {
+                $ageGroups['below18']['count']++;
+            } elseif ($age >= 18 && $age <= 30) {
+                $ageGroups['18to30']['count']++;
+            } elseif ($age > 30 && $age <= 45) {
+                $ageGroups['31to45']['count']++;
+            } elseif ($age > 45 && $age <= 60) {
+                $ageGroups['above45']['count']++;
+            } else {
+                $ageGroups['senior']['count']++;
+            }
+        }
+        $total = count($patients);
+        foreach ($ageGroups as $key => $group) {
+            $ageGroups[$key]['percentage'] = $total > 0 ? round($group['count'] / $total * 100, 2) : 0;
+        }
+
+        
+        return view('pages/dashboard-overview-4', [
+            'maleCount' => $maleCount,
+            'femaleCount' => $femaleCount,
+            'malePercentage' => $malePercentage,
+            'femalePercentage' => $femalePercentage,
+            'minorCount' => $minorCount,
+            'adultCount' => $adultCount,
+            'seniorCount' => $seniorCount,
+            'minorPercentage' => $minorPercentage,
+            'adultPercentage' => $adultPercentage,
+            'seniorPercentage' => $seniorPercentage,
+            'ageGroups' => $ageGroups,
+        ]);
+            
     }
 
     /**

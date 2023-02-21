@@ -17,8 +17,8 @@ class PatientAppointmentSeeder extends Seeder
             $patient = Patient::create([
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
-                'date_of_birth' => $faker->dateTimeBetween('-50 years', 'now'),
-                'gender' => $faker->randomElement(['Male', 'Female', 'Other']),
+                'date_of_birth' => $faker->dateTimeBetween('-70 years', 'now'),
+                'gender' => $faker->randomElement(['Male', 'Female']),
                 'address' => $faker->address,
                 'phone_number' => $faker->phoneNumber,
                 'email' => $faker->safeEmail,

@@ -15,6 +15,7 @@ class PatientsTableSeeder extends Seeder
      */
     public function run()
     {
+
         $faker = \Faker\Factory::create('en_PH');
 
         for ($i = 0; $i < 50; $i++) {

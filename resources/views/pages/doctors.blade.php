@@ -129,7 +129,6 @@
                     <img src="{{ file_exists(public_path('storage/' . $doctor->doctor_image)) ? asset('storage/' . $doctor->doctor_image) : asset($doctor->doctor_image) }}" class="w-full rounded-t-lg" />
                     <a href="/doctors/{{$doctor->doctor_id}}/view">
                       <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"></div>
-                    
                     <svg class="absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"
                       style="left: 0; bottom: 0">
                       <path fill="#fff"
@@ -139,7 +138,7 @@
                   </div>
                 </a>
                   <div class="p-6">
-                    <h5 class="text-lg font-bold mb-4">Dr. {{$doctor->first_name}} {{$doctor->last_name}}</h5>
+                    <h5 class="text-lg font-bold mb-4">{{$doctor->first_name}} {{$doctor->last_name}}</h5>
                     <p class="text-black-500 mb-4">{{$doctor->specialty}}</p>
                   </div>
                 </a>

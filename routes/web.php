@@ -57,14 +57,14 @@ Route::controller(AuthController::class)->middleware('loggedin')->group(function
     Route::post('login', 'login')->name('login.check');
 });
 
-
+Route::get('doctors/{doctor}/view', [DoctorsController::class, 'view']);
 //Admin Middleware
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('doctors/add', [DoctorsController::class, 'add'])->name('doctors.add');
     Route::post('doctors/store', [DoctorsController::class, 'store'])->name('doctors.store');
     Route::get('doctors/show', [DoctorsController::class, 'show'])->name('doctors.show');
     Route::get('doctors/{doctor}/edit', [DoctorsController::class, 'edit']);
-    Route::get('doctors/{doctor}/view', [DoctorsController::class, 'view']);
+    
     Route::put('doctors/{doctor}', [DoctorsController::class, 'update']);
     Route::delete('doctors/{doctor}', [DoctorsController::class,'destroy']);
     Route::get('/services/add', [ServicesController::class, 'add'])->middleware('auth');

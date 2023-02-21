@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('specialty');
             $table->string('email');
-            $table->string('description');
+            $table->string('description', 1000);
             $table->string('doctor_image');
             $table->timestamps();
         });
