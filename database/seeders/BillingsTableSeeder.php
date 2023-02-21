@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Billing;
+use App\Models\Billings;
 use Faker\Generator as Faker;
 
 class BillingsTableSeeder extends Seeder
@@ -27,7 +28,7 @@ class BillingsTableSeeder extends Seeder
 
         array_push($used_appointment_ids, $appointment_id);
 
-        Billing::create([
+        Billings::create([
             // 'patient_id' => $faker->numberBetween(1, 50),
             'appointment_id' => $appointment_id,
             'total_cost' => $faker->randomFloat(2, 50, 200),

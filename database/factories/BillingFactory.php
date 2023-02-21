@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Appointment;
 use App\Models\Billing;
+use App\Models\Billings;
 use App\Models\Patient;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -36,7 +37,7 @@ class BillingFactory extends Factory
     
             array_push($used_appointment_ids, $appointment_id);
     
-            Billing::create([
+            Billings::create([
                 // 'patient_id' => $faker->numberBetween(1, 50),
                 'appointment_id' => $appointment_id,
                 'total_cost' => $faker->randomFloat(2, 50, 200),
