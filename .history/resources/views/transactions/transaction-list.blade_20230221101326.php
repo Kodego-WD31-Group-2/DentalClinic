@@ -62,7 +62,8 @@
                             <tr class="intro-x">
                                 <td class="text-center">{{ $transaction->id }}</td>
                                 <td class="text-center">{{ $transaction->appointment_id }}</td>
-                                <td class="text-center">{{ optional($transaction->appointment)->first_name }}</td>
+                                {{-- <td class="text-center">{{ optional($transaction->appointment)->first_name }}</td> --}}
+                                <td class="text-center">{{ $transaction->getFirstNameAttribute() }}</td>
 
                                 {{-- <td class="text-center">{{ $transaction->appointment->first_name}}</td> --}}
                                 <td class="text-center">{{ $transaction->getTotalCostAttribute() }}</td>

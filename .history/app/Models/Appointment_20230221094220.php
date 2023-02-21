@@ -62,10 +62,10 @@ class Appointment extends Model
     return $this->hasMany(Transaction::class);
 }
 
-// public function getNameAttribute()
-// {
-//     return $this->first_name . ' ' . $this->last_name;
-// }
+public function getNameAttribute()
+{
+    return $this->first_name . ' ' . $this->last_name;
+}
 
     
 }

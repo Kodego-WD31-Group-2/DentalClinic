@@ -30,8 +30,6 @@ public function transactions()
 }
 
 
-
-
     public function edit(TransactionItem $transactionItem)
     {
         return view('transaction-edit', compact('transactionItem'));

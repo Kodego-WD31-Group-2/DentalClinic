@@ -34,10 +34,10 @@ class Transaction extends Model
         ->value('total_cost');
 }
 
-// public function getFirstNameAttribute()
-// {
-//     $appointment = $this->appointment()->with('first_name')->first();
-//     return optional($appointment)->first_name;
-// }
+public function getFirstNameAttribute()
+{
+    $appointment = $this->appointment()->with('first_name')->first();
+    return optional($appointment)->first_name;
+}
 
 }
