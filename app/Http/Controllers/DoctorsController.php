@@ -13,9 +13,8 @@ class DoctorsController extends Controller
 
     //Admin View All Doctors
     public function show() {
-        return view('doctors.show-doctors', [
-            'doctor' => Doctor::all()
-        ]);    
+        $doctors = Doctor::simplepaginate(3);
+        return view('doctors.show-doctors', compact('doctors'));
     }
 
     // Show Doctors Page

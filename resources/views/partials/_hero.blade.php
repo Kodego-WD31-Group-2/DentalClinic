@@ -13,10 +13,10 @@ style="
 >
   <div class="flex justify-center items-center h-full">
     <div class="text-center text-white px-6 md:px-12">
-      <h1 class="text-blue-200 text-3xl md:text-2xl xl:text-7xl font-bold tracking-tight mb-6">
+      <h1 class="text-blue-200 text-3xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-6">
         Premier Dental Services made Accessible
       </h1>
-      <h3 class="text-blue-200 text-3xl md:text-2xl xl:text-4xl font-bold tracking-tight mb-6">Leading providers for your dental needs now more easy to reach</h3>
+      <h3 class="text-blue-200 text-3xl md:text-4xl xl:text-4xl font-bold tracking-tight mb-2">Leading providers for your dental needs now more easy to reach</h3>
       <br>
       <button
         type="button"
