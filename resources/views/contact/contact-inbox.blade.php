@@ -194,9 +194,7 @@
                                     <a href="javascript:;" class="w-5 h-5 flex-none ml-2 flex items-center justify-center text-slate-400">
                                         <i class="w-4 h-4" data-lucide="bookmark"></i>
                                     </a>
-                                    <div class="w-6 h-6 flex-none image-fit relative ml-5">
-                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('build/assets/images/' . $faker['photos'][0]) }}">
-                                    </div>
+                                    
                     @endforeach
                                     <div class="inbox__item--sender truncate ml-3">{{ $contact->name }}</div>
                                 </div>
@@ -212,8 +210,7 @@
                     @endforeach
                 </div>
                 <div class="p-5 flex flex-col sm:flex-row items-center text-center sm:text-left text-slate-500">
-                    <div>4.41 GB (25%) of 17 GB used Manage</div>
-                    <div class="sm:ml-auto mt-2 sm:mt-0">Last account activity: 36 minutes ago</div>
+                    {{ $contacts->links() }}
                 </div>
             </div>
             <!-- END: Inbox Content -->

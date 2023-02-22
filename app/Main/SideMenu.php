@@ -210,7 +210,7 @@ class SideMenu
             ],
             'inbox' => [
                 'icon' => 'inbox',
-                'route_name' => 'inbox',
+                'route_name' => 'contact.inbox',
                 'params' => [
                     'layout' => 'side-menu'
                 ],
