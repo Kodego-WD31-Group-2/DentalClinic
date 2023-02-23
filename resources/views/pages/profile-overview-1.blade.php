@@ -161,9 +161,9 @@
                 <!-- END: Top Categories -->
                 <!-- BEGIN: Work In Progress -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
-                    <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <div class=" items-center px-5 py-7  my-6sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Previous Appointments</h2>
-                        <div class="dropdown ml-auto sm:hidden">
+                        {{-- <div class="dropdown ml-auto sm:hidden">
                             <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
                                 <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i>
                             </a>
@@ -205,7 +205,7 @@
                                     Last Week
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="p-5">
                         <div class="tab-content">
@@ -253,7 +253,7 @@
                             </div>
                         </div>
                         <button class="btn btn-outline-secondary hidden sm:flex">
-                            <a href="">
+                            <a href="/patients/add">
                                 <div class="flex">
                                     <i data-lucide="plus" class="w-4 h-4 mr-2"></i> New Patient
                                 </div>
@@ -278,7 +278,7 @@
                 <!-- END: Daily Sales -->
                 <!-- BEGIN: Latest Tasks -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
-                    <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <div class="flex items-center px-5 py-5 my-6sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Billing History</h2>
                         <div class="dropdown ml-auto sm:hidden">
                             <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
@@ -295,7 +295,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <ul
+                        {{-- <ul
                             class="nav nav-link-tabs w-auto ml-auto hidden sm:flex"
                             role="tablist"
                         >
@@ -322,7 +322,7 @@
                                     Last Week
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="p-5">
                         <div class="tab-content">
