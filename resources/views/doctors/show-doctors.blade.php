@@ -51,7 +51,7 @@
                     <img alt="" class="rounded-md" src="{{ file_exists(public_path('storage/' . $doctor->doctor_image)) ? asset('storage/' . $doctor->doctor_image) : asset($doctor->doctor_image) }}">
                 </div>
                 <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                    <a href="" class="font-medium">Dr. {{ $doctor->first_name}} {{ $doctor->last_name}}</a>
+                    <a href="" class="font-medium">{{ $doctor->first_name}} {{ $doctor->last_name}}</a>
                     <div class="text-slate-500 text-xs mt-0.5">{{ $doctor->specialty}}</div>
                 </div>
                 </div>
