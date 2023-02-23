@@ -160,11 +160,10 @@
                     </div>
                 </div>
                 <!-- END: All Appointment Report -->     
-                <!-- BEGIN: Appointment by Status -->
+                <!-- BEGIN: Appointment by Service -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Appointment by Service Type</h2>
-                        <a href="" class="ml-auto text-primary truncate">Show More</a>
                     </div>
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
@@ -191,12 +190,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: Appointment by Status -->
+                <!-- END: Appointment by Service -->
                 <!-- BEGIN: Appointment Chart -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Appointment Chart</h2>
-                        <a href="" class="ml-auto text-primary truncate">Show More</a>
                     </div>
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
@@ -223,44 +221,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: Sales Report -->
-                <!-- BEGIN: Prev Appt by Doc -->
-                {{-- <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
-                    <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Appointments by Doctor</h2>
-                        <a href="" class="ml-auto text-primary truncate">Show More</a>
-                    </div>
-                    <div class="intro-y box mt-5">
-                        </div>
-                        <div class="p-5" id="bordered-table">
-                            <div class="preview">
-                                <div class="overflow-x-auto">
-                                    <table class="table table-bordered">
-                                        <thead class="bg-custom-1 text-white">
-                                            <tr>
-                                                <th class="whitespace-nowrap">Doctor</th>
-                                                <th class="whitespace-nowrap">Specialty</th>
-                                                <th class="whitespace-nowrap">Total Appointments</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($appointmentsByDoctor as $doctor)
-                                            <tr>
-                                                <td>Dr. {{ ($doctor->first_name) }} {{ $doctor->last_name }}</td>
-                                                <td>{{ $doctor->specialty }}</td>
-                                                <td>{{ $doctor->total_appointments }}</td>                                    
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>   
-                    </div> 
-                </div> --}}
-                <!-- END: Prev Appt by Doc -->
-                <!-- BEGIN: App Doc -->
+                <!-- END: Appointment Chart -->
+                <!-- BEGIN: App by Doc -->
                 <div class="col-span-12 xl:col-span-12 mt-6">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Appointments by Doctors</h2>

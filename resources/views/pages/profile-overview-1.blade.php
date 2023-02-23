@@ -276,7 +276,7 @@
                     </div>
                 </div>
                 <!-- END: Daily Sales -->
-                <!-- BEGIN: Latest Tasks -->
+                <!-- BEGIN: Billing History -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Billing History</h2>

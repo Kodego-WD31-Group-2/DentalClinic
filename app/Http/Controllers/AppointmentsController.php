@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class AppointmentsController extends Controller
 {   
@@ -47,6 +48,7 @@ class AppointmentsController extends Controller
             // 'appointment_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
+        // If you want image
         // if($request->hasFile('appointment_image')) {
         //     $formFields['appointment_image'] = $request->file('appointment_image')->store('appointment_images', 'public');
         // }
@@ -64,16 +66,45 @@ class AppointmentsController extends Controller
     //     return view('appointments.show-appointments', compact('appointments'));
     // }  
 
-    public function index() 
+    // public function index() 
+    // {
+    //     $appointments = Appointment::latest()
+    //         ->orderBy('appointment_date')
+    //         ->orderBy('appointment_time')
+    //         ->filter(request()->only('search'))
+    //         ->simplepaginate(20);
+
+    //     return view('appointments.show-appointments', compact('appointments'));
+    // }
+
+    public function index()
     {
-        $appointments = Appointment::latest()
-            ->orderBy('appointment_date')
+        
+        $sortByDate = (bool) request('sortByDate');
+        $today = date('Y-m-d');
+
+        // $appointments = Appointment::orderBy($sortByDate ? 'appointment_date' : 'created_at', $sortByDate ? 'asc' : 'desc')
+        // $appointments = Appointment::orderBy(
+        //     $sortByDate ? DB::raw("appointment_date = '$today' desc, appointment_date asc") : 'created_at', 
+        //     $sortByDate ? 'asc' : 'desc'
+        //     )
+        $appointments = Appointment::when($sortByDate, function ($query) use ($today) {
+            return $query->orderByRaw("appointment_date = '$today' DESC")
+                ->orderBy('appointment_date')
+                ->orderBy('appointment_time');
+        }, function ($query) {
+            return $query->orderBy('created_at', 'desc')
+                ->orderBy('appointment_time');
+        })
             ->orderBy('appointment_time')
             ->filter(request()->only('search'))
             ->simplepaginate(20);
 
-        return view('appointments.show-appointments', compact('appointments'));
+            // dd($sortByDate);
+
+        return view('appointments.show-appointments', compact('appointments', 'sortByDate'));
     }
+
     
     // // Show A Appointment
     // // public function show(Appointment $appointment) {
