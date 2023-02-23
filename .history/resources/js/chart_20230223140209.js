@@ -254,13 +254,13 @@ import Chart from "chart.js/auto";
 
     //------------------
     if ($("#report-donut-chart-2").length) {
-        let minorPercentage = $("#report-donut-chart-2").data(
+        let completedPercentage = $("#report-donut-chart-2").data(
             "minors-percentage"
         );
-        let adultPercentage = $("#report-donut-chart-2").data(
+        let pendingPercentage = $("#report-donut-chart-2").data(
             "adults-percentage"
         );
-        let seniorPercentage = $("#report-donut-chart-2").data(
+        let cancelledPercentage = $("#report-donut-chart-2").data(
             "seniors-percentage"
         );
 
@@ -272,9 +272,9 @@ import Chart from "chart.js/auto";
                 datasets: [
                     {
                         data: [
-                            minorPercentage,
-                            adultPercentage,
-                            seniorPercentage,
+                            completedPerminorPercentagecentage,
+                            pendingPercentage,
+                            cancelledPercentage,
                         ],
                         backgroundColor: [
                             colors.primary(0.9),

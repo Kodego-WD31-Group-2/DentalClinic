@@ -11,7 +11,7 @@
                 <!-- BEGIN: Todays Appointment Report -->
                 <div class="col-span-12 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Patients by Gender</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">Appointment Summary for {{ date('F j, Y') }}</h2>
                         <a href="" class="ml-auto flex items-center text-primary">
                             <i data-lucide="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data
                         </a>
@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $maleCount }}</div>
-                                    <div class="text-base text-slate-500 mt-1 text-center">Male</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">Today's Total Appointments</div>
                                 </div>
                             </div>
                         </div>
@@ -45,18 +45,49 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $femaleCount }}</div>
-                                    <div class="text-base text-slate-500 mt-1 text-center">Female</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">Completed Appointments</div>
                                 </div>
                             </div>
                         </div>
-                       
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                            <div class="report-box zoom-in">
+                                <div class="box p-5">
+                                    <div class="flex">
+                                        <i data-lucide="clipboard-list" class="report-box__icon text-warning"></i>
+                                        <div class="ml-auto">
+                                            <div class="report-box__indicator bg-success tooltip cursor-pointer" title="12% Higher than last month">
+                                                12% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $appointmentsPendingToday }}</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">Pending Appointments</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                            <div class="report-box zoom-in">
+                                <div class="box p-5">
+                                    <div class="flex">
+                                        <i data-lucide="clipboard-x" class="report-box__icon text-success"></i>
+                                        <div class="ml-auto">
+                                            <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month">
+                                                22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $appointmentsCancelledToday }}</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">Cancelled Appointments</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- END: Todays Appointment Report -->
                 <!-- BEGIN: All Appointment Report -->
                 <div class="col-span-12 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Patients by Age Range</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">Overall Appointment Summary</h2>
                         <a href="" class="ml-auto flex items-center text-primary">
                             <i data-lucide="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data
                         </a>
@@ -73,8 +104,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $minorCount }}</div>
-                                    <div class="text-base text-slate-500 mt-1 text-center">Minors</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $totalAppointments }}</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">Total of Appointments</div>
                                 </div>
                             </div>
                         </div>
@@ -89,8 +120,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $adultCount }}</div>
-                                    <div class="text-base text-slate-500 mt-1 text-center">Adults</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $appointmentsCompleted }}</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">All Completed Appointments</div>
                                 </div>
                             </div>
                         </div>
@@ -105,8 +136,24 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $seniorCount }}</div>
-                                    <div class="text-base text-slate-500 mt-1 text-center">Seniors</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $appointmentsPending }}</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">All Pending Appointments</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                            <div class="report-box zoom-in">
+                                <div class="box p-5">
+                                    <div class="flex">
+                                        <i data-lucide="clipboard-x " class="report-box__icon text-success"></i>
+                                        <div class="ml-auto">
+                                            <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month">
+                                                22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-3xl font-medium leading-8 mt-6 text-center">{{ $appointmentsCancelled }}</div>
+                                    <div class="text-base text-slate-500 mt-1 text-center">All Cancelled Appointments</div>
                                 </div>
                             </div>
                         </div>
@@ -116,31 +163,31 @@
                 <!-- BEGIN: Appointment by Status -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Gender</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">Appointment by Service Type</h2>
                         <a href="" class="ml-auto text-primary truncate">Show More</a>
                     </div>
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
                             <div class="h-[213px]">
-                                <canvas id="report-pie-chart-2" data-male-percentage="{{ $malePercentage }}" data-female-percentage="{{ $femalePercentage }}">></canvas>
+                                <canvas id="report-pie-chart" data-regularcheckup-percentage="{{ $regularCheckupPercentage }}" data-emergency-percentage="{{ $emergencyPercentage }}" data-cleaning-percentage="{{ $cleaningPercentage }}">></canvas>
                             </div>
                         </div>
                         <div class="w-52 sm:w-auto mx-auto mt-8">
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                <span class="truncate">Male</span>
-                                <span class="font-medium ml-auto">{{ $malePercentage }}%</span>
+                                <span class="truncate">Regular Checkup</span>
+                                <span class="font-medium ml-auto">{{ $regularCheckupPercentage }}%</span>
                             </div>
                             <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-danger rounded-full mr-3"></div>
-                                <span class="truncate">Female</span>
-                                <span class="font-medium ml-auto">{{ $femalePercentage }}%</span>
+                                <span class="truncate">Emergency</span>
+                                <span class="font-medium ml-auto">{{ $emergencyPercentage }}%</span>
                             </div>
-                            {{-- <div class="flex items-center mt-4">
+                            <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
                                 <span class="truncate">Cleaning</span>
                                 <span class="font-medium ml-auto">{{ $cleaningPercentage }}%</span>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -148,35 +195,113 @@
                 <!-- BEGIN: Appointment Chart -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Age Range</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">Appointment Chart</h2>
                         <a href="" class="ml-auto text-primary truncate">Show More</a>
                     </div>
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
                             <div class="h-[213px]">
-                                <canvas id="report-donut-chart-2" data-minors-percentage="{{ $minorPercentage }}" data-adults-percentage="{{ $adultPercentage }}" data-seniors-percentage="{{ $seniorPercentage }}"></canvas>
+                                <canvas id="report-donut-chart" data-completed-percentage="{{ $completedPercentage }}" data-pending-percentage="{{ $pendingPercentage }}" data-cancelled-percentage="{{ $cancelledPercentage }}"></canvas>
                             </div>
                         </div>
                         <div class="w-52 sm:w-auto mx-auto mt-8">
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                <span class="truncate">Minors</span>
-                                <span class="font-medium ml-auto">{{ $minorPercentage }}%</span>
+                                <span class="truncate">Completed</span>
+                                <span class="font-medium ml-auto">{{ $completedPercentage }}%</span>
                             </div>
                             <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
-                                <span class="truncate">Adults</span>
-                                <span class="font-medium ml-auto">{{ $adultPercentage }}%</span>
+                                <span class="truncate">Pending</span>
+                                <span class="font-medium ml-auto">{{ $pendingPercentage }}%</span>
                             </div>
                             <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-danger rounded-full mr-3"></div>
-                                <span class="truncate">Seniors</span>
-                                <span class="font-medium ml-auto">{{ $seniorPercentage }}%</span>
+                                <span class="truncate">Cancelled</span>
+                                <span class="font-medium ml-auto">{{ $cancelledPercentage }}%</span>
                             </div>
                         </div>
                     </div>
                 </div>
-               
+                <!-- END: Sales Report -->
+                <!-- BEGIN: Prev Appt by Doc -->
+                {{-- <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
+                    <div class="intro-y flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-5">Appointments by Doctor</h2>
+                        <a href="" class="ml-auto text-primary truncate">Show More</a>
+                    </div>
+                    <div class="intro-y box mt-5">
+                        </div>
+                        <div class="p-5" id="bordered-table">
+                            <div class="preview">
+                                <div class="overflow-x-auto">
+                                    <table class="table table-bordered">
+                                        <thead class="bg-custom-1 text-white">
+                                            <tr>
+                                                <th class="whitespace-nowrap">Doctor</th>
+                                                <th class="whitespace-nowrap">Specialty</th>
+                                                <th class="whitespace-nowrap">Total Appointments</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($appointmentsByDoctor as $doctor)
+                                            <tr>
+                                                <td>Dr. {{ ($doctor->first_name) }} {{ $doctor->last_name }}</td>
+                                                <td>{{ $doctor->specialty }}</td>
+                                                <td>{{ $doctor->total_appointments }}</td>                                    
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>   
+                    </div> 
+                </div> --}}
+                <!-- END: Prev Appt by Doc -->
+                <!-- BEGIN: App Doc -->
+                <div class="col-span-12 xl:col-span-12 mt-6">
+                    <div class="intro-y flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-5">Appointments by Doctors</h2>
+                    </div>
+                    <div class="mt-5">
+                        @foreach ($appointmentsByDoctor as $doctor)
+                        
+                            <div class="intro-y">
+                                <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
+                                    <div class="ml-4 mr-auto">
+                                        <div class="font-medium">Dr. {{ ($doctor->first_name) }} {{ $doctor->last_name }}</div>
+                                        <div class="text-slate-500 text-xs mt-0.5">{{ $doctor->specialty }}</div>
+                                    </div>
+                                    <button><div class="py-1 px-2 rounded-full text-xs bg-success text-white cursor-pointer font-medium">{{ $doctor->total_appointments }} Appointments</div></button>
+                                </div>
+                                <div class="hidden-info-{{ $doctor->doctor_id }} hidden"> 
+                                    <p>Specialty: {{ $doctor->specialty }} </p>
+                                    <p>Total Appointments: {{ $doctor->total_appointments }}</p>
+                                    <p>Other Info: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </div>
+                            </div>
+
+                            <script>
+                                let buttons = document.querySelectorAll('.intro-y button');
+                                buttons.forEach(function(button) {
+                                    button.addEventListener('click', function() {
+                                        let hiddenDiv = this.closest('.intro-y').querySelector('.hidden-info-{{ $doctor->doctor_id }}');
+                                        if (hiddenDiv.classList.contains('hidden')) {
+                                            hiddenDiv.classList.remove('hidden');
+                                        } else {
+                                            hiddenDiv.classList.add('hidden');
+                                        }
+                                    });
+                                });
+                            </script> 
+
+                        @endforeach
+                        <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">View More</a>
+                    </div>
+                </div>
+                <!-- END: App Doc -->
             </div>
         </div>
         <div class="col-span-12 2xl:col-span-3">
@@ -244,7 +369,7 @@
                                         {{-- <div class="font-medium flex mt-5">
                                             <button type="button" class="btn btn-secondary py-1 px-2">View Notes</button>
                                             <button type="button" class="btn btn-outline-secondary py-1 px-2 ml-auto ml-auto">Dismiss</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="p-5">
                                         <div class="text-base font-medium truncate">Work Schedule Changes</div>

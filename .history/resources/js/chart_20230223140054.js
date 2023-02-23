@@ -253,28 +253,28 @@ import Chart from "chart.js/auto";
 
 
     //------------------
-    if ($("#report-donut-chart-2").length) {
-        let minorPercentage = $("#report-donut-chart-2").data(
-            "minors-percentage"
+    if ($("#report-donut-chart").length) {
+        let completedPercentage = $("#report-donut-chart").data(
+            "completed-percentage"
         );
-        let adultPercentage = $("#report-donut-chart-2").data(
-            "adults-percentage"
+        let pendingPercentage = $("#report-donut-chart").data(
+            "pending-percentage"
         );
-        let seniorPercentage = $("#report-donut-chart-2").data(
-            "seniors-percentage"
+        let cancelledPercentage = $("#report-donut-chart").data(
+            "cancelled-percentage"
         );
 
-        let ctx = $("#report-donut-chart-2")[0].getContext("2d");
+        let ctx = $("#report-donut-chart")[0].getContext("2d");
         let myDoughnutChart = new Chart(ctx, {
             type: "doughnut",
             data: {
-                labels: ["Minors", "Adults", "Seniors"],
+                labels: ["Minors", "Adults", "Cancelled"],
                 datasets: [
                     {
                         data: [
-                            minorPercentage,
-                            adultPercentage,
-                            seniorPercentage,
+                            completedPercentage,
+                            pendingPercentage,
+                            cancelledPercentage,
                         ],
                         backgroundColor: [
                             colors.primary(0.9),

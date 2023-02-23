@@ -254,7 +254,7 @@ import Chart from "chart.js/auto";
 
     //------------------
     if ($("#report-donut-chart-2").length) {
-        let minorPercentage = $("#report-donut-chart-2").data(
+        let completedPercentage = $("#report-donut-chart-2").data(
             "minors-percentage"
         );
         let adultPercentage = $("#report-donut-chart-2").data(

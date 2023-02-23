@@ -116,66 +116,63 @@
                 <!-- BEGIN: Appointment by Status -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Gender</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">Appointment by Service Type</h2>
+                        <a href="" class="ml-auto text-primary truncate">Show More</a>
+                    </div>
+                    
+                <!-- BEGIN: Appointment Chart -->
+                <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
+                    <div class="intro-y flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-5">Appointment Chart</h2>
                         <a href="" class="ml-auto text-primary truncate">Show More</a>
                     </div>
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
                             <div class="h-[213px]">
-                                <canvas id="report-pie-chart-2" data-male-percentage="{{ $malePercentage }}" data-female-percentage="{{ $femalePercentage }}">></canvas>
+                                <canvas id="report-pie-chart" data-male-percentage="{{ $malePercentage }}" data-female-percentage="{{ $femalePercentage }}"></canvas>
                             </div>
                         </div>
                         <div class="w-52 sm:w-auto mx-auto mt-8">
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                <span class="truncate">Male</span>
+                                <span class="truncate">Completed</span>
                                 <span class="font-medium ml-auto">{{ $malePercentage }}%</span>
                             </div>
                             <div class="flex items-center mt-4">
-                                <div class="w-2 h-2 bg-danger rounded-full mr-3"></div>
-                                <span class="truncate">Female</span>
+                                <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
+                                <span class="truncate">Pending</span>
                                 <span class="font-medium ml-auto">{{ $femalePercentage }}%</span>
                             </div>
-                            {{-- <div class="flex items-center mt-4">
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="intro-y box p-5 mt-5">
+                        <div class="mt-3">
+                            <div class="h-[213px]">
+                                <canvas id="report-donut-chart" data-regularcheckup-percentage="{{ $regularCheckupPercentage }}" data-emergency-percentage="{{ $emergencyPercentage }}" data-cleaning-percentage="{{ $cleaningPercentage }}">></canvas>
+                            </div>
+                        </div>
+                        <div class="w-52 sm:w-auto mx-auto mt-8">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                                <span class="truncate">Regular Checkup</span>
+                                <span class="font-medium ml-auto">{{ $regularCheckupPercentage }}%</span>
+                            </div>
+                            <div class="flex items-center mt-4">
+                                <div class="w-2 h-2 bg-danger rounded-full mr-3"></div>
+                                <span class="truncate">Emergency</span>
+                                <span class="font-medium ml-auto">{{ $emergencyPercentage }}%</span>
+                            </div>
+                            <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
                                 <span class="truncate">Cleaning</span>
                                 <span class="font-medium ml-auto">{{ $cleaningPercentage }}%</span>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- END: Appointment by Status -->
-                <!-- BEGIN: Appointment Chart -->
-                <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
-                    <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Age Range</h2>
-                        <a href="" class="ml-auto text-primary truncate">Show More</a>
-                    </div>
-                    <div class="intro-y box p-5 mt-5">
-                        <div class="mt-3">
-                            <div class="h-[213px]">
-                                <canvas id="report-donut-chart-2" data-minors-percentage="{{ $minorPercentage }}" data-adults-percentage="{{ $adultPercentage }}" data-seniors-percentage="{{ $seniorPercentage }}"></canvas>
-                            </div>
-                        </div>
-                        <div class="w-52 sm:w-auto mx-auto mt-8">
-                            <div class="flex items-center">
-                                <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                <span class="truncate">Minors</span>
-                                <span class="font-medium ml-auto">{{ $minorPercentage }}%</span>
-                            </div>
-                            <div class="flex items-center mt-4">
-                                <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
-                                <span class="truncate">Adults</span>
-                                <span class="font-medium ml-auto">{{ $adultPercentage }}%</span>
-                            </div>
-                            <div class="flex items-center mt-4">
-                                <div class="w-2 h-2 bg-danger rounded-full mr-3"></div>
-                                <span class="truncate">Seniors</span>
-                                <span class="font-medium ml-auto">{{ $seniorPercentage }}%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                
             </div>
         </div>

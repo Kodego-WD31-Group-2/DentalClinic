@@ -194,7 +194,6 @@ class PageController extends Controller
         $completedPercentage = $total > 0 ? round($appointmentsCompleted / $totalAppointments * 100, 2) : 0;
         $pendingPercentage = $total > 0 ? round($appointmentsPending / $totalAppointments * 100, 2) : 0;
         $cancelledPercentage = $total > 0 ? round($appointmentsCancelled / $totalAppointments * 100, 2) : 0;
-        
         //Gender
         $maleCount = Patient::where('gender', 'male')->count();
         $femaleCount = Patient::where('gender', 'female')->count();
@@ -253,6 +252,7 @@ class PageController extends Controller
             'adultPercentage' => $adultPercentage,
             'seniorPercentage' => $seniorPercentage,
             'ageGroups' => $ageGroups,
+        return view('pages/dashboard-overview-2', [
             'appointmentsToday' => $appointmentsToday,
             'appointmentsPendingToday' => $appointmentsPendingToday,
             'appointmentsCompletedToday' => $appointmentsCompletedToday,

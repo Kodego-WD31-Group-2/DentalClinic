@@ -253,59 +253,7 @@ import Chart from "chart.js/auto";
 
 
     //------------------
-    if ($("#report-donut-chart-2").length) {
-        let minorPercentage = $("#report-donut-chart-2").data(
-            "minors-percentage"
-        );
-        let adultPercentage = $("#report-donut-chart-2").data(
-            "adults-percentage"
-        );
-        let seniorPercentage = $("#report-donut-chart-2").data(
-            "seniors-percentage"
-        );
-
-        let ctx = $("#report-donut-chart-2")[0].getContext("2d");
-        let myDoughnutChart = new Chart(ctx, {
-            type: "doughnut",
-            data: {
-                labels: ["Minors", "Adults", "Seniors"],
-                datasets: [
-                    {
-                        data: [
-                            minorPercentage,
-                            adultPercentage,
-                            seniorPercentage,
-                        ],
-                        backgroundColor: [
-                            colors.primary(0.9),
-                            colors.warning(0.9),
-                            colors.danger(0.9),
-                        ],
-                        hoverBackgroundColor: [
-                            colors.primary(0.9),
-                            colors.warning(0.9),
-                            colors.danger(0.9),
-                        ],
-                        borderWidth: 5,
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode[700]()
-                            : colors.white,
-                    },
-                ],
-            },
-            options: {
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    },
-                },
-                cutout: "80%",
-            },
-        });
-    }
-
-    //==================
+    
 
     if ($("#report-bar-chart").length) {
         // Fake visitor data

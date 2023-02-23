@@ -154,7 +154,7 @@
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
                             <div class="h-[213px]">
-                                <canvas id="report-donut-chart-2" data-minors-percentage="{{ $minorPercentage }}" data-adults-percentage="{{ $adultPercentage }}" data-seniors-percentage="{{ $seniorPercentage }}"></canvas>
+                                <canvas id="report-donut-chart" data-mini-percentage="{{ $minorPercentage }}" data-pending-percentage="{{ $adultPercentage }}" data-cancelled-percentage="{{ $seniorPercentage }}"></canvas>
                             </div>
                         </div>
                         <div class="w-52 sm:w-auto mx-auto mt-8">

@@ -138,63 +138,7 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function dashboardOverview4()
-    
     {
-        //Today's Appointment
-        $appointmentsToday = Appointment::whereDate('appointment_date', today())->count();
-        $appointmentsPendingToday = Appointment::whereDate('appointment_date', today())->where('status', 'pending')->count();
-        $appointmentsCompletedToday = Appointment::whereDate('appointment_date', today())->where('status', 'completed')->count();
-        $appointmentsCancelledToday = Appointment::whereDate('appointment_date', today())->where('status', 'cancelled')->count();
-
-        //All Appointment
-        $totalAppointments = Appointment::count();
-        $appointmentsPending = Appointment::where('status', 'pending')->count();
-        $appointmentsCompleted = Appointment::where('status', 'completed')->count();
-        $appointmentsCancelled = Appointment::where('status', 'cancelled')->count();
-
-        // Appointment by Doctors
-        $appointmentsByDoctor = DB::table('doctors')
-            ->select('doctors.first_name', 'doctors.last_name', 'doctors.specialty', 'doctors.doctor_id', DB::raw('COUNT(appointments.doctor_id) as total_appointments'))
-            ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
-            ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
-            ->get();
-
-        
-        // $appointmentsByDoctor = DB::table('doctors')
-        //     ->select('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty', DB::raw('COUNT(appointments.doctor_id) as total_appointments'))
-        //     ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
-        //     ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
-        //     ->get();
-
-
-
-        //List of Patients for Today
-        $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
-        ->select('appointments.first_name', 'appointments.last_name', 'appointments.appointment_type', 'appointments.status', 'doctors.first_name AS doctor_first_name', 'doctors.last_name AS doctor_last_name')
-        ->join('doctors', 'appointments.doctor_id', '=', 'doctors.doctor_id')
-        ->get();
-        $doctors = Doctor::all();
-
-        // Gender
-        $maleCount = Patient::where('gender', 'male')->count();
-        $femaleCount = Patient::where('gender', 'female')->count();
-        $total = $maleCount + $femaleCount;
-        $malePercentage = $total > 0 ? round($maleCount / $total * 100, 2) : 0;
-        $femalePercentage = $total > 0 ? round($femaleCount / $total * 100, 2) : 0;
-
-        //Service Type
-        $regularCheckup = Appointment::where('appointment_type', 'Regular Checkup')->count();
-        $emergency = Appointment::where('appointment_type', 'Emergency')->count();
-        $cleaning = Appointment::where('appointment_type', 'Cleaning')->count();
-        $regularCheckupPercentage = $total > 0 ? round($regularCheckup / $totalAppointments * 100, 2) : 0;
-        $emergencyPercentage = $total > 0 ? round($emergency / $totalAppointments * 100, 2) : 0;
-        $cleaningPercentage = $total > 0 ? round($cleaning / $totalAppointments * 100, 2) : 0;
-
-        //Appointment Chart
-        $completedPercentage = $total > 0 ? round($appointmentsCompleted / $totalAppointments * 100, 2) : 0;
-        $pendingPercentage = $total > 0 ? round($appointmentsPending / $totalAppointments * 100, 2) : 0;
-        $cancelledPercentage = $total > 0 ? round($appointmentsCancelled / $totalAppointments * 100, 2) : 0;
-        
         //Gender
         $maleCount = Patient::where('gender', 'male')->count();
         $femaleCount = Patient::where('gender', 'female')->count();
@@ -253,27 +197,6 @@ class PageController extends Controller
             'adultPercentage' => $adultPercentage,
             'seniorPercentage' => $seniorPercentage,
             'ageGroups' => $ageGroups,
-            'appointmentsToday' => $appointmentsToday,
-            'appointmentsPendingToday' => $appointmentsPendingToday,
-            'appointmentsCompletedToday' => $appointmentsCompletedToday,
-            'appointmentsCancelledToday' => $appointmentsCancelledToday,
-            'totalAppointments' => $totalAppointments,
-            'appointmentsPending' => $appointmentsPending,
-            'appointmentsCompleted' => $appointmentsCompleted,
-            'appointmentsCancelled' => $appointmentsCancelled,
-            'appointmentsTodayList' => $appointmentsTodayList,
-            'appointmentsByDoctor' => $appointmentsByDoctor,
-            'regularCheckup' => $regularCheckup,
-            'emergency' => $emergency,
-            'cleaning' => $cleaning,
-            'regularCheckupPercentage' => $regularCheckupPercentage,
-            'emergencyPercentage' => $emergencyPercentage,
-            'cleaningPercentage' => $cleaningPercentage,
-            'completedPercentage' => $completedPercentage,
-            'pendingPercentage' => $pendingPercentage,
-            'cancelledPercentage' => $cancelledPercentage,
-            'doctors' => $doctors,
-            'layout' => 'side-menu'
         ]);
             
     }
@@ -341,6 +264,7 @@ class PageController extends Controller
      */
     public function transactionList()
     {
+        $transactions = Transaction::with('appointment', 'transactionItems.feeSchedule')->get();
         return view('pages/transaction-list');
     }
 

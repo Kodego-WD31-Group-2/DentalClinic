@@ -122,18 +122,18 @@
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
                             <div class="h-[213px]">
-                                <canvas id="report-pie-chart-2" data-male-percentage="{{ $malePercentage }}" data-female-percentage="{{ $femalePercentage }}">></canvas>
+                                <canvas id="report-pie-chart-2" data-male-percentage="{{ $malePercentage }}" data-emergency-percentage="{{ $femalePercentage }}">></canvas>
                             </div>
                         </div>
                         <div class="w-52 sm:w-auto mx-auto mt-8">
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                <span class="truncate">Male</span>
+                                <span class="truncate">Regular Checkup</span>
                                 <span class="font-medium ml-auto">{{ $malePercentage }}%</span>
                             </div>
                             <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-danger rounded-full mr-3"></div>
-                                <span class="truncate">Female</span>
+                                <span class="truncate">Emergency</span>
                                 <span class="font-medium ml-auto">{{ $femalePercentage }}%</span>
                             </div>
                             {{-- <div class="flex items-center mt-4">
@@ -154,7 +154,7 @@
                     <div class="intro-y box p-5 mt-5">
                         <div class="mt-3">
                             <div class="h-[213px]">
-                                <canvas id="report-donut-chart-2" data-minors-percentage="{{ $minorPercentage }}" data-adults-percentage="{{ $adultPercentage }}" data-seniors-percentage="{{ $seniorPercentage }}"></canvas>
+                                <canvas id="report-donut-chart" data-completed-percentage="{{ $minorPercentage }}" data-pending-percentage="{{ $adultPercentage }}" data-cancelled-percentage="{{ $seniorPercentage }}"></canvas>
                             </div>
                         </div>
                         <div class="w-52 sm:w-auto mx-auto mt-8">
