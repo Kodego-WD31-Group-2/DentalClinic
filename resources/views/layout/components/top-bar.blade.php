@@ -29,9 +29,9 @@
                 <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
                 <i data-lucide="search" class="search__icon dark:text-slate-500"></i>
             </div>
-            <a class="notification notification--light sm:hidden" href="">
+            {{-- <a class="notification notification--light sm:hidden" href="">
                 <i data-lucide="search" class="notification__icon dark:text-slate-500"></i>
-            </a>
+            </a> --}}
             <div class="search-result">
                 <div class="search-result__content">
                     <div class="search-result__content__title">Pages</div>
@@ -82,7 +82,7 @@
         </div>
         <!-- END: Search -->
         <!-- BEGIN: Notifications -->
-        <div class="intro-x dropdown mr-4 sm:mr-6">
+        {{-- <div class="intro-x dropdown mr-4 sm:mr-6">
             <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button" aria-expanded="false" data-tw-toggle="dropdown">
                 <i data-lucide="bell" class="notification__icon dark:text-slate-500"></i>
             </div>
@@ -106,7 +106,7 @@
                     @endforeach
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- END: Notifications -->
         
         <!-- BEGIN: Account Menu -->

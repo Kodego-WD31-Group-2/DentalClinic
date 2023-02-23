@@ -14,7 +14,7 @@
         </div>            
       </div>
         <p class="mb-4 text-white">Alabang-Zapote Road Corner Madrigal Avenue, Muntinlupa City</p>
-        <p class="mb-3 text-white">Office Hours:</p>
+        <p class="mb-3 text-white">Dental Hours:</p>
         <p class="mb-1 text-white">Weekdays: 9:00AM - 5:00PM</p>
         <p class="mb-4 text-white">Weekends: 9:00AM - 1:00PM</p>
      
@@ -26,16 +26,16 @@
           Useful Links
         </h6>
         <p class="mb-4">
-          <a href="/services" class="text-white hover:bg-custom-5">Services</a>
+          <a href="/services" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Services</a>
         </p>
         <p class="mb-4">
-          <a href="/doctors" class="text-white">Doctors</a>
+          <a href="/doctors" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Doctors</a>
         </p>
         <p class="mb-4">
-          <a href="/contact/add" class="text-white">Contact Us</a>
+          <a href="/contact/add" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Contact Us</a>
         </p>
         <p>
-          <a href="/appointments/book-appointment" class="text-white">Book an Appointment</a>
+          <a href="/appointments/book-appointment" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Book an Appointment</a>
         </p>
       </div>
       <div class="">
@@ -43,22 +43,22 @@
           Our Services
         </h6>
         <p class="mb-4">
-          <a href="/services" class="text-white">Dental Exams</a>
+          <a href="/services" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Dental Exams</a>
         </p>
         <p class="mb-4">
-          <a href="/services" class="text-white">Teeth Cleaning</a>
+          <a href="/services" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Teeth Cleaning</a>
         </p>
         <p class="mb-4">
-          <a href="/services" class="text-white">Teeth Whitening</a>
+          <a href="/services" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Teeth Whitening</a>
         </p>
         <p class="mb-4">
-          <a href="/services" class="text-white">Implants</a>
+          <a href="/services" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Implants</a>
         </p>
         <p class="mb-4">
-          <a href="/services" class="text-white">Extractions</a>
+          <a href="/services" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Extractions</a>
         </p>
         <p>
-          <a href="/services" class="text-white">Bridges</a>
+          <a href="/services" class="text-white hover:bg-custom-5 hover:text-black px-2 py-1 rounded">Bridges</a>
         </p>
        
       </div>
@@ -74,7 +74,7 @@
                 focusable="false"
                 data-prefix="fab"
                 data-icon="facebook-f"
-                class="svg-inline--fa fa-facebook-f w-5"
+                class="svg-inline--fa fa-facebook-f w-5 "
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 320 512"

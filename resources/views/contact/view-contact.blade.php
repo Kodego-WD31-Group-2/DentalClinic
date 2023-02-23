@@ -22,7 +22,7 @@
               </p>
               <a href="/contact/inbox">
                 <button type="button"
-                class="btn">
+                class="btn border-black hover:bg-custom-5">
                 Back
               </button>
               </a>
