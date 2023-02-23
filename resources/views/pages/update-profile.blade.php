@@ -134,7 +134,7 @@
                         <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
                             <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
                                 <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src=""{{ file_exists(public_path('storage/' . $users->photo)) ? asset('storage/' . $users->photo) : asset($users->photo) }}" onerror="this.onerror=null; this.src='{{ asset('assets/img/NoImg.svg') }}'">
+                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="{{ file_exists(public_path('storage/' . $users->photo)) ? asset('storage/' . $users->photo) : asset($users->photo) }}" onerror="this.onerror=null; this.src='{{ asset('assets/img/NoImg.svg') }}'">
                                     <div title="Remove this profile photo?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
                                         <i data-lucide="x" class="w-4 h-4"></i>
                                     </div>

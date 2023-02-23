@@ -43,7 +43,7 @@
                     </a>
                 </div>
                 <div class="flex items-center">
-                    <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i> Invoice: <a href="" class="underline decoration-dotted ml-1">INV/20220217/MPL/2053411933</a>
+                    <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i> Invoice: <a href="" class="underline decoration-dotted ml-1"></a>
                 </div>
                 <div class="flex items-center mt-3">
                     <i data-lucide="calendar" class="w-4 h-4 text-slate-500 mr-2"></i> Purchase Date: 24 March 2022

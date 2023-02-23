@@ -156,7 +156,7 @@
 @else
 <!-- BEGIN: Nav - Guest View -->
 <nav
-      class="z-50 navbar navbar-expand-lg shadow-md py-2 bg-custom-1 absolute flex items-center w-full justify-between"
+      class="relative z-50 navbar navbar-expand-lg shadow-md py-2 bg-custom-1 absolute flex items-center w-full justify-between"
     >
       <div class="px-6 w-full flex flex-wrap items-center justify-between">
         <div class="flex items-center">
