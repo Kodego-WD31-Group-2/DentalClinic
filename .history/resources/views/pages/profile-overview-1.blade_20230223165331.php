@@ -327,19 +327,30 @@
                     <div class="p-5">
                         <div class="tab-content">
                             <div id="latest-tasks-new" class="tab-pane active" role="tabpanel" aria-labelledby="latest-tasks-new-tab">
-                                {{-- @foreach($appointment->transactions as $transaction)
+                                @foreach($appointment->transactions as $transaction)
                                 <div class="flex items-center mt-5">
                                     <div class="border-l-2 border-primary dark:border-primary pl-4">
                                         <a href="" class="font-medium">{{ $transaction->description }}</a>
-                                        <div class="text-slate-500">{{ $transaction->total_cost }}</div>
+                                        <div class="text-slate-500">02:00 PM</div>
                                     </div>
                                     <div class="form-check form-switch ml-auto">
-                                        {{ $transaction->payment_method }}
-                                        {{ $transaction->payment_status }}
+                                        <input class="form-check-input" type="checkbox">
                                     </div>
                                 </div>
-                                @endforeach --}}
-                                
+                                @endforeach
+                                @foreach($appointments as $appointment)
+    <h2>Appointment</h2>
+    <p>Date: {{ $appointment->appointment_date }}</p>
+    <p>Status: {{ $appointment->status }}</p>
+    
+    <h3>Transactions</h3>
+    <ul>
+        @foreach($appointment->transactions as $transaction)
+            <li>{{ $transaction->description }} - {{ $transaction->amount }}</li>
+        @endforeach
+    </ul>
+@endforeach
+
                             </div>
                         </div>
                     </div>

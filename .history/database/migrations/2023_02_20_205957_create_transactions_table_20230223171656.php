@@ -20,7 +20,8 @@ return new class extends Migration
             $table->decimal('total_cost', 8, 2)->default(0);
             $table->string('payment_method');
             $table->string('payment_status');
-            // $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+
             $table->timestamps();
         });
 

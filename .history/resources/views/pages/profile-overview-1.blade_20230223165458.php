@@ -327,7 +327,7 @@
                     <div class="p-5">
                         <div class="tab-content">
                             <div id="latest-tasks-new" class="tab-pane active" role="tabpanel" aria-labelledby="latest-tasks-new-tab">
-                                {{-- @foreach($appointment->transactions as $transaction)
+                                @foreach($appointment->transactions as $transaction)
                                 <div class="flex items-center mt-5">
                                     <div class="border-l-2 border-primary dark:border-primary pl-4">
                                         <a href="" class="font-medium">{{ $transaction->description }}</a>
@@ -338,7 +338,7 @@
                                         {{ $transaction->payment_status }}
                                     </div>
                                 </div>
-                                @endforeach --}}
+                                @endforeach
                                 
                             </div>
                         </div>
