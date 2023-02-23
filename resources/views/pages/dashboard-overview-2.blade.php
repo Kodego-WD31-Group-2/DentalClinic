@@ -276,14 +276,14 @@
                                     </div>
                                     <button><div class="py-1 px-2 rounded-full text-xs bg-success text-white cursor-pointer font-medium">{{ $doctor->total_appointments }} Appointments</div></button>
                                 </div>
-                                <div class="hidden-info-{{ $doctor->doctor_id }} hidden"> 
+                                {{-- <div class="hidden-info-{{ $doctor->doctor_id }} hidden"> 
                                     <p>Specialty: {{ $doctor->specialty }} </p>
                                     <p>Total Appointments: {{ $doctor->total_appointments }}</p>
                                     <p>Other Info: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
+                                </div> --}}
                             </div>
 
-                            <script>
+                            {{-- <script>
                                 let buttons = document.querySelectorAll('.intro-y button');
                                 buttons.forEach(function(button) {
                                     button.addEventListener('click', function() {
@@ -295,7 +295,7 @@
                                         }
                                     });
                                 });
-                            </script> 
+                            </script>  --}}
 
                         @endforeach
                         <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">View More</a>
