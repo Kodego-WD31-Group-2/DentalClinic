@@ -225,10 +225,10 @@
             <li class="nav-item">
               <a
                 class="nav-link block pr-2 lg:px-2 py-2 text-white rounded-lg hover:bg-blue-200 hover:text-blue-900 focus:text-blue-900 transition duration-150 ease-in-out"
-                href="#!"
+                href="/contact/add"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
-                >Location</a
+                >Contact Us</a
               >
             </li>
 
