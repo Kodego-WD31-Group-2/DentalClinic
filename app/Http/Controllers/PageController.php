@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Patient;
 use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Chat;
@@ -51,21 +52,12 @@ class PageController extends Controller
         $appointmentsCompleted = Appointment::where('status', 'completed')->count();
         $appointmentsCancelled = Appointment::where('status', 'cancelled')->count();
 
-        // Appointment by Doctors
+        //Appointment by Doctors
         $appointmentsByDoctor = DB::table('doctors')
-            ->select('doctors.first_name', 'doctors.last_name', 'doctors.specialty', 'doctors.doctor_id', DB::raw('COUNT(appointments.doctor_id) as total_appointments'))
-            ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
-            ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
-            ->get();
-
-        
-        // $appointmentsByDoctor = DB::table('doctors')
-        //     ->select('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty', DB::raw('COUNT(appointments.doctor_id) as total_appointments'))
-        //     ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
-        //     ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
-        //     ->get();
-
-
+        ->select('doctors.first_name', 'doctors.last_name', 'doctors.specialty', DB::raw('COUNT(appointments.doctor_id) as total_appointments'))
+        ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
+        ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
+        ->get();
 
         //List of Patients for Today
         $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
