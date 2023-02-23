@@ -33,7 +33,7 @@
           <a href="/doctors" class="text-white">Doctors</a>
         </p>
         <p class="mb-4">
-          <a href="/contact/add-contact" class="text-white">Contact Us</a>
+          <a href="/contact/add" class="text-white">Contact Us</a>
         </p>
         <p>
           <a href="/appointments/book-appointment" class="text-white">Book an Appointment</a>
@@ -43,23 +43,41 @@
         <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-center">
           Our Services
         </h6>
-        <p class="mb-4">
-          <a href="#!" class="text-white">Consultation</a>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Dental Exams</a>
         </p>
-        <p class="mb-4">
-          <a href="#!" class="text-white">Extraction</a>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Teeth Cleaning</a>
         </p>
-        <p class="mb-4">
-          <a href="#!" class="text-white">Root Canal</a>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Fillings</a>
         </p>
-        <p class="mb-4">
-          <a href="#!" class="text-white">Orthodontist</a>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Root Canals</a>
         </p>
-        <p class="mb-4">
-          <a href="#!" class="text-white">Filling</a>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Extractions</a>
+        </p>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Crowns</a>
+        </p>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Bridges</a>
+        </p>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Implants</a>
+        </p>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Orthodontics</a>
+        </p>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Teet Whitening</a>
+        </p>
+        <p class="mb-2">
+          <a href="/services" class="text-white">Periodontal Therapy</a>
         </p>
         <p>
-          <a href="#!" class="text-white">Braces</a>
+          <a href="/services" class="text-white">Oral Surgery</a>
         </p>
       </div>
       <div class="">
@@ -68,7 +86,7 @@
         </h6>
         <div class="container pt-9">
           <div class="flex justify-start mb-9">
-            <a href="#!" class="mr-9 text-black-800">
+            <a href="/services" class="mr-9 text-black-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -85,7 +103,7 @@
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-black-800">
+            <a href="/services" class="mr-9 text-black-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -103,7 +121,7 @@
               </svg>
             </a>
             
-            <a href="#!" class="mr-9 text-black-800">
+            <a href="/services" class="mr-9 text-black-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -120,23 +138,7 @@
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-black-800">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fab"
-                data-icon="linkedin-in"
-                class="svg-inline--fa fa-linkedin-in w-8"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
-                ></path>
-              </svg>
-            </a>
+          
           
           </div>
         </div>
@@ -151,14 +153,12 @@
           Hotline: + 01 234 567 88
         </p>
         <p class="flex items-center justify-center md:justify-start">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="print"
-            class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M448 192V77.25c0-8.49-3.37-16.62-9.37-22.63L393.37 9.37c-6-6-14.14-9.37-22.63-9.37H96C78.33 0 64 14.33 64 32v160c-35.35 0-64 28.65-64 64v112c0 8.84 7.16 16 16 16h48v96c0 17.67 14.33 32 32 32h320c17.67 0 32-14.33 32-32v-96h48c8.84 0 16-7.16 16-16V256c0-35.35-28.65-64-64-64zm-64 256H128v-96h256v96zm0-224H128V64h192v48c0 8.84 7.16 16 16 16h48v96zm48 72c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z">
-            </path>
-          </svg>
-          Email: info@example.com
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="email"
+          class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 512 512">
+          <path fill="currentColor"
+          d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg>
+          Email: smileville@gmail.com
         </p>
       </div>
     </div>

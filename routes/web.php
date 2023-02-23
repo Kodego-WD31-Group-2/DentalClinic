@@ -275,12 +275,7 @@ Route::middleware('auth')->group(function() {
 
 
 //Contacts Controller
-// Route::get('/contact/inbox', [ContactsController::class, 'index'])->name('contact.inbox');
-// Route::get('/contact', [ContactsController::class, 'add']);
-// Route::post('/contact/store', [ContactsController::class, 'store'])->name('contact.store');
-// Route::get('/contact/{contact}/view', [ContactsController::class, 'view'])->name('contact.view');
-
-
-
-
+Route::get('contact/add', [ContactsController::class, 'add'])->name('contacts.add');
+Route::post('contact/store', [ContactsController::class, 'store'])->name('contacts.store');
+Route::get('contact/inbox', [ContactsController::class, 'show'])->name('contact.inbox');
 

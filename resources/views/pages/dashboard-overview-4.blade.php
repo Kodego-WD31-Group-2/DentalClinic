@@ -763,40 +763,85 @@
         <div class="py-3 px-5 bg-gray-50">Bar chart</div>
         <canvas class="p-10" id="chartBar"></canvas>
       </div>
-      
+
       <!-- Required chart.js -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      
-      <!-- Chart bar -->
-      <script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- Chart bar -->
+        <script>
         const labelsBarChart = [
-          "Male",
-          "Female",
-          "Child",
-          "Adult",
-          "Senior",
+            "Male",
+            "Female",
+            "Male Percent",
+            "Female Percent",
+            "Child",
+            "Adult",
+            "Senior",
         ];
         const dataBarChart = {
-          labels: labelsBarChart,
-          datasets: [
+            labels: ["Gender", "Percentage", "Age",],
+            datasets: [
             {
-              label: "List",
-              backgroundColor: "hsl(252, 82.9%, 67.8%)",
-              borderColor: "hsl(252, 82.9%, 67.8%)",
-              data: [{{$maleCount}}, {{$femaleCount}}, {{$minorCount}}, {{$adultCount}}, {{$seniorCount}}],
+                label: "Male",
+                backgroundColor: "hsl(209, 100%, 44%)",
+                borderColor: "hsl(209, 100%, 44%)",
+                data: [{{$maleCount}}, 0],
             },
-          ],
+            {
+                label: "Female",
+                backgroundColor: "hsl(305, 100%, 48%)",
+                borderColor: "hsl(305, 100%, 48%)",
+                data: [{{$femaleCount}}, 0],
+            },
+            {
+                label: "Male Percent",
+                backgroundColor: "hsl(209, 100%, 44%)",
+                borderColor: "hsl(209, 100%, 44%)",
+                data: [0, {{$malePercentage}}],
+            },
+            {
+                label: "Female Percent",
+                backgroundColor: "hsl(305, 100%, 48%)",
+                borderColor: "hsl(305, 100%, 48%)",
+                data: [0, {{$femalePercentage}}],
+            },
+            {
+                label: "Child",
+                backgroundColor: "hsl(359, 100%, 45%)",
+                borderColor: "hsl(359, 100%, 50%)",
+                data: [0, 0, {{$minorCount}}],
+            },
+            {
+                label: "Adult",
+                backgroundColor: "hsl(58, 100%, 50%)",
+                borderColor: "hsl(58, 100%, 50%)",
+                data: [ 0, 0, {{$adultCount}}],
+            },
+            {
+                label: "Senior",
+                backgroundColor: "hsl(118, 100%, 48%)",
+                borderColor: "hsl(118, 100%, 50%)",
+                data: [0, 0, {{$seniorCount}}],
+            },
+            ],
         };
-      
+
         const configBarChart = {
-          type: "bar",
-          data: dataBarChart,
-          options: {},
+            type: "bar",
+            data: dataBarChart,
+            options: {
+            scales: {
+                x: {
+                stacked: true,
+                },
+                y: {
+                stacked: true,
+                },
+            },
+            },
         };
-      
-        var chartBar = new Chart(
-          document.getElementById("chartBar"),
-          configBarChart
-        );
-      </script>
+
+        var chartBar = new Chart(document.getElementById("chartBar"), configBarChart);
+        </script>
+
 @endsection

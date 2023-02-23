@@ -42,7 +42,7 @@
         </div>
         <!-- BEGIN: Users Layout -->
         {{-- @foreach (array_slice($fakers, 0, 9) as $faker) --}}
-        @foreach ($doctor as $doctor)
+        @foreach ($doctors as $doctor)
         <div class="intro-y col-span-12 md:col-6 lg:col-5">
             <div class="box">
             <div class="flex items-start px-5 pt-5">
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="text-left lg:text-left p-5">
-                <div>{{ $doctor->description }}</div>
+                <div class="text-base text-slate-600 dark:text-500 mt-5" >{{ $doctor->description }}</div>
                 <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5">
                 <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $doctor->email }}
                 </div>
@@ -83,7 +83,7 @@
                 <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> {{ $doctor->email }}
                 </div> --}}
             </div>
-            <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+            <div class="text-center lg:text-right p-2.5 border-t border-slate-200/60 dark:border-darkmode-400">
                 <a href="/chat-page">
                 <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
                 </a>
@@ -98,7 +98,7 @@
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
-                {{-- {{ $doctors->links() }} --}}
+              {{ $doctors->links() }}
             </nav>
         </div>
         <!-- END: Pagination -->

@@ -7,29 +7,14 @@ use Illuminate\Http\Request;
 
 class ContactsController extends Controller
 {
-    public function index()
-    {
-        $contacts = Contact::Latest()->simplePaginate(15)->get();
-        return view('contact.index', compact('contacts'));
+   
+    // Show Contact Us Form
+    public function add() {
+        return view('contact.add-contact');
     }
 
-   //single 
-
-    public function view(Contact $contact) {
-        return view('contact.view-contact', [
-            'contact' => $contact
-        ]);
-    }
-
-       // Show Add Contact Form
-       public function add() {
-        return view('contact.send-contact');
-    }
-
-    
-
-    // Store Contact Entry
-    public function store(Request $request) {
+     // Store doctor Entry
+     public function store(Request $request) {
         $formFields = $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -38,8 +23,16 @@ class ContactsController extends Controller
         
         Contact::create($formFields);
         
-        return redirect('/contact')->with('message', 'Listing created successfully');
+        return redirect('/home')->with('message', 'Message sent successfully');
     }
 
-    
+     //Admin view contact messages
+     public function show() {
+        $contacts = Contact::latest()->simplepaginate(15);
+        return view('contact.contact-inbox', compact('contacts'));
+       
+    }
+
+
+
 }
