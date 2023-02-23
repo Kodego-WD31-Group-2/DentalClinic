@@ -7,6 +7,12 @@ import Chart from "chart.js/auto";
 
     // Chart
     if ($("#report-line-chart").length) {
+        let prevMonth = $("#report-line-chart").data("prevmonth-count");
+
+        let thisMonth = $("#report-line-chart").data("thismonth-count");
+
+        let nextMonth = $("#report-line-chart").data("nextmonth-count");
+
         let ctx = $("#report-line-chart")[0].getContext("2d");
         let myChart = new Chart(ctx, {
             type: "line",
@@ -15,44 +21,41 @@ import Chart from "chart.js/auto";
                     "Jan",
                     "Feb",
                     "Mar",
-                    "Apr",
-                    "May",
-                    "Jun",
-                    "Jul",
-                    "Aug",
-                    "Sep",
-                    "Oct",
-                    "Nov",
-                    "Dec",
+                    // "Apr",
+                    // "May",
+                    // "Jun",
+                    // "Jul",
+                    // "Aug",
+                    // "Sep",
+                    // "Oct",
+                    // "Nov",
+                    // "Dec",
                 ],
                 datasets: [
                     {
-                        label: "# of Votes",
-                        data: [
-                            0, 200, 250, 200, 700, 550, 650, 1050, 950, 1100,
-                            900, 1200,
-                        ],
+                        label: "# of Appointment",
+                        data: [prevMonth, thisMonth, nextMonth],
                         borderWidth: 2,
                         borderColor: colors.primary(0.8),
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                         tension: 0.4,
                     },
-                    {
-                        label: "# of Votes",
-                        data: [
-                            0, 300, 400, 560, 320, 600, 720, 850, 690, 805,
-                            1200, 1010,
-                        ],
-                        borderWidth: 2,
-                        borderDash: [2, 2],
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.slate["400"](0.6)
-                            : colors.slate["400"](),
-                        backgroundColor: "transparent",
-                        pointBorderColor: "transparent",
-                        tension: 0.4,
-                    },
+                    // {
+                    //     label: "# of Votes",
+                    //     data: [
+                    //         0, 300, 400, 560, 320, 600, 720, 850, 690, 805,
+                    //         1200, 1010,
+                    //     ],
+                    //     borderWidth: 2,
+                    //     borderDash: [2, 2],
+                    //     borderColor: $("html").hasClass("dark")
+                    //         ? colors.slate["400"](0.6)
+                    //         : colors.slate["400"](),
+                    //     backgroundColor: "transparent",
+                    //     pointBorderColor: "transparent",
+                    //     tension: 0.4,
+                    // },
                 ],
             },
             options: {
@@ -82,7 +85,7 @@ import Chart from "chart.js/auto";
                             },
                             color: colors.slate["500"](0.8),
                             callback: function (value, index, values) {
-                                return "$" + value;
+                                return value;
                             },
                         },
                         grid: {

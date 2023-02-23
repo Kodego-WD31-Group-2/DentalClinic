@@ -22,6 +22,7 @@ class PageController extends Controller
     public function dashboardOverview1()
     {
         $currentYear = now()->year;
+        $nextMonth = now()->addMonth();
 
         // Month to Date TA(Total Appointment)
         $appointmentsThisMonth = Appointment::whereYear('appointment_date', now()->year)
@@ -36,21 +37,36 @@ class PageController extends Controller
             ->whereMonth('appointment_date', $previousMonth)
             ->count();
 
-        // Year-to-date TA
-        $appointmentsYTD = Appointment::whereYear('appointment_date', $currentYear)
-            ->whereDate('appointment_date', '>=', now()->startOfYear())
-            ->whereDate('appointment_date', '<=', now())
+        // Year to date
+        $appointmentsThisYear = Appointment::whereYear('appointment_date', $currentYear)
+            ->count();
+
+        // Next Month
+        $appointmentsNextMonth = Appointment::whereYear('appointment_date', $nextMonth->year)
+            ->whereMonth('appointment_date', $nextMonth->month)
             ->count();
         
+        // Patient Count
+        $totalPatients = Patient::count();
+        $maleCount = Patient::where('gender', 'male')->count();
+        $femaleCount = Patient::where('gender', 'female')->count();
+        
 
-
+        // Doctor Count
+        $totalDoctors = Doctor::count();
+        
         return view('pages/dashboard-overview-1', [
             // Specify the base layout.
             // Eg: 'side-menu', 'simple-menu', 'top-menu', 'login'
             // The default value is 'side-menu'
             'appointmentsThisMonth' => $appointmentsThisMonth,
             'appointmentsPreviousMonth' => $appointmentsPreviousMonth,
-            'appointmentsYTD' => $appointmentsYTD,
+            'appointmentsNextMonth' => $appointmentsNextMonth,
+            'appointmentsThisYear' => $appointmentsThisYear,
+            'totalPatients' => $totalPatients,
+            'maleCount' => $maleCount,
+            'femaleCount' => $femaleCount,
+            'totalDoctors' => $totalDoctors,
             'layout' => 'side-menu'
         ]);
     }
