@@ -18,7 +18,8 @@ style="
       </h1>
       <h3 class="text-blue-200 text-3xl md:text-4xl xl:text-4xl font-bold tracking-tight mb-2">Leading providers for your dental needs now more easy to reach</h3>
       <br>
-      <button
+      <a href="/appointments/book-appointment">
+        <button
         type="button"
         class="inline-block px-7 py-3 m-5 border-2 border-white text-white font-medium text-sm leading-snug uppercase rounded hover:bg-custom-2 hover:bg-opacity-75 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
           data-mdb-ripple="true"
@@ -26,6 +27,8 @@ style="
       >
         Book An Appointment
       </button>
+      </a>
+     
     </div>
   </div>
 </div>

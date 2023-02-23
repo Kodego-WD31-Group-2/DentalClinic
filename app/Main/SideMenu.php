@@ -192,7 +192,7 @@ class SideMenu
                 'sub_menu' => [
                     'add-transaction' => [
                         'icon' => '',
-                        'route_name' => 'add-billing',
+                        'route_name' => 'transactions.create',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
