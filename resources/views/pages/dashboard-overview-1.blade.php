@@ -11,7 +11,7 @@
                 <!-- BEGIN: General Report -->
                 <div class="col-span-12 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">General Report - Summary</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">General Report - Summary - Test</h2>
                         <a href="" class="ml-auto flex items-center text-primary">
                             <i data-lucide="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data
                         </a>
@@ -28,8 +28,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $appointmentsToday }}</div>
-                                    <div class="text-base text-slate-500 mt-1">Item Sales</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $appointmentsThisMonth }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Total Appointment - {{date('F')}}</div>
                                 </div>
                             </div>
                         </div>
@@ -44,8 +44,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">3.721</div>
-                                    <div class="text-base text-slate-500 mt-1">New Orders</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $appointmentsPreviousMonth }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Total Appointments - Previous Month</div>
                                 </div>
                             </div>
                         </div>
@@ -60,8 +60,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">2.149</div>
-                                    <div class="text-base text-slate-500 mt-1">Total Products</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $appointmentsYTD }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Year-to-Date Total Appointments</div>
                                 </div>
                             </div>
                         </div>

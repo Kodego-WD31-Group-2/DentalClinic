@@ -27,12 +27,12 @@ class Transaction extends Model
     }
 
     public function getTotalCostAttribute()
-{
-    return $this->transactionItems()
-        ->join('fee_schedules', 'transaction_items.fee_schedule_id', '=', 'fee_schedules.id')
-        ->selectRaw('SUM(fee_schedules.amount) AS total_cost')
-        ->value('total_cost');
-}
+    {
+        return $this->transactionItems()
+            ->join('fee_schedules', 'transaction_items.fee_schedule_id', '=', 'fee_schedules.id')
+            ->selectRaw('SUM(fee_schedules.amount) AS total_cost')
+            ->value('total_cost');
+    }
 
 // public function getFirstNameAttribute()
 // {

@@ -21,12 +21,36 @@ class PageController extends Controller
      */
     public function dashboardOverview1()
     {
-        $appointmentsToday = Appointment::whereDate('appointment_date', today())->count();
+        $currentYear = now()->year;
+
+        // Month to Date TA(Total Appointment)
+        $appointmentsThisMonth = Appointment::whereYear('appointment_date', now()->year)
+            ->whereMonth('appointment_date', now()->month)
+            ->count();
+
+        // Previous Month TA
+        $previousYear = now()->subMonth()->year;
+        $previousMonth = now()->subMonth()->month;
+
+        $appointmentsPreviousMonth = Appointment::whereYear('appointment_date', $previousYear)
+            ->whereMonth('appointment_date', $previousMonth)
+            ->count();
+
+        // Year-to-date TA
+        $appointmentsYTD = Appointment::whereYear('appointment_date', $currentYear)
+            ->whereDate('appointment_date', '>=', now()->startOfYear())
+            ->whereDate('appointment_date', '<=', now())
+            ->count();
+        
+
+
         return view('pages/dashboard-overview-1', [
             // Specify the base layout.
             // Eg: 'side-menu', 'simple-menu', 'top-menu', 'login'
             // The default value is 'side-menu'
-            'appointmentsToday' => $appointmentsToday,
+            'appointmentsThisMonth' => $appointmentsThisMonth,
+            'appointmentsPreviousMonth' => $appointmentsPreviousMonth,
+            'appointmentsYTD' => $appointmentsYTD,
             'layout' => 'side-menu'
         ]);
     }
