@@ -1,7 +1,7 @@
-<footer class="text-center lg:text-left bg-custom-1 text-white">
+<footer class="text-center lg:text-left  bg-custom-3 dark:bg-darkmode-500 text-white">
           
   <div class="mx-6 py-10 text-center md:text-center">
-    <div class="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="grid grid-1  md:grid-cols-2 lg:grid-cols-4 gap-8">
 
       <div class="">
         <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-center">
@@ -25,9 +25,8 @@
         <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-center">
           Useful Links
         </h6>
-    
         <p class="mb-4">
-          <a href="/services" class="text-white">Services</a>
+          <a href="/services" class="text-white hover:bg-custom-5">Services</a>
         </p>
         <p class="mb-4">
           <a href="/doctors" class="text-white">Doctors</a>
@@ -43,50 +42,33 @@
         <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-center">
           Our Services
         </h6>
-        <p class="mb-2">
+        <p class="mb-4">
           <a href="/services" class="text-white">Dental Exams</a>
         </p>
-        <p class="mb-2">
+        <p class="mb-4">
           <a href="/services" class="text-white">Teeth Cleaning</a>
         </p>
-        <p class="mb-2">
-          <a href="/services" class="text-white">Fillings</a>
+        <p class="mb-4">
+          <a href="/services" class="text-white">Teeth Whitening</a>
         </p>
-        <p class="mb-2">
-          <a href="/services" class="text-white">Root Canals</a>
-        </p>
-        <p class="mb-2">
-          <a href="/services" class="text-white">Extractions</a>
-        </p>
-        <p class="mb-2">
-          <a href="/services" class="text-white">Crowns</a>
-        </p>
-        <p class="mb-2">
-          <a href="/services" class="text-white">Bridges</a>
-        </p>
-        <p class="mb-2">
+        <p class="mb-4">
           <a href="/services" class="text-white">Implants</a>
         </p>
-        <p class="mb-2">
-          <a href="/services" class="text-white">Orthodontics</a>
-        </p>
-        <p class="mb-2">
-          <a href="/services" class="text-white">Teet Whitening</a>
-        </p>
-        <p class="mb-2">
-          <a href="/services" class="text-white">Periodontal Therapy</a>
+        <p class="mb-4">
+          <a href="/services" class="text-white">Extractions</a>
         </p>
         <p>
-          <a href="/services" class="text-white">Oral Surgery</a>
+          <a href="/services" class="text-white">Bridges</a>
         </p>
+       
       </div>
       <div class="">
-        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-center">
           Connect with Us
         </h6>
-        <div class="container pt-9">
-          <div class="flex justify-start mb-9">
-            <a href="/services" class="mr-9 text-black-800">
+        <div class="container pt-9 mx-5 flex justify-center">
+          <div class="flex justify-start md:justify-center mb-6">
+            <a href="https://www.facebook.com/" class="mr-9 text-black-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -103,7 +85,7 @@
                 ></path>
               </svg>
             </a>
-            <a href="/services" class="mr-9 text-black-800">
+            <a href="https://twitter.com/" class="mr-9 text-black-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -121,7 +103,7 @@
               </svg>
             </a>
             
-            <a href="/services" class="mr-9 text-black-800">
+            <a href="https://www.instagram.com/" class="mr-9 text-black-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -142,7 +124,7 @@
           
           </div>
         </div>
-        <p class="flex items-center justify-center md:justify-start mb-4">
+        <p class="flex items-center justify-center md:justify-center mb-4">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone"
             class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512">
@@ -150,9 +132,9 @@
               d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z">
             </path>
           </svg>
-          Hotline: + 01 234 567 88
+          Hotline: + 63 908 589 4977
         </p>
-        <p class="flex items-center justify-center md:justify-start">
+        <p class="flex items-center justify-center md:justify-center">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="email"
           class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg" 
           viewBox="0 0 512 512">
@@ -163,7 +145,7 @@
       </div>
     </div>
   </div>
-  <div class="text-center  p-2 bg-custom-3">
+  <div class="text-center  p-2 bg-custom-4 dark:bg-darkmode-600">
     <span>© Copyright <span class="font-semibold">Dental Clinic</span>. All Rights Reserved</span>
   </div>
  

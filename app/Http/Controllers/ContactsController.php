@@ -28,11 +28,26 @@ class ContactsController extends Controller
 
      //Admin view contact messages
      public function show() {
-        $contacts = Contact::latest()->simplepaginate(15);
+        $contacts = Contact::latest()
+        ->filter(request()->only('search'))
+        ->simplepaginate(15);
+        
         return view('contact.contact-inbox', compact('contacts'));
        
     }
 
+    public function index() 
+    {
+        $contacts = Contact::all();
+        return view('contact.view-contact', compact('contacts'));
+    }  
 
+       //Show Doctor View, Show Single View
+       public function view(Contact $contacts) {
+        return view('contact.view-contact', [
+            'contacts' => $contacts
+        ]);
+    }
 
+    
 }
