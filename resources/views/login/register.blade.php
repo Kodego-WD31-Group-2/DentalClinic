@@ -25,46 +25,47 @@
                     <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">Sign Up</h2>
                     <div class="p-5 intro-x mt-2 text-dark-500 xl:hidden text-center">A few more clicks to sign in to your account. <br> Experience quality dental care that lasts a lifetime.</div>
                     <div class="intro-x mt-8">
-                    <form action="/register" method="post">
-                        @csrf
-                        <div class="intro-x mt-8">
-                            <input type="text" name="name" class="intro-x login__input form-control py-3 px-4 block" placeholder="Name" value="{{ old('name') }}">
-                            @error('name')
-                            <p class="text-red-500">{{ $message }}</p>
-                            @enderror
-                            <input type="text" name="email" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Email" value="{{ old('email') }}">
-                            @error('email')
-                            <p class="text-red-500">{{ $message }}</p>
-                            @enderror
-                            <input type="password" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" value="{{ old('password') }}">
-                            @error('password')
-                            <p class="text-red-500">{{ $message }}</p>
-                            @enderror
-                            <input type="password" name="password_confirmation" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password Confirmation" value="{{ old('password_confirmation') }}">
-                            @error('password_confirmation')
-                            <p class="text-red-500 mt-2">{{ $message }}</p>
-                            @enderror
-    
-                        </div>
-    
-                    <div class="intro-x flex items-center text-slate-600 dark:text-slate-500 mt-4 text-xs sm:text-sm">
-                        <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
-                        <label class="cursor-pointer select-none" for="remember-me">I agree to the Terms and Conditions</label>
-                        <a class="text-primary dark:text-slate-200 ml-1" href="">Privacy Policy</a>.
+                        <form action="/register" method="post">
+                                @csrf
+                                <div class="intro-x mt-8">
+                                    <input type="text" name="name" class="intro-x login__input form-control py-3 px-4 block" placeholder="Name" value="{{ old('name') }}">
+                                    @error('name')
+                                    <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
+                                    <input type="text" name="email" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Email" value="{{ old('email') }}">
+                                    @error('email')
+                                    <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
+                                    <input type="password" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" value="{{ old('password') }}">
+                                    @error('password')
+                                    <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
+                                    <input type="password" name="password_confirmation" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password Confirmation" value="{{ old('password_confirmation') }}">
+                                    @error('password_confirmation')
+                                    <p class="text-red-500 mt-2">{{ $message }}</p>
+                                    @enderror
+            
+                                </div>
+            
+                                <div class="intro-x flex items-center text-slate-600 dark:text-slate-500 mt-4 text-xs sm:text-sm">
+                                    <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
+                                    <label class="cursor-pointer select-none" for="remember-me">I agree to the Terms and Conditions</label>
+                                    <a class="text-primary dark:text-slate-200 ml-1" href="">Privacy Policy</a>.
+                                </div>
+                                <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
+                                    <button type="submit" class="btn btn-primary text-dark py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Register</button>
+                                    <p class="mt-5">Already have an account?</p>
+                                        <p class="mt-5">
+                                            <a href="/login" >
+                                                <span class="btn btn-primary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">
+                                                    Sign in
+                                                </span>
+                                            </a>
+                                    </p>
+                                </div>
+                            
+                        </form>
                     </div>
-                    <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                        <button type="submit" class="btn btn-primary text-dark py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Register</button>
-                        <p class="mt-5">Already have an account?</p>
-                            <p class="mt-5">
-                                <a href="/login" >
-                                    <span class="btn btn-primary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">
-                                        Sign in
-                                    </span>
-                                </a>
-                        </p>
-                    </div>
-                    </div>
-                </form>
                 </div>
             </div>
             <!-- END: Register Form -->
