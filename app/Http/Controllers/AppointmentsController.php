@@ -66,11 +66,8 @@ class AppointmentsController extends Controller
 
     public function index() 
     {
-        // $filters = [
-        //     'search' => $request->input('search'),
-        // ];
-
-        $appointments = Appointment::orderBy('appointment_date')
+        $appointments = Appointment::latest()
+            ->orderBy('appointment_date')
             ->orderBy('appointment_time')
             ->filter(request()->only('search'))
             ->simplepaginate(20);
@@ -87,14 +84,6 @@ class AppointmentsController extends Controller
  
 
     // Show Edit Form
-    // public function edit(Appointment $appointment) {
-    //     return view('appointments.edit-appointment', compact('appointment'));
-    // }
-
-    // // public function edit(Appointment $appointment) {
-    // //     return view('appointments.edit-appointment', ['appointment' => $appointment]);
-    // //     return view('appointments.edit-appointment', ['appointment' => $appointment, 'doctors' => $doctor]);
-    // // }
     public function edit(Appointment $appointment) {
         $doctors = Doctor::all();
         $doctor = $appointment->doctor; // load the doctor for the appointment

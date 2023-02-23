@@ -47,7 +47,6 @@
   <!-- Section: Design Block -->
 
 </div>
-<!-- Container for demo purpose -->
 
 <div class="container my-6 px-6 mx-auto">
 
