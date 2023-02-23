@@ -53,6 +53,7 @@
                         <th class="text-center whitespace-nowrap">TRANSACTION ID</th>
                         <th class="text-center whitespace-nowrap">APPOINTMENT ID</th>
                         <th class="text-center whitespace-nowrap">FIRST NAME</th>
+                        <th class="text-center whitespace-nowrap">LAST NAME</th>
                         <th class="text-center whitespace-nowrap">TOTAL COST</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
                     </tr>
@@ -62,9 +63,10 @@
                             <tr class="intro-x">
                                 <td class="text-center">{{ $transaction->id }}</td>
                                 <td class="text-center">{{ $transaction->appointment_id }}</td>
-                                <td class="text-center">{{ optional($transaction->appointment)->first_name }}</td>
+                                {{-- <td class="text-center">{{ optional($transaction->appointment)->first_name }}</td> --}}
 
-                                {{-- <td class="text-center">{{ $transaction->appointment->first_name}}</td> --}}
+                                <td class="text-center">{{ $transaction->appointment->first_name}}</td>
+                                <td class="text-center">{{ $transaction->appointment->last_name}}</td>
                                 <td class="text-center">{{ $transaction->getTotalCostAttribute() }}</td>
 
                                 <td class="table-report__action w-56">

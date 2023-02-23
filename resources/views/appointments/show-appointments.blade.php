@@ -9,7 +9,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <a href="{{ url('/appointments/book-appointment') }}" class="btn btn-primary shadow-md mr-2">Set An Appointment</a>
-            <div class="hidden md:block mx-auto text-slate-500">{{-- Showing 1 to 10 of 150 entries --}}</div>
+            <div class="hidden md:block mx-auto text-slate-500"></div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
                     <form action="{{ route('appointments-list') }}" method="GET">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <!-- BEGIN: Data List -->
+        <!-- BEGIN: Appointment Data -->
         <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
             <table class="table table-report -mt-2">
                 <thead>
@@ -76,24 +76,24 @@
                             </td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    {{-- <a class="flex items-center mr-3" href="/appointments/{{$appointment->appointment_id}}/edit"> --}}
                                     <a class="flex items-center mr-3" href="/appointments/{{$appointment->appointment_id}}/edit">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
-                                    {{-- <form method="POST" action="{{ route('appointments.destroy', $appointment->appointment_id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="flex items-center text-danger" href="" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
-                                            <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                        </button>
-                                    </form> --}}
                                     <form method="POST" action="{{ route('appointments.destroy', $appointment->appointment_id) }}"
                                         onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </button>
+                                            class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete 
+                                        </button>
                                     </form>
+                                    {{-- <form method="POST" action="{{ route('appointments.destroy', $appointment->appointment_id) }}" id="delete-appointment-form" data-bs-target="#delete-confirmation-modal">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="flex items-center text-danger" data-bs-toggle="modal">
+                                            <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                        </button>
+                                    </form> --}}
                                 </div>
                             </td>
                         </tr>
@@ -101,7 +101,7 @@
                 </tbody>
             </table>
         </div>
-        <!-- END: Data List -->
+        <!-- END: Appointment Data -->
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
@@ -111,23 +111,41 @@
         <!-- END: Pagination -->
     </div>
     <!-- BEGIN: Delete Confirmation Modal -->
-    <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="delete-confirmation-modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body p-0">
                     <div class="p-5 text-center">
                         <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
                         <div class="text-3xl mt-5">Are you sure?</div>
-                        <div class="text-slate-500 mt-2">Do you really want to delete these records? <br>This process cannot be undone.</div>
+                        <div class="text-slate-500 mt-2">Do you really want to delete this appointment? <br>This process cannot be undone.</div>
                     </div>
                     <div class="px-5 pb-8 text-center">
-                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                        <button type="button" class="btn btn-danger w-24">Delete</button>
+                        <button type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                        <button type="button" class="btn btn-danger w-24" id="delete-appointment-button">Delete</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- END: Delete Confirmation Modal -->
+
+    {{-- <script>
+        console.log('hello');
+        document.addEventListener("DOMContentLoaded", function() {
+          console.log('Script loaded successfully');
+      
+          let deleteAppointmentForm = document.getElementById('delete-appointment-form');
+          let deleteAppointmentButton = document.querySelector('#delete-confirmation-modal button[type="button"].btn-danger');
+      
+          deleteAppointmentButton.addEventListener('click', function() {
+            console.log('Delete button clicked');
+            deleteAppointmentForm.submit();
+          });
+        });
+      </script> --}}
+
+
+
 @endsection
 

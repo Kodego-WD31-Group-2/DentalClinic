@@ -6,6 +6,7 @@ use App\Models\FeeSchedule;
 use App\Models\Transaction;
 use App\Models\TransactionItem;
 use Illuminate\Http\Request;
+use App\Models\Appointment;
 
 class TransactionController extends Controller
 {
@@ -21,16 +22,13 @@ class TransactionController extends Controller
 //     return view('transactions.transaction-list', compact('transactions'));
 // }
 
-public function transactions()
-{
-    $transactions = Transaction::with('appointment', 'transactionItems.feeSchedule')->get();
-    // $transactions = Transaction::with('appointment:name', 'transactionItems.feeSchedule')->get();
-
-    return view('transactions.transaction-list', compact('transactions'));
-}
-
-
-
+    public function transactions()
+    {
+        $transactions = Transaction::with('appointment', 'transactionItems.feeSchedule')->get();
+        // $transactions = Transaction::with('appointment:name', 'transactionItems.feeSchedule')->get();
+        
+        return view('transactions.transaction-list', compact('transactions'));
+    }
 
     public function edit(TransactionItem $transactionItem)
     {

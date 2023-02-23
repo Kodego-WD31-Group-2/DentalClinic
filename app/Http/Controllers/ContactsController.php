@@ -9,16 +9,25 @@ class ContactsController extends Controller
 {
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::Latest()->simplePaginate(15)->get();
         return view('contact.index', compact('contacts'));
+    }
+
+   //single 
+
+    public function view(Contact $contact) {
+        return view('contact.view-contact', [
+            'contact' => $contact
+        ]);
     }
 
        // Show Add Contact Form
        public function add() {
-        return view('contact.add-contact');
+        return view('contact.send-contact');
     }
 
     
+
     // Store Contact Entry
     public function store(Request $request) {
         $formFields = $request->validate([
@@ -31,4 +40,6 @@ class ContactsController extends Controller
         
         return redirect('/contact')->with('message', 'Listing created successfully');
     }
+
+    
 }

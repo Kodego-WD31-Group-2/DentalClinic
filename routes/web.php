@@ -37,7 +37,7 @@ Route::get('/', function () {
 
 //Public View
 Route::get('/home', [HomeController::class, 'home'])->name('home');
-Route::get('/contacts', [HomeController::class, 'contacts']);
+// Route::get('/contacts', [HomeController::class, 'contacts']);
 
 Route::get('/services', [ServicesController::class, 'index'])->name('services');
 Route::get('doctors', [DoctorsController::class, 'index'])->name('doctors');
@@ -275,8 +275,10 @@ Route::middleware('auth')->group(function() {
 
 
 //Contacts Controller
-Route::get('/contact', [ContactsController::class, 'index']);
-Route::get('/contact/add-contact', [ContactsController::class, 'add']);
+// Route::get('/contact/inbox', [ContactsController::class, 'index'])->name('contact.inbox');
+// Route::get('/contact', [ContactsController::class, 'add']);
+// Route::post('/contact/store', [ContactsController::class, 'store'])->name('contact.store');
+// Route::get('/contact/{contact}/view', [ContactsController::class, 'view'])->name('contact.view');
 
 
 
