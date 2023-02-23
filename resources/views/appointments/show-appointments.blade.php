@@ -69,6 +69,10 @@
                                         <a class="flex items-center mr-3 text-red-700">
                                             <i data-lucide="slash" class="w-4 h-4 mr-1"></i> Cancelled
                                         </a>
+                                    @elseif($appointment->status === 'verified')
+                                        <a class="flex items-center mr-3 text-blue-700">
+                                            <i data-lucide="shield-check" class="w-4 h-4 mr-1"></i> Verified
+                                        </a>
                                     @else
                                         <span>{{ $status }}</span>
                                     @endif

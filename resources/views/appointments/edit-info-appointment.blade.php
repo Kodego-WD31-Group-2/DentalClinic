@@ -48,6 +48,7 @@
     <option value="Pending" {{ old('status', $appointment->status) == 'Pending' ? 'selected' : '' }}>Pending</option>
     <option value="completed" {{ old('status', $appointment->status) == 'completed' ? 'selected' : '' }}>Completed</option>
     <option value="cancelled" {{ old('status', $appointment->status) == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+    <option value="verified" {{ old('status', $appointment->status) == 'verified' ? 'selected' : '' }}>Verified</option>
   </select>
 </div>
 
