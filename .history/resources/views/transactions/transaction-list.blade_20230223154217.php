@@ -22,8 +22,8 @@
                     <option>Completed</option>
                 </select>
             </div>
-            {{-- <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div> --}}
-            {{-- <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
+            <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
+            <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
                 <button class="btn btn-primary shadow-md mr-2">
                     <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
                 </button>
@@ -51,7 +51,7 @@
                         </ul>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
@@ -61,8 +61,8 @@
                         <th class="whitespace-nowrap">
                             <input class="form-check-input" type="checkbox">
                         </th>
-                        <th class="whitespace-nowrap">TR</th>
-                        <th class="whitespace-nowrap">PATIENT NAME</th>
+                        <th class="whitespace-nowrap">INVOICE</th>
+                        <th class="whitespace-nowrap">BUYER NAME</th>
                         <th class="text-center whitespace-nowrap">STATUS</th>
                         <th class="whitespace-nowrap">PAYMENT</th>
                         <th class="text-right whitespace-nowrap">
@@ -72,34 +72,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($transactions as $transaction)
+                    @foreach (array_slice($fakers, 0, 9) as $faker)
                         <tr class="intro-x">
                             <td class="w-10">
                                 <input class="form-check-input" type="checkbox">
                             </td>
                             <td class="w-40 !py-4">
-                                <a href="" class="underline decoration-dotted whitespace-nowrap">{{ $transaction->id }}</a>
+                                <a href="" class="underline decoration-dotted whitespace-nowrap">{{ '#INV-' . $faker['totals'][0] . '807556' }}</a>
                             </td>
                             <td class="w-40">
-                                <a href="" class="font-medium whitespace-nowrap">{{ $transaction->appointment->first_name}} {{ $transaction->appointment->last_name}}</a>
-                                {{-- @if ($faker['true_false'][0])
+                                <a href="" class="font-medium whitespace-nowrap">{{ $faker['users'][0]['name'] }}</a>
+                                @if ($faker['true_false'][0])
                                     <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div>
                                 @else
                                     <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">California, LA</div>
-                                @endif --}}
+                                @endif
                             </td>
                             <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap ">
-                                    <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> {{ $transaction->payment_status }}
+                                <div class="flex items-center justify-center whitespace-nowrap {{ $faker['true_false'][0] ? 'text-success' : 'text-pending' }}">
+                                    <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> {{ $faker['true_false'][0] ? 'Completed' : 'Pending Payment' }}
                                 </div>
                             </td>
                             <td>
-                                    <div class="whitespace-nowrap">{{ $transaction->payment_method }}</div>
-                                    {{-- <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">30 March, 11:00</div> --}}
-                             
+                                @if ($faker['true_false'][0])
+                                    <div class="whitespace-nowrap">Direct bank transfer</div>
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
+                                @else
+                                    <div class="whitespace-nowrap">Checking payments</div>
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">30 March, 11:00</div>
+                                @endif
                             </td>
                             <td class="w-40 text-right">
-                                <div class="pr-16">${{ $transaction->getTotalCostAttribute() }}</div>
+                                <div class="pr-16">${{ $faker['totals'][0] . ',000,00' }}</div>
                             </td>
                             <td class="table-report__action">
                                 <div class="flex justify-center items-center">
@@ -119,10 +123,8 @@
         <!-- END: Data List -->
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            <nav class="w-full sm:w-auto sm:mr-auto" >
-                {{ $transactions->links() }}
-
-                {{-- <ul class="pagination">
+            <nav class="w-full sm:w-auto sm:mr-auto">
+                <ul class="pagination">
                     <li class="page-item">
                         <a class="page-link" href="#">
                             <i class="w-4 h-4" data-lucide="chevrons-left"></i>
@@ -158,14 +160,14 @@
                             <i class="w-4 h-4" data-lucide="chevrons-right"></i>
                         </a>
                     </li>
-                </ul> --}}
+                </ul>
             </nav>
-            {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
+            <select class="w-20 form-select box mt-3 sm:mt-0">
                 <option>10</option>
                 <option>25</option>
                 <option>35</option>
                 <option>50</option>
-            </select> --}}
+            </select>
         </div>
         <!-- END: Pagination -->
     </div>

@@ -13,9 +13,7 @@ class Transaction extends Model
 
     protected $fillable = [
         'appointment_id',
-        'total_cost',
-        'payment_method',
-        'payment_status',
+        'total_cost'
         
     ];
 

@@ -22,8 +22,8 @@
                     <option>Completed</option>
                 </select>
             </div>
-            {{-- <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div> --}}
-            {{-- <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
+            <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
+            <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
                 <button class="btn btn-primary shadow-md mr-2">
                     <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
                 </button>
@@ -51,7 +51,7 @@
                         </ul>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
@@ -61,8 +61,8 @@
                         <th class="whitespace-nowrap">
                             <input class="form-check-input" type="checkbox">
                         </th>
-                        <th class="whitespace-nowrap">TR</th>
-                        <th class="whitespace-nowrap">PATIENT NAME</th>
+                        <th class="whitespace-nowrap">INVOICE</th>
+                        <th class="whitespace-nowrap">PATIENT NAME NAME</th>
                         <th class="text-center whitespace-nowrap">STATUS</th>
                         <th class="whitespace-nowrap">PAYMENT</th>
                         <th class="text-right whitespace-nowrap">
@@ -117,12 +117,10 @@
             </table>
         </div>
         <!-- END: Data List -->
-        <!-- BEGIN: Pagination -->
+        {{-- <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            <nav class="w-full sm:w-auto sm:mr-auto" >
-                {{ $transactions->links() }}
-
-                {{-- <ul class="pagination">
+            <nav class="w-full sm:w-auto sm:mr-auto">
+                <ul class="pagination">
                     <li class="page-item">
                         <a class="page-link" href="#">
                             <i class="w-4 h-4" data-lucide="chevrons-left"></i>
@@ -158,16 +156,16 @@
                             <i class="w-4 h-4" data-lucide="chevrons-right"></i>
                         </a>
                     </li>
-                </ul> --}}
+                </ul>
             </nav>
-            {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
+            <select class="w-20 form-select box mt-3 sm:mt-0">
                 <option>10</option>
                 <option>25</option>
                 <option>35</option>
                 <option>50</option>
-            </select> --}}
+            </select>
         </div>
-        <!-- END: Pagination -->
+        <!-- END: Pagination --> --}}
     </div>
     <!-- BEGIN: Delete Confirmation Modal -->
     <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">

@@ -23,7 +23,7 @@ class TransactionSeeder extends Seeder
         // Get all appointments to generate random appointment_id for each transaction
         $appointments = Appointment::all();
         $totalSeeds = 200;
-        $paidPercentage = 0.86;
+        $paidPercentage = 0.8;
         $paidSeeds = intval($totalSeeds * $paidPercentage);
 
         for ($i = 1; $i <= $totalSeeds; $i++) {

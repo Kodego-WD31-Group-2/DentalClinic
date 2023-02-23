@@ -13,10 +13,8 @@ class Transaction extends Model
 
     protected $fillable = [
         'appointment_id',
-        'total_cost',
-        'payment_method',
-        'payment_status',
-        
+        'total_cost'
+        'pay'
     ];
 
     public function transactionItems()
@@ -37,5 +35,10 @@ class Transaction extends Model
             ->value('total_cost');
     }
 
+// public function getFirstNameAttribute()
+// {
+//     $appointment = $this->appointment()->with('first_name')->first();
+//     return optional($appointment)->first_name;
+// }
 
 }

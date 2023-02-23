@@ -19,11 +19,11 @@ class TransactionController extends Controller
 
     public function transactions()
     {
-        $transactions = Transaction::with('appointment', 'transactionItems.feeSchedule')->simplePaginate(25);
-    
+        $transactions = Transaction::with('appointment', 'transactionItems.feeSchedule')->get();
+        // $transactions = Transaction::with('appointment:name', 'transactionItems.feeSchedule')->get();
+
         return view('transactions.transaction-list', compact('transactions'));
     }
-    
 
     public function edit(TransactionItem $transactionItem)
     {

@@ -24,8 +24,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('description');
             $table->string('patient_image');
-            $table->unsignedInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');                        
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+                        
             $table->timestamps();
 
             //'patient', 'description', 'image'

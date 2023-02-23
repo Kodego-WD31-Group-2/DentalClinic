@@ -22,17 +22,14 @@ class TransactionSeeder extends Seeder
 
         // Get all appointments to generate random appointment_id for each transaction
         $appointments = Appointment::all();
-        $totalSeeds = 200;
-        $paidPercentage = 0.86;
-        $paidSeeds = intval($totalSeeds * $paidPercentage);
 
-        for ($i = 1; $i <= $totalSeeds; $i++) {
+        foreach (range(1, 200) as $i) {
             // Create a new transaction with a random appointment_id
             $transaction = Transaction::create([
                 'appointment_id' => $appointments->random()->appointment_id,
                 'total_cost' => 0,
-                'payment_method' => $faker->randomElement(['Credit Card', 'Paypal', 'Bank_transfer', 'Cash', 'Insurance Provider']),
-                'payment_status' => $i <= $paidSeeds ? 'Paid' : $faker->randomElement(['Pending', 'Failed']),
+                'payment_method' => $faker->randomElement(['Credit Card', 'paypal', 'bank_transfer']),
+                'payment_status' => $faker->randomElement(['pending', 'paid', 'failed']),
             ]);
 
             // Generate a random number of transaction items (between 1 and 5)

@@ -373,7 +373,8 @@ class PageController extends Controller
      */
     public function transactionList()
     {
-        
+        $transactions = Transaction::with('appointment', 'transactionItems.feeSchedule')->get();
+
         return view('pages/transaction-list');
     }
 
