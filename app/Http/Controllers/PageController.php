@@ -392,6 +392,7 @@ class PageController extends Controller
      */
     public function transactionList()
     {
+        
         return view('pages/transaction-list');
     }
 

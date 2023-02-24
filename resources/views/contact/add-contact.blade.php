@@ -7,7 +7,7 @@
 @section('subcontent')
 
 
-<section class="container  bg-custom-5  shadow-lg px-6 mx-auto">
+<section class="container  bg-custom-5 shadow-lg px-6 mx-auto">
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-black">Contact Us</h2>
         <p class="mb-8 lg:mb-16 font-light text-center text-black sm:text-xl">Want to send feedback about us?Let us know.</p>
@@ -43,7 +43,7 @@
             {{-- Message --}}
             <div class="sm:col-span-2">
                 <label for="message" class="block mb-2 text-sm font-medium text-black">Your message</label>
-                <textarea id="message" name="message" rows="6" class="block p-3 w-full text-sm mt-2 border border-gray-400 rounded p-2 w-full " placeholder="Leave a comment..."></textarea>
+                <textarea id="message" name="message" rows="6" class="block p-3 w-full text-sm mt-2 border border-gray-400 rounded p-2 w-full " placeholder="Leave a message..."></textarea>
             </div>
             {{-- Send Button --}}
             <button type="submit" class="btn btn-secondary text-black">Send message</button>

@@ -15,19 +15,15 @@ class TransactionController extends Controller
         return view('transactions.transaction-items', compact('transactionItems'));
     }
 
-//     public function transactions()
-// {
-//     $transactions = Transaction::all();
-//     return view('transactions.transaction-list', compact('transactions'));
-// }
+
 
     public function transactions()
     {
-        $transactions = Transaction::with('appointment', 'transactionItems.feeSchedule')->get();
-        // $transactions = Transaction::with('appointment:name', 'transactionItems.feeSchedule')->get();
-
+        $transactions = Transaction::with('appointment', 'transactionItems.feeSchedule')->simplePaginate(25);
+    
         return view('transactions.transaction-list', compact('transactions'));
     }
+    
 
     public function edit(TransactionItem $transactionItem)
     {

@@ -305,6 +305,7 @@
                 <!-- BEGIN: Previous -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <div class=" items-center px-5 py-7  my-6sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Previous Appointments</h2>
                         <div class="dropdown ml-auto">
                             <button class="btn btn-outline-secondary hidden sm:flex">
@@ -312,6 +313,35 @@
                                     <div class="flex">
                                         <i data-lucide="plus" class="w-4 h-4 mr-2"></i> New Appointment
                                     </div>
+                        {{-- <div class="dropdown ml-auto sm:hidden">
+                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
+                                <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i>
+                            </a>
+                            <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a id="work-in-progress-mobile-new-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#work-in-progress-new" class="dropdown-item" role="tab" aria-controls="work-in-progress-new" aria-selected="true">New</a>
+                                    </li>
+                                    <li>
+                                        <a id="work-in-progress-mobile-last-week-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#work-in-progress-last-week" class="dropdown-item" role="tab" aria-selected="false">Last Week</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ul
+                            class="nav nav-link-tabs w-auto ml-auto hidden sm:flex"
+                            role="tablist"
+                        >
+                            <li id="work-in-progress-new-tab" class="nav-item" role="presentation">
+                                <a
+                                    href="javascript:;"
+                                    class="nav-link py-5 active"
+                                    data-tw-target="#work-in-progress-new"
+                                    aria-controls="work-in-progress-new"
+                                    aria-selected="true"
+                                    role="tab"
+                                >
+                                    New
                                 </a>
                             </button>
                         </div>
@@ -378,7 +408,7 @@
                             </div>
                         </div>
                         <button class="btn btn-outline-secondary hidden sm:flex">
-                            <a href="">
+                            <a href="/patients/add">
                                 <div class="flex">
                                     <i data-lucide="plus" class="w-4 h-4 mr-2"></i> New Patient
                                 </div>
@@ -404,7 +434,7 @@
                 <!-- END: Daily Sales -->
                 <!-- BEGIN: Billing History -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
-                    <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <div class="flex items-center px-5 py-5 my-6sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Billing History</h2>
                         <div class="dropdown ml-auto sm:hidden">
                             <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
@@ -421,7 +451,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <ul
+                        {{-- <ul
                             class="nav nav-link-tabs w-auto ml-auto hidden sm:flex"
                             role="tablist"
                         >
@@ -448,7 +478,7 @@
                                     Last Week
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="p-5">
                         <div class="tab-content">
@@ -468,11 +498,12 @@
                                 @endforeach
                                 {{-- <div class="flex items-center mt-5">
                                     <div class="border-l-2 border-primary dark:border-primary pl-4">
-                                        <a href="" class="font-medium">Meeting With Client</a>
-                                        <div class="text-slate-500">02:00 PM</div>
+                                        <a href="" class="font-medium">{{ $transaction->description }}</a>
+                                        <div class="text-slate-500">{{ $transaction->total_cost }}</div>
                                     </div>
                                     <div class="form-check form-switch ml-auto">
-                                        <input class="form-check-input" type="checkbox">
+                                        {{ $transaction->payment_method }}
+                                        {{ $transaction->payment_status }}
                                     </div>
                                 </div>
                                 <div class="flex items-center mt-5">
