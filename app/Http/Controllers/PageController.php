@@ -578,6 +578,19 @@ public function profileOverview1()
         ->get();
     
     // Billing history
+    $userId = Auth::id();
+
+    $transactions = Transaction::whereHas('appointment', function ($query) use ($userId) {
+        $query->where('user_id', $userId);
+    })->with('appointment', 'transactionItems.feeSchedule')->get();
+
+    // $billingHistory = DB::table('appointments')
+    //     ->join('transactions', 'appointments.appointment_id', '=', 'transactions.appointment_id')
+    //     ->join('transaction_items', 'transactions.id', '=', 'transaction_items.transaction_id')
+    //     ->join('fee_schedules', 'transaction_items.fee_schedule_id', '=', 'fee_schedules.id')
+    //     ->where('appointments.user_id', $userId)
+    //     ->select('transaction_items.id', 'transactions.id as transaction_id', 'appointments.appointment_id', 'appointments.first_name', 'appointments.last_name', 'fee_schedules.amount', 'appointments.appointment_date')
+    //     ->get();
     // $billingHistory = Transaction::select('date', 'total_cost')
     // ->where('user_id', $user->id)
     // ->orderBy('date', 'asc')
@@ -610,6 +623,7 @@ public function profileOverview1()
         // 'billingHistory' => $billingHistory,
         'appointmentsTodayList' => $appointmentsTodayList,
         'appointmentsTomorrowList' => $appointmentsTomorrowList,
+        'transactions' => $transactions,
     ]);
 }
 
