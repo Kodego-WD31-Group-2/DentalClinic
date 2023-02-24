@@ -10,9 +10,7 @@
         <h2 class="text-lg font-medium mr-auto">Profile</h2>
     </div>
     <!-- BEGIN: Profile Info -->
-
-    <!-- Display any other fields from your users table as needed -->    
-    
+    <!-- Display any other fields from your users table as needed -->       
     <div class="intro-y box px-5 pt-5 mt-5">
         <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
             <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
@@ -125,7 +123,68 @@
     <div class="intro-y tab-content mt-5">
         <div id="dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="dashboard-tab">
             <div class="grid grid-cols-12 gap-6">
-                <!-- BEGIN: Top Categories -->
+                {{-- #1 --}}
+                <!-- START: Admin - Todays Appt  -->
+                @if (auth()->check() && auth()->user()->role == 'admin')
+                <div class="intro-y box col-span-12 lg:col-span-6">
+                    <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+                        <h2 class="font-medium text-base mr-auto">Today's Appointments</h2>
+                        <div class="dropdown ml-auto">
+                            <button class="btn btn-outline-secondary hidden sm:flex">
+                                <a href="appointments/book-appointment">
+                                    <div class="flex">
+                                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i> New Appointment
+                                    </div>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        @foreach ($appointmentsTodayList as $appointment)
+                        <div class="flex flex-col sm:flex-row my-2">
+                            <div class="mr-auto">
+                                <div class="font-medium">Patient:{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
+                                <a href="" class="font-medium text-slate-500 text-xs mt-0.5">Doctor: {{ $appointment->doctor_first_name }} {{ $appointment->doctor_last_name }}</a>
+                            </div>
+                            <div class="flex mr-5 items-center">
+                                <div class="font-medium">{{ $appointment->appointment_type }}</div> 
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-center ">
+                                    <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
+                                        @if($appointment->status === 'completed')
+                                        <a class="flex items-center mr-3 text-green-700" >
+                                            <i data-lucide="check-square" class="w-4 h-4 mr-1"> </i>Completed
+                                        </a>
+                                        @elseif($appointment->status === 'pending')
+                                        <a class="flex items-center mr-3 text-yellow-500" >
+                                            <i data-lucide="clipboard-list" class="w-4 h-4 mr-1"></i> Pending
+                                        </a>
+                                        @elseif($appointment->status === 'cancelled')
+                                        <a class="flex items-center mr-3 text-red-700">
+                                            <i data-lucide="slash" class="w-4 h-4 mr-1"></i> Cancelled
+                                        </a>
+                                        @elseif($appointment->status === 'verified')
+                                        <a class="flex items-center mr-3 text-blue-700">
+                                            <i data-lucide="shield-check" class="w-4 h-4 mr-1"></i> Verified
+                                        </a>
+                                        @else
+                                        <span>{{ $status }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        @endforeach
+                        <div class="mt-4">
+                            {{ $appointmentsTodayList->appends(['today_page' => $appointmentsTodayList->currentPage()])->links() }}
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Admin - Todays Appt  -->
+                @elseif (auth()->check() && auth()->user()->role != 'admin')
+                <!-- BEGIN: Auth - Upcoming Appt  -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Upcoming Appointments</h2>
@@ -144,11 +203,31 @@
                         <div class="flex flex-col sm:flex-row my-2">
                             <div class="mr-auto">
                                 <div class="font-medium">Patient:{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
-                                <a href="" class="font-medium">Schedule: {{ $appointment->appointment_date }} - {{ $appointment->appointment_time }}</a>
+                                <a href="" class="font-medium text-slate-500 text-xs mt-0.5">Schedule: {{ $appointment->appointment_date }} - {{ $appointment->appointment_time }}</a>
                             </div>
                             <div class="flex">
                                 <div class="text-center">
-                                    <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">{{ $appointment->status }}</div>
+                                    <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
+                                        @if($appointment->status === 'completed')
+                                        <a class="flex items-center mr-3 text-green-700" >
+                                            <i data-lucide="check-square" class="w-4 h-4 mr-1"> </i>Completed
+                                        </a>
+                                        @elseif($appointment->status === 'pending')
+                                        <a class="flex items-center mr-3 text-yellow-500" >
+                                            <i data-lucide="clipboard-list" class="w-4 h-4 mr-1"></i> Pending
+                                        </a>
+                                        @elseif($appointment->status === 'cancelled')
+                                        <a class="flex items-center mr-3 text-red-700">
+                                            <i data-lucide="slash" class="w-4 h-4 mr-1"></i> Cancelled
+                                        </a>
+                                        @elseif($appointment->status === 'verified')
+                                        <a class="flex items-center mr-3 text-blue-700">
+                                            <i data-lucide="shield-check" class="w-4 h-4 mr-1"></i> Verified
+                                        </a>
+                                        @else
+                                        <span>{{ $status }}</span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -158,8 +237,71 @@
                     
                     </div>
                 </div>
-                <!-- END: Top Categories -->
-                <!-- BEGIN: Work In Progress -->
+                <!-- END: Auth - Upcoming Appt  -->
+                @endif
+                
+                {{-- #2 --}}
+                <!-- BEGIN: Tomorrows Appt -->
+                @if (auth()->check() && auth()->user()->role == 'admin')
+                <div class="intro-y box col-span-12 lg:col-span-6">
+                    <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+                        <h2 class="font-medium text-base mr-auto">Tomorrow's Appointments</h2>
+                        <div class="dropdown ml-auto">
+                            <button class="btn btn-outline-secondary hidden sm:flex">
+                                <a href="appointments/book-appointment">
+                                    <div class="flex">
+                                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i> New Appointment
+                                    </div>
+                                </a>
+                            </button>
+                        </div>
+                    </div>  
+                    <div class="p-5">
+                        @foreach ($appointmentsTomorrowList as $appointment)
+                        <div class="flex flex-col sm:flex-row my-2">
+                            <div class="mr-auto">
+                                <div class="font-medium">Patient:{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
+                                <a href="" class="font-medium text-slate-500 text-xs mt-0.5">Doctor: {{ $appointment->doctor_first_name }} {{ $appointment->doctor_last_name }}</a>
+                            </div>
+                            <div class="flex mr-5 items-center">
+                                <div class="font-medium ">{{ $appointment->appointment_type }}</div> 
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-center">
+                                    <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
+                                        @if($appointment->status === 'completed')
+                                        <a class="flex items-center mr-3 text-green-700" >
+                                            <i data-lucide="check-square" class="w-4 h-4 mr-1"> </i>Completed
+                                        </a>
+                                        @elseif($appointment->status === 'pending')
+                                        <a class="flex items-center mr-3 text-yellow-500" >
+                                            <i data-lucide="clipboard-list" class="w-4 h-4 mr-1"></i> Pending
+                                        </a>
+                                        @elseif($appointment->status === 'cancelled')
+                                        <a class="flex items-center mr-3 text-red-700">
+                                            <i data-lucide="slash" class="w-4 h-4 mr-1"></i> Cancelled
+                                        </a>
+                                        @elseif($appointment->status === 'verified')
+                                        <a class="flex items-center mr-3 text-blue-700">
+                                            <i data-lucide="shield-check" class="w-4 h-4 mr-1"></i> Verified
+                                        </a>
+                                        @else
+                                        <span>{{ $status }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        @endforeach
+                        <div class="mt-4">
+                            {{ $appointmentsTomorrowList->appends(['tomorrow_page' => $appointmentsTomorrowList->currentPage()])->links() }}
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Tomorrows Appt -->
+                @elseif (auth()->check() && auth()->user()->role != 'admin')
+                <!-- BEGIN: Previous -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Previous Appointments</h2>
@@ -214,14 +356,28 @@
                                     <div class="flex flex-col sm:flex-row my-2">
                                         <div class="mr-auto">
                                             <div class="font-medium">Patient:{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
-                                            <a href="" class="font-medium">Schedule: {{ $appointment->appointment_date }} - {{ $appointment->appointment_time }}</a>
+                                            <a href="" class="font-medium text-slate-500 text-xs mt-0.5"">Schedule: {{ $appointment->appointment_date }} - {{ $appointment->appointment_time }}</a>
                                         </div>
-                                        <div class="flex">
-                                            <div class="text-center">
-                                                @if ($appointment->status == 'completed')
-                                                    <div class="bg-success/20 text-success rounded px-2 mt-1.5">Completed</div>
-                                                @elseif ($appointment->status == 'cancelled')
-                                                    <div class="bg-danger/20 text-danger rounded px-2 mt-1.5">Cancelled</div>
+                                        <div class="text-center">
+                                            <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
+                                                @if($appointment->status === 'completed')
+                                                <a class="flex items-center mr-3 text-green-700" >
+                                                    <i data-lucide="check-square" class="w-4 h-4 mr-1"> </i>Completed
+                                                </a>
+                                                @elseif($appointment->status === 'pending')
+                                                <a class="flex items-center mr-3 text-yellow-500" >
+                                                    <i data-lucide="clipboard-list" class="w-4 h-4 mr-1"></i> Pending
+                                                </a>
+                                                @elseif($appointment->status === 'cancelled')
+                                                <a class="flex items-center mr-3 text-red-700">
+                                                    <i data-lucide="slash" class="w-4 h-4 mr-1"></i> Cancelled
+                                                </a>
+                                                @elseif($appointment->status === 'verified')
+                                                <a class="flex items-center mr-3 text-blue-700">
+                                                    <i data-lucide="shield-check" class="w-4 h-4 mr-1"></i> Verified
+                                                </a>
+                                                @else
+                                                <span>{{ $status }}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -233,7 +389,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: Work In Progress -->
+                <!-- END: Previous -->
+                @endif
+
                 <!-- BEGIN: Daily Sales -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
@@ -275,6 +433,7 @@
                     @endforeach
                     </div>
                 </div>
+                
                 <!-- END: Daily Sales -->
                 <!-- BEGIN: Billing History -->
                 <div class="intro-y box col-span-12 lg:col-span-6">

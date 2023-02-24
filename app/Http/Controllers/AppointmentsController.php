@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 class AppointmentsController extends Controller
 {   
 
-     // Show Add Page Form
+     // Show Create Appointment Form
      public function add() {
         $doctors = Doctor::all();
         return view('appointments.form-appointment', compact('doctors'));
@@ -105,15 +105,7 @@ class AppointmentsController extends Controller
         return view('appointments.show-appointments', compact('appointments', 'sortByDate'));
     }
 
-    
-    // // Show A Appointment
-    // // public function show(Appointment $appointment) {
-    // //     return view('appointments.appointment', [
-    // //         'appointment' => $appointment
-    // //     ]);    
-    // // }
- 
-
+   
     // Show Edit Form
     public function edit(Appointment $appointment) {
         $doctors = Doctor::all();
@@ -173,7 +165,6 @@ class AppointmentsController extends Controller
 
     return redirect('/appointments/list')->with('success', 'Appointment updated successfully.');
     }
-
 
     // Delete an Appointment Entry
     public function destroy(Appointment $appointment) {

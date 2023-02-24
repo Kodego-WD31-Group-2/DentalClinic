@@ -8,7 +8,7 @@
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 2xl:col-span-9">
             <div class="grid grid-cols-12 gap-6">
-                <!-- BEGIN: Appointment Report -->
+                <!-- BEGIN: Appointment Overview -->
                 <div class="col-span-12 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Appointments Overview</h2>
@@ -83,8 +83,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: Appointment Report -->
-                <!-- BEGIN: App by Month -->
+                <!-- END: Appointment Overview -->
+                <!-- BEGIN: Appts by Month (GRAPH)-->
                 <div class="col-span-12 lg:col-span-6 mt-8">
                     <div class="intro-y block sm:flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Appointments by Month</h2>
@@ -102,20 +102,6 @@
                                     <div class="mt-0.5 text-slate-500">Last Month</div>
                                 </div>
                             </div>
-                            {{-- <div class="dropdown md:ml-auto mt-5 md:mt-0">
-                                <button class="dropdown-toggle btn btn-outline-secondary font-normal" aria-expanded="false" data-tw-toggle="dropdown">
-                                    Filter by Category <i data-lucide="chevron-down" class="w-4 h-4 ml-2"></i>
-                                </button>
-                                <div class="dropdown-menu w-40">
-                                    <ul class="dropdown-content overflow-y-auto h-32">
-                                        <li><a href="" class="dropdown-item">PC & Laptop</a></li>
-                                        <li><a href="" class="dropdown-item">Smartphone</a></li>
-                                        <li><a href="" class="dropdown-item">Electronic</a></li>
-                                        <li><a href="" class="dropdown-item">Photography</a></li>
-                                        <li><a href="" class="dropdown-item">Sport</a></li>
-                                    </ul>
-                                </div>
-                            </div> --}}
                         </div>
                         <div class="report-chart">
                             <div class="h-[275px]">
@@ -124,7 +110,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: App by Month -->
+                <!-- END: Appts by Month (GRAPH) -->
                 <!-- BEGIN: Patient Count-->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
                     <div class="intro-y flex items-center h-10">
@@ -195,103 +181,7 @@
                     
                 </div>
                 <!-- END: Doctor Count -->
-                <!-- BEGIN: Official Store -->
-                {{-- <div class="col-span-12 xl:col-span-8 mt-6">
-                    <div class="intro-y block sm:flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Official Store</h2>
-                    </div>
-                    <div class="intro-y box p-5 mt-12 sm:mt-5">
-                        Hello
-                    </div>
-                </div> --}}
-                <!-- END: Official Store -->
-                <!-- BEGIN: Weekly Best Sellers -->
-                {{-- <div class="col-span-12 xl:col-span-4 mt-6">
-                    <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Weekly Best Sellers</h2>
-                    </div>
-                    <div class="mt-5">
-                        @foreach (array_slice($fakers, 0, 4) as $faker)
-                            <div class="intro-y">
-                                <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                    <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                        <img alt="Midone - HTML Admin Template" src="{{ asset('build/assets/images/' . $faker['photos'][0]) }}">
-                                    </div>
-                                    <div class="ml-4 mr-auto">
-                                        <div class="font-medium">{{ $faker['users'][0]['name'] }}</div>
-                                        <div class="text-slate-500 text-xs mt-0.5">{{ $faker['dates'][0] }}</div>
-                                    </div>
-                                    <div class="py-1 px-2 rounded-full text-xs bg-success text-white cursor-pointer font-medium">137 Sales</div>
-                                </div>
-                            </div>
-                        @endforeach
-                        <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">View More</a>
-                    </div>
-                </div> --}}
-                <!-- END: Weekly Best Sellers -->
-                <!-- BEGIN: General Report -->
-                {{-- <div class="col-span-12 grid grid-cols-12 gap-6 mt-8">
-                    <div class="col-span-12 sm:col-span-6 2xl:col-span-3 intro-y">
-                        <div class="box p-5 zoom-in">
-                            <div class="flex items-center">
-                                <div class="w-2/4 flex-none">
-                                    <div class="text-lg font-medium truncate">Target Sales</div>
-                                    <div class="text-slate-500 mt-1">300 Sales</div>
-                                </div>
-                                <div class="flex-none ml-auto relative">
-                                    <div class="w-[90px] h-[90px]">
-                                        <canvas id="report-donut-chart-1"></canvas>
-                                    </div>
-                                    <div class="font-medium absolute w-full h-full flex items-center justify-center top-0 left-0">20%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-12 sm:col-span-6 2xl:col-span-3 intro-y">
-                        <div class="box p-5 zoom-in">
-                            <div class="flex">
-                                <div class="text-lg font-medium truncate mr-3">Social Media</div>
-                                <div class="py-1 px-2 flex items-center rounded-full text-xs bg-slate-100 dark:bg-darkmode-400 text-slate-500 cursor-pointer ml-auto truncate">320 Followers</div>
-                            </div>
-                            <div class="mt-1">
-                                <div class="h-[58px]">
-                                    <canvas class="simple-line-chart-1 -ml-1"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-12 sm:col-span-6 2xl:col-span-3 intro-y">
-                        <div class="box p-5 zoom-in">
-                            <div class="flex items-center">
-                                <div class="w-2/4 flex-none">
-                                    <div class="text-lg font-medium truncate">New Products</div>
-                                    <div class="text-slate-500 mt-1">1450 Products</div>
-                                </div>
-                                <div class="flex-none ml-auto relative">
-                                    <div class="w-[90px] h-[90px]">
-                                        <canvas id="report-donut-chart-2"></canvas>
-                                    </div>
-                                    <div class="font-medium absolute w-full h-full flex items-center justify-center top-0 left-0">45%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-12 sm:col-span-6 2xl:col-span-3 intro-y">
-                        <div class="box p-5 zoom-in">
-                            <div class="flex">
-                                <div class="text-lg font-medium truncate mr-3">Posted Ads</div>
-                                <div class="py-1 px-2 flex items-center rounded-full text-xs bg-slate-100 dark:bg-darkmode-400 text-slate-500 cursor-pointer ml-auto truncate">180 Campaign</div>
-                            </div>
-                            <div class="mt-1">
-                                <div class="h-[58px]">
-                                    <canvas class="simple-line-chart-1 -ml-1"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                <!-- END: General Report -->
-                <!-- BEGIN: Transaction Report -->
+                <!-- BEGIN: Services Overview -->
                 <div class="col-span-12 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Services Overview</h2>
@@ -363,7 +253,7 @@
                         </div> --}}
                     </div>
                 </div>
-                <!-- END: Appointment Report -->
+                <!-- END: Services Overview -->
             </div>
         </div>
         <div class="col-span-12 2xl:col-span-3">
@@ -387,7 +277,6 @@
                                             <div class="font-medium">Dr. {{ $appointment->doctor_first_name }} {{ $appointment->doctor_last_name }}</div>
                                         </div>
                                         <div>
-                                            {{-- {{ ucfirst($appointment->status) }}  --}}
                                             @switch($appointment->status)
                                                 @case('pending')
                                                     <p class="text-yellow-500">{{ ucfirst($appointment->status) }}</p>
@@ -428,41 +317,26 @@
                                         <div class="text-base font-medium truncate">Safe Work Environment</div>
                                         <div class="text-slate-400 mt-1">Office Director</div>
                                         <div class="text-slate-500 text-justify mt-1">We want to remind you of the importance of maintaining a safe work environment. Please be sure to follow all safety procedures and report any concerns or incidents to your supervisor immediately. Thank you for your commitment to maintaining a safe workplace.</div>
-                                        {{-- <div class="font-medium flex mt-5">
-                                            <button type="button" class="btn btn-secondary py-1 px-2">View Notes</button>
-                                            <button type="button" class="btn btn-outline-secondary py-1 px-2 ml-auto ml-auto">Dismiss</button>
-                                        </div> --}}
                                     </div>
                                     <div class="p-5">
                                         <div class="text-base font-medium truncate">Work Schedule Changes</div>
                                         <div class="text-slate-400 mt-1">Office Scheduler</div>
                                         <div class="text-slate-500 text-justify mt-1">we would like to inform you that there will be a change in your work schedule starting March 1, 2023. Your new schedule will be from 9AM to 6PM and we appreciate your flexibility in accommodating this change.</div>
-                                        {{-- <div class="font-medium flex mt-5">
-                                            <button type="button" class="btn btn-secondary py-1 px-2">View Notes</button>
-                                            <button type="button" class="btn btn-outline-secondary py-1 px-2 ml-auto ml-auto">Dismiss</button>
-                                        </div> --}}
                                     </div>
                                     <div class="p-5">
                                         <div class="text-base font-medium truncate">Employee Appreciation Notice</div>
                                         <div class="text-slate-400 mt-1">Human Resources</div>
                                         <div class="text-slate-500 text-justify mt-1">To All Employees: We would like to express our appreciation for your hard work and dedication to our dental clinic. Your efforts have contributed to our success and we want to thank you for being a valuable member of our team.</div>
-                                        {{-- <div class="font-medium flex mt-5">
-                                            <button type="button" class="btn btn-secondary py-1 px-2">View Notes</button>
-                                            <button type="button" class="btn btn-outline-secondary py-1 px-2 ml-auto ml-auto">Dismiss</button>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- END: Important Notes -->
-                    <!-- BEGIN: Schedules -->
+                    <!-- BEGIN: Calendar -->
                     <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 xl:col-start-1 xl:row-start-2 2xl:col-start-auto 2xl:row-start-auto mt-3">
                         <div class="intro-x flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">Calendar</h2>
-                            {{-- <a href="" class="ml-auto text-primary truncate flex items-center">
-                                <i data-lucide="plus" class="w-4 h-4 mr-1"></i> Add New Schedules
-                            </a> --}}
                         </div>
                         <div class="mt-5">
                             <div class="intro-x box">
@@ -488,9 +362,9 @@
                                         <div class="py-0.5 rounded relative">3</div>
                                         <div class="py-0.5 rounded relative">4</div>
                                         <div class="py-0.5 rounded relative">5</div>
-                                        <div class="py-0.5 bg-success/20 dark:bg-success/30 rounded relative">6</div>
+                                        <div class="py-0.5 rounded relative">6</div>
                                         <div class="py-0.5 rounded relative">7</div>
-                                        <div class="py-0.5 bg-primary text-white rounded relative">8</div>
+                                        <div class="py-0.5 rounded relative">8</div>
                                         <div class="py-0.5 rounded relative">9</div>
                                         <div class="py-0.5 rounded relative">10</div>
                                         <div class="py-0.5 rounded relative">11</div>
@@ -505,11 +379,11 @@
                                         <div class="py-0.5 rounded relative">20</div>
                                         <div class="py-0.5 rounded relative">21</div>
                                         <div class="py-0.5 rounded relative">22</div>
-                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">23</div>
-                                        <div class="py-0.5 rounded relative">24</div>
+                                        <div class="py-0.5 rounded relative">23</div>
+                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">24</div>
                                         <div class="py-0.5 rounded relative">25</div>
                                         <div class="py-0.5 rounded relative">26</div>
-                                        <div class="py-0.5 bg-primary/10 dark:bg-primary/50 rounded relative">27</div>
+                                        <div class="py-0.5 rounded relative">27</div>
                                         <div class="py-0.5 rounded relative">28</div>
                                         <div class="py-0.5 rounded relative">29</div>
                                         <div class="py-0.5 rounded relative">30</div>
@@ -544,7 +418,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- END: Schedules -->
+                    <!-- END: Calendar -->
                 </div>
             </div>
         </div>

@@ -12,6 +12,8 @@ use App\Models\Chat;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+
+
 class PageController extends Controller
 {
     /**
@@ -216,15 +218,6 @@ class PageController extends Controller
             ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
             ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
             ->get();
-
-        
-        // $appointmentsByDoctor = DB::table('doctors')
-        //     ->select('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty', DB::raw('COUNT(appointments.doctor_id) as total_appointments'))
-        //     ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
-        //     ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
-        //     ->get();
-
-
 
         //List of Patients for Today
         $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
@@ -584,12 +577,39 @@ public function profileOverview1()
         ->orderBy('appointment_date', 'desc')
         ->get();
     
+    // Billing history
+    // $billingHistory = Transaction::select('date', 'total_cost')
+    // ->where('user_id', $user->id)
+    // ->orderBy('date', 'asc')
+    // ->get();
+
+    // Admin Profile View - Todays Appointment List
+    $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
+        ->select('appointments.first_name', 'appointments.last_name', 'appointments.appointment_type', 'appointments.status', 'doctors.first_name AS doctor_first_name', 'doctors.last_name AS doctor_last_name')
+        ->join('doctors', 'appointments.doctor_id', '=', 'doctors.doctor_id')
+        ->simplePaginate(5, ['*'], 'today_page');
+    
+    // Admin Profile View - Tomorrow's Appointment List
+    $appointmentsTomorrowList = Appointment::whereDate('appointment_date', date('Y-m-d', strtotime('+1 day')))
+        ->select('appointments.first_name', 'appointments.last_name', 'appointments.appointment_type', 'appointments.status', 'doctors.first_name AS doctor_first_name', 'doctors.last_name AS doctor_last_name')
+        ->join('doctors', 'appointments.doctor_id', '=', 'doctors.doctor_id')
+        ->simplePaginate(5, ['*'], 'tomorrow_page');
+
+    // Pass the current page number to the links() method for each list
+    $todayPage = $appointmentsTodayList->currentPage();
+    $tomorrowPage = $appointmentsTomorrowList->currentPage();
+    
+    $doctors = Doctor::all();
+
     // Pass the data to the view
     return view('pages/profile-overview-1', [
         'patients' => $patients,
         'appointments' => $appointments,
         'pendingAppointments' => $pendingAppointments,
         'previousAppointments' => $previousAppointments,
+        // 'billingHistory' => $billingHistory,
+        'appointmentsTodayList' => $appointmentsTodayList,
+        'appointmentsTomorrowList' => $appointmentsTomorrowList,
     ]);
 }
 

@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <!-- END: Todays Appointment Report -->
-                <!-- BEGIN: All Appointment Report -->
+                <!-- BEGIN: Overall Appt Report -->
                 <div class="col-span-12 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Overall Appointment Summary</h2>
@@ -159,8 +159,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: All Appointment Report -->     
-                <!-- BEGIN: Appointment by Service -->
+                <!-- END: Overall Appt Report -->     
+                <!-- BEGIN: Appointment by Service (PIE CHART)-->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Appointment by Service Type</h2>
@@ -190,8 +190,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: Appointment by Service -->
-                <!-- BEGIN: Appointment Chart -->
+                <!-- END: Appointment by Service (PIE CHART)-->
+                <!-- BEGIN: Appointment Chart (DONUT CHART)-->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Appointment Chart</h2>
@@ -221,7 +221,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: Appointment Chart -->
+                <!-- END: Appointment Chart (DONUT CHART)-->
                 <!-- BEGIN: App by Doc -->
                 <div class="col-span-12 xl:col-span-12 mt-6">
                     <div class="intro-y flex items-center h-10">
@@ -238,13 +238,14 @@
                                     </div>
                                     <button><div class="py-1 px-2 rounded-full text-xs bg-success text-white cursor-pointer font-medium">{{ $doctor->total_appointments }} Appointments</div></button>
                                 </div>
+                                {{-- Hideable Info (WIP)--}}
                                 {{-- <div class="hidden-info-{{ $doctor->doctor_id }} hidden"> 
                                     <p>Specialty: {{ $doctor->specialty }} </p>
                                     <p>Total Appointments: {{ $doctor->total_appointments }}</p>
                                     <p>Other Info: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 </div> --}}
                             </div>
-
+                            {{-- Hideable Info (WIP)--}}
                             {{-- <script>
                                 let buttons = document.querySelectorAll('.intro-y button');
                                 buttons.forEach(function(button) {
@@ -278,16 +279,12 @@
                             @foreach ($appointmentsTodayList as $appointment)
                                 <div class="intro-x">
                                     <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
-                                        {{-- <div class="ml-4 mr-auto">
-                                            <p>Doctor's Name</p>
-                                        </div> --}}
                                         <div class="ml-4 mr-auto">
                                             <div class="font-medium">{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
                                             <div class="text-slate-500 text-xs mt-0.5">{{ $appointment->appointment_type }}</div>
                                             <div class="font-medium">Dr. {{ $appointment->doctor_first_name }} {{ $appointment->doctor_last_name }}</div>
                                         </div>
                                         <div>
-                                            {{-- {{ ucfirst($appointment->status) }}  --}}
                                             @switch($appointment->status)
                                                 @case('pending')
                                                     <p class="text-yellow-500">{{ ucfirst($appointment->status) }}</p>
@@ -356,7 +353,7 @@
                         </div>
                     </div>
                     <!-- END: Important Notes -->
-                    <!-- BEGIN: Schedules -->
+                    <!-- BEGIN: Calendar -->
                     <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 xl:col-start-1 xl:row-start-2 2xl:col-start-auto 2xl:row-start-auto mt-3">
                         <div class="intro-x flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">Calendar</h2>
@@ -388,9 +385,9 @@
                                         <div class="py-0.5 rounded relative">3</div>
                                         <div class="py-0.5 rounded relative">4</div>
                                         <div class="py-0.5 rounded relative">5</div>
-                                        <div class="py-0.5 bg-success/20 dark:bg-success/30 rounded relative">6</div>
+                                        <div class="py-0.5 rounded relative">6</div>
                                         <div class="py-0.5 rounded relative">7</div>
-                                        <div class="py-0.5 bg-primary text-white rounded relative">8</div>
+                                        <div class="py-0.5 rounded relative">8</div>
                                         <div class="py-0.5 rounded relative">9</div>
                                         <div class="py-0.5 rounded relative">10</div>
                                         <div class="py-0.5 rounded relative">11</div>
@@ -405,11 +402,11 @@
                                         <div class="py-0.5 rounded relative">20</div>
                                         <div class="py-0.5 rounded relative">21</div>
                                         <div class="py-0.5 rounded relative">22</div>
-                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">23</div>
-                                        <div class="py-0.5 rounded relative">24</div>
+                                        <div class="py-0.5 rounded relative">23</div>
+                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">24</div>
                                         <div class="py-0.5 rounded relative">25</div>
                                         <div class="py-0.5 rounded relative">26</div>
-                                        <div class="py-0.5 bg-primary/10 dark:bg-primary/50 rounded relative">27</div>
+                                        <div class="py-0.5 rounded relative">27</div>
                                         <div class="py-0.5 rounded relative">28</div>
                                         <div class="py-0.5 rounded relative">29</div>
                                         <div class="py-0.5 rounded relative">30</div>
@@ -424,27 +421,10 @@
                                         <div class="py-0.5 rounded relative text-slate-500">9</div>
                                     </div>
                                 </div>
-                                {{-- <div class="border-t border-slate-200/60 p-5">
-                                    <div class="flex items-center">
-                                        <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
-                                        <span class="truncate">UI/UX Workshop</span>
-                                        <span class="font-medium xl:ml-auto">23th</span>
-                                    </div>
-                                    <div class="flex items-center mt-4">
-                                        <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                        <span class="truncate">VueJs Frontend Development</span>
-                                        <span class="font-medium xl:ml-auto">10th</span>
-                                    </div>
-                                    <div class="flex items-center mt-4">
-                                        <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
-                                        <span class="truncate">Laravel Rest API</span>
-                                        <span class="font-medium xl:ml-auto">31th</span>
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
                     </div>
-                    <!-- END: Schedules -->
+                    <!-- END: Calendar -->
                 </div>
             </div>
         </div>
