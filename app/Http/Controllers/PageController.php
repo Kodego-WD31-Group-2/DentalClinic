@@ -564,13 +564,15 @@ public function profileOverview1()
     $user = Auth::user();
     
     // Retrieve the patients connected to the user
-    $patients = Patient::where('user_id', $user->id)->get();
+    $patients = Patient::where('user_id', $user->id)
+        ->simplePaginate(8, ['*'], 'patient_page');
     $appointments = Appointment::where('user_id', $user->id)->get();
-    
+        
+
     // Retrieve the pending appointments for the user
     $pendingAppointments = Appointment::where('user_id', $user->id)
         ->where('status', 'pending')
-        ->simplePaginate(5, ['*'], 'pending_page');
+        ->simplePaginate(4, ['*'], 'pending_page');
     
     // Retrieve the completed and cancelled appointments connected to the user
     $previousAppointments = Appointment::where('user_id', $user->id)
@@ -581,9 +583,17 @@ public function profileOverview1()
     // Billing history
     $userId = Auth::id();
 
+    // $transactions = Transaction::whereHas('appointment', function ($query) use ($userId) {
+    //     $query->where('user_id', $userId);
+    // })->with('appointment', 'transactionItems.feeSchedule')
+    //     ->simplePaginate(10, ['*'], 'billing_page');
     $transactions = Transaction::whereHas('appointment', function ($query) use ($userId) {
         $query->where('user_id', $userId);
-    })->with('appointment', 'transactionItems.feeSchedule')->get();
+    })->with(['appointment' => function($query) {
+        $query->orderBy('appointment_date', 'desc');
+    }, 'transactionItems.feeSchedule'])
+        ->simplePaginate(15, ['*'], 'billing_page');
+
 
     // Admin Profile View - Todays Appointment List
     $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
