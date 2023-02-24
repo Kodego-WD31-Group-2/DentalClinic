@@ -12,6 +12,8 @@ use App\Models\Chat;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+
+
 class PageController extends Controller
 {
     /**
@@ -55,7 +57,26 @@ class PageController extends Controller
 
         // Doctor Count
         $totalDoctors = Doctor::count();
+
+        //List of Patients for Today
+        $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
+        ->select('appointments.first_name', 'appointments.last_name', 'appointments.appointment_type', 'appointments.status', 'doctors.first_name AS doctor_first_name', 'doctors.last_name AS doctor_last_name')
+        ->join('doctors', 'appointments.doctor_id', '=', 'doctors.doctor_id')
+        ->get();
+        $doctors = Doctor::all();
+
+        //Service Count
         
+        $totalAppointments = Appointment::count();
+        $regularCheckup = Appointment::where('appointment_type', 'Regular Checkup')->count();
+        $emergency = Appointment::where('appointment_type', 'Emergency')->count();
+        $cleaning = Appointment::where('appointment_type', 'Cleaning')->count();
+        $total = $regularCheckup + $emergency + $cleaning;
+        $regularCheckupPercentage = $total > 0 ? round($regularCheckup / $totalAppointments * 100, 2) : 0;
+        $emergencyPercentage = $total > 0 ? round($emergency / $totalAppointments * 100, 2) : 0;
+        $cleaningPercentage = $total > 0 ? round($cleaning / $totalAppointments * 100, 2) : 0;
+
+
         return view('pages/dashboard-overview-1', [
             // Specify the base layout.
             // Eg: 'side-menu', 'simple-menu', 'top-menu', 'login'
@@ -68,6 +89,13 @@ class PageController extends Controller
             'maleCount' => $maleCount,
             'femaleCount' => $femaleCount,
             'totalDoctors' => $totalDoctors,
+            'appointmentsTodayList' => $appointmentsTodayList,
+            'regularCheckup' => $regularCheckup,
+            'emergency' => $emergency,
+            'cleaning' => $cleaning,
+            'regularCheckupPercentage' => $regularCheckupPercentage,
+            'emergencyPercentage' => $emergencyPercentage,
+            'cleaningPercentage' => $cleaningPercentage,
             'layout' => 'side-menu'
         ]);
     }
@@ -190,15 +218,6 @@ class PageController extends Controller
             ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
             ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
             ->get();
-
-        
-        // $appointmentsByDoctor = DB::table('doctors')
-        //     ->select('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty', DB::raw('COUNT(appointments.doctor_id) as total_appointments'))
-        //     ->leftJoin('appointments', 'doctors.doctor_id', '=', 'appointments.doctor_id')
-        //     ->groupBy('doctors.doctor_id', 'doctors.first_name', 'doctors.last_name', 'doctors.specialty')
-        //     ->get();
-
-
 
         //List of Patients for Today
         $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
@@ -559,12 +578,53 @@ public function profileOverview1()
         ->orderBy('appointment_date', 'desc')
         ->get();
     
+    // Billing history
+    $userId = Auth::id();
+
+    $transactions = Transaction::whereHas('appointment', function ($query) use ($userId) {
+        $query->where('user_id', $userId);
+    })->with('appointment', 'transactionItems.feeSchedule')->get();
+
+    // $billingHistory = DB::table('appointments')
+    //     ->join('transactions', 'appointments.appointment_id', '=', 'transactions.appointment_id')
+    //     ->join('transaction_items', 'transactions.id', '=', 'transaction_items.transaction_id')
+    //     ->join('fee_schedules', 'transaction_items.fee_schedule_id', '=', 'fee_schedules.id')
+    //     ->where('appointments.user_id', $userId)
+    //     ->select('transaction_items.id', 'transactions.id as transaction_id', 'appointments.appointment_id', 'appointments.first_name', 'appointments.last_name', 'fee_schedules.amount', 'appointments.appointment_date')
+    //     ->get();
+    // $billingHistory = Transaction::select('date', 'total_cost')
+    // ->where('user_id', $user->id)
+    // ->orderBy('date', 'asc')
+    // ->get();
+
+    // Admin Profile View - Todays Appointment List
+    $appointmentsTodayList = Appointment::whereDate('appointment_date', today())
+        ->select('appointments.first_name', 'appointments.last_name', 'appointments.appointment_type', 'appointments.status', 'doctors.first_name AS doctor_first_name', 'doctors.last_name AS doctor_last_name')
+        ->join('doctors', 'appointments.doctor_id', '=', 'doctors.doctor_id')
+        ->simplePaginate(5, ['*'], 'today_page');
+    
+    // Admin Profile View - Tomorrow's Appointment List
+    $appointmentsTomorrowList = Appointment::whereDate('appointment_date', date('Y-m-d', strtotime('+1 day')))
+        ->select('appointments.first_name', 'appointments.last_name', 'appointments.appointment_type', 'appointments.status', 'doctors.first_name AS doctor_first_name', 'doctors.last_name AS doctor_last_name')
+        ->join('doctors', 'appointments.doctor_id', '=', 'doctors.doctor_id')
+        ->simplePaginate(5, ['*'], 'tomorrow_page');
+
+    // Pass the current page number to the links() method for each list
+    $todayPage = $appointmentsTodayList->currentPage();
+    $tomorrowPage = $appointmentsTomorrowList->currentPage();
+    
+    $doctors = Doctor::all();
+
     // Pass the data to the view
     return view('pages/profile-overview-1', [
         'patients' => $patients,
         'appointments' => $appointments,
         'pendingAppointments' => $pendingAppointments,
         'previousAppointments' => $previousAppointments,
+        // 'billingHistory' => $billingHistory,
+        'appointmentsTodayList' => $appointmentsTodayList,
+        'appointmentsTomorrowList' => $appointmentsTomorrowList,
+        'transactions' => $transactions,
     ]);
 }
 

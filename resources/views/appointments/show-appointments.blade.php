@@ -24,7 +24,7 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">DATE</th>
+                        <th class="whitespace-nowrap"><a href="{{ route('appointments-list', ['sortByDate' => ! $sortByDate]) }}">APPOINTMENT DATE</a></th>
                         <th class="whitespace-nowrap">PATIENT'S NAME</th>
                         <th class="whitespace-nowrap">DOCTOR'S NAME</th>
                         <th class="whitespace-nowrap">PROCEDURE</th>

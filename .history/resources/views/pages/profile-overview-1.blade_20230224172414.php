@@ -517,7 +517,7 @@
                                     <div class="form-check form-switch ml-auto">
                                         <input class="form-check-input" type="checkbox">
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
                         </div>
                     </div>

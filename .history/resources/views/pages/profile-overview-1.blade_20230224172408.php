@@ -486,20 +486,16 @@
                     <div class="p-5">
                         <div class="tab-content">
                             <div id="latest-tasks-new" class="tab-pane active" role="tabpanel" aria-labelledby="latest-tasks-new-tab">
-                                @foreach ($transactions as $transaction)
-                                    
-                                
                                 <div class="flex items-center">
                                     <div class="border-l-2 border-primary dark:border-primary pl-4">
-                                        <a href="" class="font-medium">{{ $transaction->appointment->appointment_date }} {{ $transaction->appointment->last_name }} {{ $transaction->appointment->first_name }}{{--  {{ $transaction->amount }} --}}</a>
-                                        <div class="text-slate-500">{{ $transaction->getTotalCostAttribute() }}</div>
+                                        <a href="" class="font-medium">Create New Campaign</a>
+                                        <div class="text-slate-500">10:00 AM</div>
                                     </div>
                                     <div class="form-check form-switch ml-auto">
                                         <input class="form-check-input" type="checkbox">
                                     </div>
                                 </div>
-                                @endforeach
-                                {{-- <div class="flex items-center mt-5">
+                                <div class="flex items-center mt-5">
                                     <div class="border-l-2 border-primary dark:border-primary pl-4">
                                         <a href="" class="font-medium">{{ $transaction->description }}</a>
                                         <div class="text-slate-500">{{ $transaction->total_cost }}</div>
@@ -517,7 +513,7 @@
                                     <div class="form-check form-switch ml-auto">
                                         <input class="form-check-input" type="checkbox">
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -49,20 +49,20 @@ class TransactionController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'transaction_id' => 'required',
-        'fee_schedule_id' => 'required|exists:fee_schedules,id'
+    {
+        $request->validate([
+            'transaction_id' => 'required',
+            'fee_schedule_id' => 'required|exists:fee_schedules,id'
     ]);
 
-    $transactionItem = new TransactionItem;
-    $transactionItem->transaction_id = $request->transaction_id;
-    $transactionItem->fee_schedule_id = $request->fee_schedule_id;
-    $transactionItem->save();
+        $transactionItem = new TransactionItem;
+        $transactionItem->transaction_id = $request->transaction_id;
+        $transactionItem->fee_schedule_id = $request->fee_schedule_id;
+        $transactionItem->save();
 
-    return redirect('/transaction-items')
-        ->with('success', 'Transaction added successfully.');
-}
+        return redirect('/transaction-items')
+            ->with('success', 'Transaction added successfully.');
+    }
     
 //     public function showTransactionItems()
 // {

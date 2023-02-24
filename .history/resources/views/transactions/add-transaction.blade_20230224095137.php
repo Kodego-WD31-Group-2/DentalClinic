@@ -89,7 +89,7 @@
                     <div class="p-2.5">
                         <button
                     type="button"
-                    class="inline-block mt-3 rounded border-2 bg-blue-400 border-custom-1 px-6 pt-2 pb-[6px] text-xs font-medium uppercase leading-normal text-light transition duration-150 ease-in-out hover:border-primary-600 hover:bg-neutral-500 hover:bg-opacity-50 hover:text-primary-600 focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:border-primary-700 active:text-primary-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                    class="inline-block mt-3 rounded border-2 bg-customborder-custom-1 px-6 pt-2 pb-[6px] text-xs font-medium uppercase leading-normal text-light transition duration-150 ease-in-out hover:border-primary-600 hover:bg-neutral-500 hover:bg-opacity-50 hover:text-primary-600 focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:border-primary-700 active:text-primary-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
                     data-te-ripple-init>
                     Submit
                     </button>
