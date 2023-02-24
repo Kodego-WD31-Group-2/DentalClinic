@@ -569,13 +569,13 @@ public function profileOverview1()
     // Retrieve the pending appointments for the user
     $pendingAppointments = Appointment::where('user_id', $user->id)
         ->where('status', 'pending')
-        ->get();
+        ->simplePaginate(5, ['*'], 'pending_page');
     
     // Retrieve the completed and cancelled appointments connected to the user
     $previousAppointments = Appointment::where('user_id', $user->id)
         ->whereIn('status', ['completed', 'cancelled'])
         ->orderBy('appointment_date', 'desc')
-        ->get();
+        ->simplePaginate(4, ['*'], 'previous_page');
     
     // Billing history
     $userId = Auth::id();
@@ -583,18 +583,6 @@ public function profileOverview1()
     $transactions = Transaction::whereHas('appointment', function ($query) use ($userId) {
         $query->where('user_id', $userId);
     })->with('appointment', 'transactionItems.feeSchedule')->get();
-
-    // $billingHistory = DB::table('appointments')
-    //     ->join('transactions', 'appointments.appointment_id', '=', 'transactions.appointment_id')
-    //     ->join('transaction_items', 'transactions.id', '=', 'transaction_items.transaction_id')
-    //     ->join('fee_schedules', 'transaction_items.fee_schedule_id', '=', 'fee_schedules.id')
-    //     ->where('appointments.user_id', $userId)
-    //     ->select('transaction_items.id', 'transactions.id as transaction_id', 'appointments.appointment_id', 'appointments.first_name', 'appointments.last_name', 'fee_schedules.amount', 'appointments.appointment_date')
-    //     ->get();
-    // $billingHistory = Transaction::select('date', 'total_cost')
-    // ->where('user_id', $user->id)
-    // ->orderBy('date', 'asc')
-    // ->get();
 
     // Admin Profile View - Todays Appointment List
     $appointmentsTodayList = Appointment::whereDate('appointment_date', today())

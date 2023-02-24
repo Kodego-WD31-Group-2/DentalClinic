@@ -231,10 +231,11 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
-                        
-                    @endforeach
-                    
+                        <hr>                    
+                        @endforeach
+                        <div class="mt-4">
+                            {{ $pendingAppointments->appends(['pending_page' => $pendingAppointments->currentPage()])->links() }}
+                        </div>
                     </div>
                 </div>
                 <!-- END: Auth - Upcoming Appt  -->
@@ -303,90 +304,56 @@
                 @elseif (auth()->check() && auth()->user()->role != 'admin')
                 <!-- BEGIN: Previous -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
-                    <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Previous Appointments</h2>
-                        <div class="dropdown ml-auto sm:hidden">
-                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
-                                <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i>
-                            </a>
-                            <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
-                                <ul class="dropdown-content">
-                                    <li>
-                                        <a id="work-in-progress-mobile-new-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#work-in-progress-new" class="dropdown-item" role="tab" aria-controls="work-in-progress-new" aria-selected="true">New</a>
-                                    </li>
-                                    <li>
-                                        <a id="work-in-progress-mobile-last-week-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#work-in-progress-last-week" class="dropdown-item" role="tab" aria-selected="false">Last Week</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="dropdown ml-auto">
+                            <button class="btn btn-outline-secondary hidden sm:flex">
+                                <a href="appointments/book-appointment">
+                                    <div class="flex">
+                                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i> New Appointment
+                                    </div>
+                                </a>
+                            </button>
                         </div>
-                        <ul
-                            class="nav nav-link-tabs w-auto ml-auto hidden sm:flex"
-                            role="tablist"
-                        >
-                            <li id="work-in-progress-new-tab" class="nav-item" role="presentation">
-                                <a
-                                    href="javascript:;"
-                                    class="nav-link py-5 active"
-                                    data-tw-target="#work-in-progress-new"
-                                    aria-controls="work-in-progress-new"
-                                    aria-selected="true"
-                                    role="tab"
-                                >
-                                    New
-                                </a>
-                            </li>
-                            <li id="work-in-progress-last-week-tab" class="nav-item" role="presentation">
-                                <a
-                                    href="javascript:;"
-                                    class="nav-link py-5"
-                                    data-tw-target="#work-in-progress-last-week"
-                                    aria-selected="false"
-                                    role="tab"
-                                >
-                                    Last Week
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                     <div class="p-5">
-                        <div class="tab-content">
-                            <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
-                                @foreach ($previousAppointments as $appointment)
-                                    <div class="flex flex-col sm:flex-row my-2">
-                                        <div class="mr-auto">
-                                            <div class="font-medium">Patient:{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
-                                            <a href="" class="font-medium text-slate-500 text-xs mt-0.5">Schedule: {{ $appointment->appointment_date }} - {{ $appointment->appointment_time }}</a>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
-                                                @if($appointment->status === 'completed')
-                                                <a class="flex items-center mr-3 text-green-700" >
-                                                    <i data-lucide="check-square" class="w-4 h-4 mr-1"> </i>Completed
-                                                </a>
-                                                @elseif($appointment->status === 'pending')
-                                                <a class="flex items-center mr-3 text-yellow-500" >
-                                                    <i data-lucide="clipboard-list" class="w-4 h-4 mr-1"></i> Pending
-                                                </a>
-                                                @elseif($appointment->status === 'cancelled')
-                                                <a class="flex items-center mr-3 text-red-700">
-                                                    <i data-lucide="slash" class="w-4 h-4 mr-1"></i> Cancelled
-                                                </a>
-                                                @elseif($appointment->status === 'verified')
-                                                <a class="flex items-center mr-3 text-blue-700">
-                                                    <i data-lucide="shield-check" class="w-4 h-4 mr-1"></i> Verified
-                                                </a>
-                                                @else
-                                                <span>{{ $status }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
+                        @foreach ($previousAppointments as $appointment)
+                        <div class="flex flex-col sm:flex-row my-2">
+                            <div class="mr-auto">
+                                <div class="font-medium">Patient:{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
+                                <a href="" class="font-medium text-slate-500 text-xs mt-0.5">Schedule: {{ $appointment->appointment_date }} - {{ $appointment->appointment_time }}</a>
+                            </div>
+                            <div class="flex">
+                                <div class="text-center">
+                                    <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
+                                        @if($appointment->status === 'completed')
+                                        <a class="flex items-center mr-3 text-green-700" >
+                                            <i data-lucide="check-square" class="w-4 h-4 mr-1"> </i>Completed
+                                        </a>
+                                        @elseif($appointment->status === 'pending')
+                                        <a class="flex items-center mr-3 text-yellow-500" >
+                                            <i data-lucide="clipboard-list" class="w-4 h-4 mr-1"></i> Pending
+                                        </a>
+                                        @elseif($appointment->status === 'cancelled')
+                                        <a class="flex items-center mr-3 text-red-700">
+                                            <i data-lucide="slash" class="w-4 h-4 mr-1"></i> Cancelled
+                                        </a>
+                                        @elseif($appointment->status === 'verified')
+                                        <a class="flex items-center mr-3 text-blue-700">
+                                            <i data-lucide="shield-check" class="w-4 h-4 mr-1"></i> Verified
+                                        </a>
+                                        @else
+                                        <span>{{ $status }}</span>
+                                        @endif
                                     </div>
-                                    <hr>
-                                @endforeach                                
-                                <a href="" class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a>
+                                </div>
                             </div>
                         </div>
+                        <hr>               
+                    @endforeach
+                    <div class="mt-4">
+                        {{ $previousAppointments->appends(['previous_page' => $previousAppointments->currentPage()])->links() }}
+                    </div>
                     </div>
                 </div>
                 <!-- END: Previous -->
@@ -433,7 +400,7 @@
                     @endforeach
                     </div>
                 </div>
-                
+
                 <!-- END: Daily Sales -->
                 <!-- BEGIN: Billing History -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
@@ -517,6 +484,96 @@
                                         <input class="form-check-input" type="checkbox">
                                     </div>
                                 </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="intro-y box col-span-12 lg:col-span-6">
+                    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60">
+                        <h2 class="font-medium text-base mr-auto">Hoverable Table</h2>
+                        <div class="form-check form-switch w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
+                            <label class="form-check-label ml-0" for="show-example-3">Show example code</label>
+                            <input id="show-example-3" data-target="#hoverable-table" class="show-code form-check-input mr-0 ml-3" type="checkbox">
+                        </div>
+                    </div>
+                    <div class="p-5" id="hoverable-table">
+                        <div class="preview">
+                            <div class="overflow-x-auto">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="whitespace-nowrap">Date</th>
+                                            <th class="whitespace-nowrap">Name</th>
+                                            <th class="whitespace-nowrap">Total</th>
+                                            <th class="whitespace-nowrap">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Angelina</td>
+                                            <td>Jolie</td>
+                                            <td>@angelinajolie</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Brad</td>
+                                            <td>Pitt</td>
+                                            <td>@bradpitt</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Charlie</td>
+                                            <td>Hunnam</td>
+                                            <td>@charliehunnam</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="source-code hidden">
+                            <button data-target="#copy-hoverable-table" class="copy-code btn py-1 px-2 btn-outline-secondary">
+                                <i data-lucide="file" class="w-4 h-4 mr-2"></i> Copy example code
+                            </button>
+                            <div class="overflow-y-auto mt-3 rounded-md">
+                                <pre class="source-preview" id="copy-hoverable-table">
+                                    <code class="html">
+                                        {{ str_replace('>', 'HTMLCloseTag', str_replace('<', 'HTMLOpenTag', '
+                                            <div class="overflow-x-auto">
+                                                <table class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="whitespace-nowrap">#</th>
+                                                            <th class="whitespace-nowrap">First Name</th>
+                                                            <th class="whitespace-nowrap">Last Name</th>
+                                                            <th class="whitespace-nowrap">Username</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Angelina</td>
+                                                            <td>Jolie</td>
+                                                            <td>@angelinajolie</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>Brad</td>
+                                                            <td>Pitt</td>
+                                                            <td>@bradpitt</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>Charlie</td>
+                                                            <td>Hunnam</td>
+                                                            <td>@charliehunnam</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        ')) }}
+                                    </code>
+                                </pre>
                             </div>
                         </div>
                     </div>
