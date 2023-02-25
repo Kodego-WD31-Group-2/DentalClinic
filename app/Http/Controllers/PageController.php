@@ -612,6 +612,8 @@ public function profileOverview1()
     $tomorrowPage = $appointmentsTomorrowList->currentPage();
     
     $doctors = Doctor::all();
+    $users = User::simplePaginate(10, ['*'], 'user_page');
+        
 
     // Pass the data to the view
     return view('pages/profile-overview-1', [
@@ -623,6 +625,7 @@ public function profileOverview1()
         'appointmentsTodayList' => $appointmentsTodayList,
         'appointmentsTomorrowList' => $appointmentsTomorrowList,
         'transactions' => $transactions,
+        'users' => $users,
     ]);
 }
 

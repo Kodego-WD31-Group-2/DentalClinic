@@ -5,7 +5,7 @@
 @endsection
 
 @section('subcontent')
-{{-- @if (Auth::user()) --}}
+
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Profile</h2>
     </div>
@@ -22,7 +22,11 @@
                 </div>
                 <div class="ml-5">
                     <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{ Auth::user()->name }}</div>
-                    <div class="text-slate-500">{{ $fakers[0]['jobs'][0] }}</div>
+                    @if (auth()->check() && auth()->user()->role == 'admin')
+                    <div class="text-slate-500">You are an Admin!</div>
+                    @elseif (auth()->check() && auth()->user()->role != 'admin')
+                    <div class="text-slate-500">You are a User!</div>
+                    @endif
                 </div>
             </div>
             <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
@@ -243,7 +247,6 @@
                 <!-- END: Auth - Upcoming Appt  -->
                 @endif
                 
-                {{-- ERROR START HERE --}}
                 {{-- #2 --}}
                 <!-- BEGIN: Tomorrows Appt -->
                 @if (auth()->check() && auth()->user()->role == 'admin')
@@ -306,90 +309,6 @@
                 <!-- END: Tomorrows Appt -->
                 @elseif (auth()->check() && auth()->user()->role != 'admin')
                 <!-- BEGIN: Previous -->
-                {{-- <div class="intro-y box col-span-12 lg:col-span-6">
-                    <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                        <div class=" items-center px-5 py-7  my-6sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
-                            <h2 class="font-medium text-base mr-auto">Previous Appointments</h2>
-                            <div class="dropdown ml-auto">
-                                <button class="btn btn-outline-secondary hidden sm:flex">
-                                    <a href="appointments/book-appointment">
-                                        <div class="flex">
-                                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i> New Appointment
-                                        </div>
-                                    </a>
-                                </button>
-                                <div class="dropdown ml-auto sm:hidden">
-                                    <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
-                                        <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i>
-                                    </a>
-                                    <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
-                                        <ul class="dropdown-content">
-                                            <li>
-                                                <a id="work-in-progress-mobile-new-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#work-in-progress-new" class="dropdown-item" role="tab" aria-controls="work-in-progress-new" aria-selected="true">New</a>
-                                            </li>
-                                            <li>
-                                                <a id="work-in-progress-mobile-last-week-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#work-in-progress-last-week" class="dropdown-item" role="tab" aria-selected="false">Last Week</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <ul class="nav nav-link-tabs w-auto ml-auto hidden sm:flex" role="tablist">
-                                    <li id="work-in-progress-new-tab" class="nav-item" role="presentation">
-                                        <a
-                                            href="javascript:;"
-                                            class="nav-link py-5 active"
-                                            data-tw-target="#work-in-progress-new"
-                                            aria-controls="work-in-progress-new"
-                                            aria-selected="true"
-                                            role="tab"
-                                        >
-                                            New
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                        @foreach ($previousAppointments as $appointment)
-                        <div class="flex flex-col sm:flex-row my-2">
-                            <div class="mr-auto">
-                                <div class="font-medium">Patient:{{ $appointment->first_name }} {{ $appointment->last_name }}</div>
-                                <a href="" class="font-medium text-slate-500 text-xs mt-0.5">Schedule: {{ $appointment->appointment_date }} - {{ $appointment->appointment_time }}</a>
-                            </div>
-                            <div class="flex">
-                                <div class="text-center">
-                                    <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
-                                        @if($appointment->status === 'completed')
-                                        <a class="flex items-center mr-3 text-green-700" >
-                                            <i data-lucide="check-square" class="w-4 h-4 mr-1"> </i>Completed
-                                        </a>
-                                        @elseif($appointment->status === 'pending')
-                                        <a class="flex items-center mr-3 text-yellow-500" >
-                                            <i data-lucide="clipboard-list" class="w-4 h-4 mr-1"></i> Pending
-                                        </a>
-                                        @elseif($appointment->status === 'cancelled')
-                                        <a class="flex items-center mr-3 text-red-700">
-                                            <i data-lucide="slash" class="w-4 h-4 mr-1"></i> Cancelled
-                                        </a>
-                                        @elseif($appointment->status === 'verified')
-                                        <a class="flex items-center mr-3 text-blue-700">
-                                            <i data-lucide="shield-check" class="w-4 h-4 mr-1"></i> Verified
-                                        </a>
-                                        @else
-                                        <span>{{ $status }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>               
-                    @endforeach
-                    </div>
-                    <div class="mt-4">
-                        {{ $previousAppointments->appends(['previous_page' => $previousAppointments->currentPage()])->links() }}
-                    </div>
-                    </div>
-                </div> --}}
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Upcoming Appointments</h2>
@@ -446,7 +365,81 @@
                 <!-- END: Previous -->
                 @endif
 
-                <!-- BEGIN: Daily Sales -->
+                {{-- #3 --}}
+                <!-- BEGIN: Users List -->
+                @if (auth()->check() && auth()->user()->role == 'admin')
+                <div class="intro-y box col-span-12 lg:col-span-9">
+                    <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                        <h2 class="font-medium text-base mr-auto">Users List</h2>
+                    </div>
+                    <div class="overflow-auto">
+                        <table class="table table-report -mt-2">
+                            <thead>
+                                <tr>
+                                    <th class="whitespace-wrap">USERNAME</th>
+                                    {{-- <th class="whitespace-nowrap">FIRST NAME</th>
+                                    <th class="whitespace-nowrap">LAST NAME</th> --}}
+                                    <th class="text-center whitespace-nowrap">NAME</th>
+                                    <th class="text-center whitespace-nowrap">ROLE</th>
+                                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr class="intro-x">
+                                        <td class="w-5">
+                                            {{$user->email}}            
+                                        </td>
+    
+                                        {{-- <td>
+                                            {{$user->first_name}}
+                                        </td> --}}
+    
+                                        <td class="text-center">{{$user->first_name}} {{$user->last_name}}</td>
+    
+                                        <td class="table-report__action">
+                                            <div class="flex items-center justify-center text-center">
+                                                <form action="{{ route('users.update', $user) }}" method="POST" class="inline-block">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <div class="form-group inline-flex">
+                                                        <select name="role" class="form-control w-20 {{ $user->role === 'admin' ? 'text-success' : 'text-pending' }}">
+                                                            <option value="user" {{ $user->role === 'user' ? 'selected' : '' }} class="text-pending">User</option>
+                                                            <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }} class="text-success">Admin</option>
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="ml-2 text-primary"><i data-lucide="pencil" class="w-4 h-4 mr-1"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
+    
+                                        <td class="table-report__action">
+                                            <div class="flex justify-center items-center nowrap">
+                                                
+                                                
+                                                <div>
+                                                    <form action="{{ route('users.destroy', $user) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="sunmit" class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                                            <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                                        </button>
+                                                    </form>
+                                                </div>                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach 
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="m-4">
+                        {{ $users->appends(['user_page' => $users->currentPage()])->links() }}
+                    </div>
+                </div>
+                <!-- END: Users List -->
+                @elseif (auth()->check() && auth()->user()->role != 'admin')
+                <!-- BEGIN: Patients on Acct  -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Patients On This Account</h2>
@@ -490,8 +483,46 @@
                     </div>
                     </div>
                 </div>
-                <!-- END: Daily Sales -->
+                <!-- END: Patient on Acct-->
+                @endif
 
+                {{-- #4 --}}
+                <!-- BEGIN: Important Notes -->
+                @if (auth()->check() && auth()->user()->role == 'admin')
+                <div class="intro-x col-span-12 lg:col-span-3">
+                    <div class="intro-x flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-auto pl-4">Important Notes</h2>
+                        <button data-carousel="important-notes" data-target="prev" class="tiny-slider-navigator btn px-2 border-slate-300 text-slate-600 dark:text-slate-300 mr-2">
+                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        </button>
+                        <button data-carousel="important-notes" data-target="next" class="tiny-slider-navigator btn px-2 border-slate-300 text-slate-600 dark:text-slate-300 mr-2">
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div class="mt-5 intro-x">
+                        <div class="box zoom-in">
+                            <div class="tiny-slider" id="important-notes">
+                                <div class="p-5">
+                                    <div class="text-base font-medium truncate">Safe Work Environment</div>
+                                    <div class="text-slate-400 mt-1">Office Director</div>
+                                    <div class="text-slate-500 text-justify mt-1">We want to remind you of the importance of maintaining a safe work environment. Please be sure to follow all safety procedures and report any concerns or incidents to your supervisor immediately. Thank you for your commitment to maintaining a safe workplace.</div>
+                                </div>
+                                <div class="p-5">
+                                    <div class="text-base font-medium truncate">Work Schedule Changes</div>
+                                    <div class="text-slate-400 mt-1">Office Scheduler</div>
+                                    <div class="text-slate-500 text-justify mt-1">we would like to inform you that there will be a change in your work schedule starting March 1, 2023. Your new schedule will be from 9AM to 6PM and we appreciate your flexibility in accommodating this change.</div>
+                                </div>
+                                <div class="p-5">
+                                    <div class="text-base font-medium truncate">Employee Appreciation Notice</div>
+                                    <div class="text-slate-400 mt-1">Human Resources</div>
+                                    <div class="text-slate-500 text-justify mt-1">To All Employees: We would like to express our appreciation for your hard work and dedication to our dental clinic. Your efforts have contributed to our success and we want to thank you for being a valuable member of our team.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Important Notes -->
+                @elseif (auth()->check() && auth()->user()->role != 'admin')
                 <!-- BEGIN: Billing History -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60">
@@ -532,107 +563,7 @@
                     </div>
                 </div>
                 <!-- END: Latest Tasks -->
-
-                {{-- <!-- BEGIN: General Statistic -->
-                <div class="intro-y box col-span-12">
-                    <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
-                        <h2 class="font-medium text-base mr-auto">General Statistics</h2>
-                        <div class="dropdown ml-auto sm:hidden">
-                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
-                                <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i>
-                            </a>
-                            <div class="dropdown-menu w-40">
-                                <ul class="dropdown-content">
-                                    <li>
-                                        <a href="javascript:;" class="dropdown-item">
-                                            <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download XML
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <button class="btn btn-outline-secondary hidden sm:flex">
-                            <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download XML
-                        </button>
-                    </div>
-                    <div class="grid grid-cols-1 2xl:grid-cols-7 gap-6 p-5">
-                        <div class="2xl:col-span-2">
-                            <div class="grid grid-cols-2 gap-6">
-                                <div class="col-span-2 sm:col-span-1 2xl:col-span-2 box dark:bg-darkmode-500 p-5">
-                                    <div class="font-medium">Net Worth</div>
-                                    <div class="flex items-center mt-1 sm:mt-0">
-                                        <div class="mr-4 w-20 flex">
-                                            USP: <span class="ml-3 font-medium text-success">+23%</span>
-                                        </div>
-                                        <div class="w-5/6 overflow-auto">
-                                            <div class="h-[51px]">
-                                                <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-span-2 sm:col-span-1 2xl:col-span-2 box dark:bg-darkmode-500 p-5">
-                                    <div class="font-medium">Sales</div>
-                                    <div class="flex items-center mt-1 sm:mt-0">
-                                        <div class="mr-4 w-20 flex">
-                                            USP: <span class="ml-3 font-medium text-danger">-5%</span>
-                                        </div>
-                                        <div class="w-5/6 overflow-auto">
-                                            <div class="h-[51px]">
-                                                <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-span-2 sm:col-span-1 2xl:col-span-2 box dark:bg-darkmode-500 p-5">
-                                    <div class="font-medium">Profit</div>
-                                    <div class="flex items-center mt-1 sm:mt-0">
-                                        <div class="mr-4 w-20 flex">
-                                            USP: <span class="ml-3 font-medium text-danger">-10%</span>
-                                        </div>
-                                        <div class="w-5/6 overflow-auto">
-                                            <div class="h-[51px]">
-                                                <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-span-2 sm:col-span-1 2xl:col-span-2 box dark:bg-darkmode-500 p-5">
-                                    <div class="font-medium">Products</div>
-                                    <div class="flex items-center mt-1 sm:mt-0">
-                                        <div class="mr-4 w-20 flex">
-                                            USP: <span class="ml-3 font-medium text-success">+55%</span>
-                                        </div>
-                                        <div class="w-5/6 overflow-auto">
-                                            <div class="h-[51px]">
-                                                <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="2xl:col-span-5 w-full">
-                            <div class="flex justify-center mt-8">
-                                <div class="flex items-center mr-5">
-                                    <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                    <span>Product Profit</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-slate-300 rounded-full mr-3"></div>
-                                    <span>Author Sales</span>
-                                </div>
-                            </div>
-                            <div class="mt-8">
-                                <div class="h-[420px]">
-                                    <canvas id="stacked-bar-chart-1"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END: General Statistic --> --}}
-                
+                @endif
             </div>
         </div>
     </div>
