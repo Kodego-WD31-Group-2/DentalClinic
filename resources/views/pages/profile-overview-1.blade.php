@@ -23,7 +23,8 @@
                 <div class="ml-5">
                     <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{ Auth::user()->name }}</div>
                     @if (auth()->check() && auth()->user()->role == 'admin')
-                    <div class="text-slate-500">You are an Admin!</div>
+                    <div class="text-slate-500">You are logged in as an Admin!</div>
+                    <p>"With great power, comes great responsibility"</p>
                     @elseif (auth()->check() && auth()->user()->role != 'admin')
                     <div class="text-slate-500">You are a User!</div>
                     @endif
@@ -371,6 +372,14 @@
                 <div class="intro-y box col-span-12 lg:col-span-9">
                     <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Users List</h2>
+                        <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+                            <div class="w-56 relative text-slate-500">
+                                <form action="{{ route('profile.overview') }}" method="GET">
+                                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search..." name="search">
+                                    <button type="submit" class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <div class="overflow-auto">
                         <table class="table table-report -mt-2">

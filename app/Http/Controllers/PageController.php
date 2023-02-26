@@ -612,7 +612,9 @@ public function profileOverview1()
     $tomorrowPage = $appointmentsTomorrowList->currentPage();
     
     $doctors = Doctor::all();
-    $users = User::simplePaginate(10, ['*'], 'user_page');
+    // $users = User::simplePaginate(10, ['*'], 'user_page');
+    $users = User::filter(request()->only('search'))->simplePaginate(5, ['*'], 'user_page');
+
         
 
     // Pass the data to the view

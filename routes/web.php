@@ -115,6 +115,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/billings/{billing}', [BillingsController::class,'destroy']);
     Route::get('contact/inbox', [ContactsController::class, 'show'])->name('contact.inbox');
     Route::get('contact/{contacts}/view', [ContactsController::class, 'view']);
+    Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/profile/overview', [PageController::class, 'profileOverview1'])->name('profile.overview');
 });
 
 
@@ -218,10 +221,8 @@ Route::middleware('auth')->group(function() {
     });
 });
 
-Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-// Route::patch('//users/{user}', 'UserController@update')->name('admin.users.update');
+
 
 
 
