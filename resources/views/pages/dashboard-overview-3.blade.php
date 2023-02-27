@@ -29,7 +29,8 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">
-                                        ${{ $totalPaymentsToday }}
+                                        Php {{ number_format($totalPaymentsToday, 2, '.', ',') }}
+                                        
                                     </div>
                                     <div class="text-base text-slate-500 mt-1 text-center">
                                         {{ $paidTransactionsToday->count() + $pendingTransactionsToday->count() + $failedTransactionsToday->count() }} Total Payments
@@ -49,7 +50,7 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">
-                                        {{ $transactionsPaidToday }}
+                                        Php {{ number_format($transactionsPaidToday, 2, '.', ',') }}
                                     </div>
                                     <div class="text-base text-slate-500 mt-1 text-center">
                                         {{ $paidTransactionsToday->count() }} Completed Payments
@@ -69,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">
-                                        {{ $transactionsPendingToday }}
+                                        Php {{ number_format($transactionsPendingToday, 2, '.', ',') }}
                                     </div>
                                     <div class="text-base text-slate-500 mt-1 text-center">
                                         {{ $pendingTransactionsToday->count() }} Pending Payments
@@ -89,7 +90,7 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">
-                                        {{ $transactionsFailedToday }}
+                                        Php {{ number_format($transactionsFailedToday, 2, '.', ',') }}
                                     </div>
                                     <div class="text-base text-slate-500 mt-1 text-center">
                                         {{ $failedTransactionsToday->count() }} Failed Payments
@@ -121,7 +122,7 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">
-                                        ${{ $totalPayments }}
+                                        Php {{ number_format($totalPayments, 2, '.', ',') }}
                                     </div>
                                     <div class="text-base text-slate-500 mt-1 text-center">
                                         {{ $paidTransactions->count() + $pendingTransactions->count() + $failedTransactions->count() }} Total Payments
@@ -141,7 +142,7 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">
-                                        {{ $transactionsPaid }}
+                                        Php {{ number_format($transactionsPaid, 2, '.', ',') }}
                                     </div>
                                     <div class="text-base text-slate-500 mt-1 text-center">
                                         {{ $paidTransactions->count() }} Completed Payments
@@ -161,7 +162,7 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">
-                                        {{ $transactionsPending }}
+                                        Php {{ number_format($transactionsPending, 2, '.', ',') }}
                                     </div>
                                     <div class="text-base text-slate-500 mt-1 text-center">
                                         {{ $pendingTransactions->count() }} Pending Payments
@@ -181,7 +182,7 @@
                                         </div>
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6 text-center">
-                                        {{ $transactionsFailed }}
+                                        Php {{ number_format($transactionsFailed, 2, '.', ',') }}
                                     </div>
                                     <div class="text-base text-slate-500 mt-1 text-center">
                                         {{ $failedTransactions->count() }} Failed Payments
@@ -202,23 +203,30 @@
                             <div class="flex">
                                 <div>
                                     <div class="text-primary dark:text-slate-300 text-lg xl:text-xl font-medium">
-                                        {{-- {{ $appointmentsThisMonth }} --}}
+                                        {{ $previousMonthCount }}
+                                    </div>
+                                    <div class="mt-0.5 text-slate-500">Last Month</div>
+                                </div>
+                                <div class="w-px h-12 border border-r border-dashed border-slate-200 dark:border-darkmode-300 mx-4 xl:mx-5"></div>
+                                <div>
+                                    <div class="text-slate-500 text-lg xl:text-xl font-medium">
+                                        {{ $currentMonthCount }}
                                     </div>
                                     <div class="mt-0.5 text-slate-500">This Month</div>
                                 </div>
                                 <div class="w-px h-12 border border-r border-dashed border-slate-200 dark:border-darkmode-300 mx-4 xl:mx-5"></div>
                                 <div>
                                     <div class="text-slate-500 text-lg xl:text-xl font-medium">
-                                        {{-- {{ $appointmentsPreviousMonth }} --}}
+                                        {{ $nextMonthCount }}
                                     </div>
-                                    <div class="mt-0.5 text-slate-500">Last Month</div>
+                                    <div class="mt-0.5 text-slate-500">Next Month</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="report-chart">
+                        <div {{-- class="report-chart" --}}>
                             <div class="h-[275px]">
-                                <canvas id="report-line-chart" class="mt-6 -mb-6" 
-                                {{-- data-prevmonth-count="{{ $appointmentsPreviousMonth }}" data-thismonth-count="{{ $appointmentsThisMonth }}" data-nextmonth-count="{{ $appointmentsNextMonth }}" --}}
+                                <canvas id="report-bar-chart-1" class="mt-6 -mb-6" 
+                                data-prevmonth-count="{{ $previousMonthCount }}" data-thismonth-count="{{ $currentMonthCount }}"  data-nextmonth-count="{{ $nextMonthCount }}"
                                 ></canvas>
                             </div>
                         </div>

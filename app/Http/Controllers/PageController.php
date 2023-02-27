@@ -239,58 +239,73 @@ class PageController extends Controller
 
         $totalPaymentsToday = $transactionsPaidToday + $transactionsPendingToday + $transactionsFailedToday;
 
-         // Transactions
-    $paidTransactions = Transaction::where('payment_status', 'paid')
-    ->with('transactionItems.feeSchedule')
-    ->get();
+        // Transactions
+        $paidTransactions = Transaction::where('payment_status', 'paid')
+            ->with('transactionItems.feeSchedule')
+            ->get();
 
-$transactionsPaid = 0;
-foreach ($paidTransactions as $transaction) {
-    foreach ($transaction->transactionItems as $item) {
-        $transactionsPaid += $item->feeSchedule->amount;
-    }
-}
+        $transactionsPaid = 0;
+        foreach ($paidTransactions as $transaction) {
+            foreach ($transaction->transactionItems as $item) {
+                $transactionsPaid += $item->feeSchedule->amount;
+            }
+        }
 
-$pendingTransactions = Transaction::where('payment_status', 'pending')
-    ->with('transactionItems.feeSchedule')
-    ->get();
+        $pendingTransactions = Transaction::where('payment_status', 'pending')
+            ->with('transactionItems.feeSchedule')
+            ->get();
 
-$transactionsPending = 0;
-foreach ($pendingTransactions as $transaction) {
-    foreach ($transaction->transactionItems as $item) {
-        $transactionsPending += $item->feeSchedule->amount;
-    }
-}
+        $transactionsPending = 0;
+        foreach ($pendingTransactions as $transaction) {
+            foreach ($transaction->transactionItems as $item) {
+                $transactionsPending += $item->feeSchedule->amount;
+            }
+        }
 
-$failedTransactions = Transaction::where('payment_status', 'failed')
-    ->with('transactionItems.feeSchedule')
-    ->get();
+        $failedTransactions = Transaction::where('payment_status', 'failed')
+            ->with('transactionItems.feeSchedule')
+            ->get();
 
-$transactionsFailed = 0;
-foreach ($failedTransactions as $transaction) {
-    foreach ($transaction->transactionItems as $item) {
-        $transactionsFailed += $item->feeSchedule->amount;
-    }
-}
+        $transactionsFailed = 0;
+        foreach ($failedTransactions as $transaction) {
+            foreach ($transaction->transactionItems as $item) {
+                $transactionsFailed += $item->feeSchedule->amount;
+            }
+        }
 
-$totalPayments = $transactionsPaid + $transactionsPending + $transactionsFailed;
+        $totalPayments = $transactionsPaid + $transactionsPending + $transactionsFailed;
 
+        // Count of Payments by Status
+        $paymentsByStatus = Transaction::select('payment_status', DB::raw('count(*) as total'))
+            ->groupBy('payment_status')
+            ->get();
 
+        $paymentMethods = DB::table('transactions')
+            ->select('payment_method', DB::raw('COUNT(*) as count'))
+            ->groupBy('payment_method')
+            ->get();       
 
-    // Count of Payments by Status
-    $paymentsByStatus = Transaction::select('payment_status', DB::raw('count(*) as total'))
-        ->groupBy('payment_status')
-        ->get();
+        //Total payment per month
+        $currentMonthStart = Carbon::now()->startOfMonth();
+        $currentMonthEnd = Carbon::now()->endOfMonth();
 
+        $previousMonthStart = Carbon::now()->subMonth()->startOfMonth();
+        $previousMonthEnd = Carbon::now()->subMonth()->endOfMonth();
 
+        $nextMonthStart = Carbon::now()->addMonth()->startOfMonth();
+        $nextMonthEnd = Carbon::now()->addMonth()->endOfMonth();
 
-$paymentMethods = DB::table('transactions')
-        ->select('payment_method', DB::raw('COUNT(*) as count'))
-        ->groupBy('payment_method')
-        ->get();       
+        $currentMonthCount = Transaction::whereBetween('transaction_date', [$currentMonthStart, $currentMonthEnd])
+            ->where('payment_status', 'paid')
+            ->count();
 
-
-
+        $previousMonthCount = Transaction::whereBetween('transaction_date', [$previousMonthStart, $previousMonthEnd])
+            ->where('payment_status', 'paid')
+            ->count();
+        
+        $nextMonthCount = Transaction::whereBetween('transaction_date', [$nextMonthStart, $nextMonthEnd])
+            ->where('payment_status', 'paid')
+            ->count();
 
 
         return view('pages/dashboard-overview-3', [
@@ -314,7 +329,10 @@ $paymentMethods = DB::table('transactions')
             'transactionsFailed' => $transactionsFailed,
             'totalPayments' => $totalPayments,
             'paymentMethods' => $paymentMethods,
-            'paymentsByStatus' => $paymentsByStatus,  
+            'paymentsByStatus' => $paymentsByStatus, 
+            'currentMonthCount' => $currentMonthCount,
+            'previousMonthCount' => $previousMonthCount, 
+            'nextMonthCount' => $nextMonthCount, 
             'layout' => 'side-menu'
         ]);
     }
