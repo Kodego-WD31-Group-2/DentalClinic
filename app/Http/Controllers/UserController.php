@@ -65,4 +65,20 @@ class UserController extends Controller
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
+
+    // Delete User
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->back();
+    }
+
+    // Chnage Role
+    public function update(Request $request, User $user)
+    {
+        $user->role = $request->role;
+        $user->save();
+        return redirect()->back();
+    }
 }

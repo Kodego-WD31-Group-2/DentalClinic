@@ -36,11 +36,11 @@
                     </div>
 
                     <div>
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out bg-slate-200 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             <div class="pr-10 pl-5">
                                 <div >EDSA Revolution</div>
                                 <div class="text-slate-500 text-xs mt-0.5">
-                                    <span>February 25
+                                    <span>February 25s
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                     </div>
 
                     <div>
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out bg-slate-200 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             
                             <div class="pr-10 pl-5">
                                 <div >Good Friday</div>
@@ -83,7 +83,7 @@
                     </div>
 
                     <div>
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out bg-slate-200 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out  hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             
                             <div class="pr-10 pl-5">
                                 <div >Eidul Fitr</div>
@@ -107,7 +107,7 @@
                     </div>
 
                     <div>
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out bg-slate-200 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out  hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             
                             <div class="pr-10 pl-5">
                                 <div >Independence Day</div>
@@ -131,7 +131,7 @@
                     </div>
 
                     <div>
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out bg-slate-200 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out  hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             
                             <div class="pr-10 pl-5">
                                 <div >Ninoy Aquino Day</div>
@@ -155,7 +155,7 @@
                     </div>
 
                     <div>
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out bg-slate-200 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out  hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             
                             <div class="pr-10 pl-5">
                                 <div >All Saints' Day</div>
@@ -179,7 +179,7 @@
                     </div>
 
                     <div>
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out bg-slate-200 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out  hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             
                             <div class="pr-10 pl-5">
                                 <div >Bonifacio Day</div>
@@ -203,7 +203,7 @@
                     </div>
 
                     <div>
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out bg-slate-200 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out  hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             
                             <div class="pr-10 pl-5">
                                 <div >Christmas Day</div>
@@ -227,7 +227,7 @@
                     </div>
 
                     <div>
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out bg-slate-200 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             
                             <div class="pr-10 pl-5">
                                 <div >New Year's Eve</div>
