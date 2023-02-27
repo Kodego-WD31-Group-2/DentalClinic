@@ -272,7 +272,7 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <table>
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th>Status</th>
@@ -289,7 +289,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>    
+                        </div>   
+
                     </div>
                 </div>
                 
