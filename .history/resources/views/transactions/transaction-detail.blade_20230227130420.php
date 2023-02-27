@@ -80,7 +80,7 @@
                     <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i> Payment Method: <div class="ml-auto">{{ $transaction->payment_method }}</div>
                 </div>
                 <div class="flex items-center mt-3">
-                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i> Total Price ({{ $transactionItemsCount }} item/s): <div class="ml-auto">Php {{ number_format($transaction->getTotalCostAttribute(), 2, '.', ',') }}
+                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i> Total Price ({{ $transactionItemsCount }} items): <div class="ml-auto">Php {{ number_format($transaction->getTotalCostAttribute(), 2, '.', ',') }}
                     </div>
                 </div>
                 <div class="flex items-center mt-3">

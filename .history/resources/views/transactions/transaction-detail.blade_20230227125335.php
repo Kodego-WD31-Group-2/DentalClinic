@@ -80,15 +80,13 @@
                     <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i> Payment Method: <div class="ml-auto">{{ $transaction->payment_method }}</div>
                 </div>
                 <div class="flex items-center mt-3">
-                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i> Total Price ({{ $transactionItemsCount }} item/s): <div class="ml-auto">Php {{ number_format($transaction->getTotalCostAttribute(), 2, '.', ',') }}
-                    </div>
+                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i> Total Price (2 items): <div class="ml-auto">{{ $transaction->getTotalCostAttribute() }}</div>
                 </div>
                 <div class="flex items-center mt-3">
                     <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i> Other Charges: <div class="ml-auto">Php 0.00</div>
                 </div>
                 <div class="flex items-center border-t border-slate-200/60 dark:border-darkmode-400 pt-5 mt-5 font-medium">
-                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i> Grand Total: <div class="ml-auto">Php {{ number_format($transaction->getTotalCostAttribute(), 2, '.', ',') }}
-                    </div>
+                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i> Grand Total: <div class="ml-auto">Php 1{{ $transaction->getTotalCostAttribute() }}</div>
                 </div>
             </div>
 
@@ -113,9 +111,7 @@
                             @foreach($transaction->transactionItems as $transactionItem)
                                 <tr>
                                     <td class="font-medium">{{ $transactionItem->feeSchedule->name }}</td>
-                                    <td class="text-center">Php {{ number_format($transactionItem->feeSchedule->amount, 2, '.', ',') }}
-                                    </td>
-                                    
+                                    <td class="text-center">Php {{ $transactionItem->feeSchedule->amount }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

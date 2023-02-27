@@ -92,7 +92,7 @@
                                     <div class="whitespace-nowrap">{{ $transaction->payment_method }}</div>                             
                             </td>
                             <td class="w-40 text-right">
-                                <div class="pr-16">Php {{ number_format($transaction->getTotalCostAttribute(), 2, '.', ',') }}</div>
+                                <div class="pr-16">Php {{ $transaction->getTotalCostAttribute() }}</div>
                             </td>
                             <td class="table-report__action">
                                 <div class="flex justify-center items-center">
