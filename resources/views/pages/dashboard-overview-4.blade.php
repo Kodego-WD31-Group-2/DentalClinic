@@ -301,9 +301,9 @@
                                         <div class="py-0.5 rounded relative">3</div>
                                         <div class="py-0.5 rounded relative">4</div>
                                         <div class="py-0.5 rounded relative">5</div>
-                                        <div class="py-0.5 bg-success/20 dark:bg-success/30 rounded relative">6</div>
+                                        <div class="py-0.5 rounded relative">6</div>
                                         <div class="py-0.5 rounded relative">7</div>
-                                        <div class="py-0.5 bg-primary text-white rounded relative">8</div>
+                                        <div class="py-0.5 rounded relative">8</div>
                                         <div class="py-0.5 rounded relative">9</div>
                                         <div class="py-0.5 rounded relative">10</div>
                                         <div class="py-0.5 rounded relative">11</div>
@@ -318,14 +318,14 @@
                                         <div class="py-0.5 rounded relative">20</div>
                                         <div class="py-0.5 rounded relative">21</div>
                                         <div class="py-0.5 rounded relative">22</div>
-                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">23</div>
+                                        <div class="py-0.5 rounded relative">23</div>
                                         <div class="py-0.5 rounded relative">24</div>
                                         <div class="py-0.5 rounded relative">25</div>
                                         <div class="py-0.5 rounded relative">26</div>
-                                        <div class="py-0.5 bg-primary/10 dark:bg-primary/50 rounded relative">27</div>
-                                        <div class="py-0.5 rounded relative">28</div>
-                                        <div class="py-0.5 rounded relative">29</div>
-                                        <div class="py-0.5 rounded relative">30</div>
+                                        <div class="py-0.5 rounded relative">27</div>
+                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">28</div>
+                                        {{-- <div class="py-0.5 rounded relative">29</div>
+                                        <div class="py-0.5 rounded relative">30</div> --}}
                                         <div class="py-0.5 rounded relative text-slate-500">1</div>
                                         <div class="py-0.5 rounded relative text-slate-500">2</div>
                                         <div class="py-0.5 rounded relative text-slate-500">3</div>
@@ -335,6 +335,8 @@
                                         <div class="py-0.5 rounded relative text-slate-500">7</div>
                                         <div class="py-0.5 rounded relative text-slate-500">8</div>
                                         <div class="py-0.5 rounded relative text-slate-500">9</div>
+                                        <div class="py-0.5 rounded relative text-slate-500">10</div>
+                                        <div class="py-0.5 rounded relative text-slate-500">11</div>
                                     </div>
                                 </div>
                                 {{-- <div class="border-t border-slate-200/60 p-5">

@@ -42,7 +42,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="clipboard-check" class="report-box__icon text-pending"></i>
+                                        <i data-lucide="clipboard-check" class="report-box__icon text-success"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="2% Lower than last month">
                                                 2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i>
@@ -82,7 +82,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="clipboard-x" class="report-box__icon text-success"></i>
+                                        <i data-lucide="clipboard-x" class="report-box__icon text-danger"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month">
                                                 22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
@@ -134,7 +134,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="clipboard-check" class="report-box__icon text-pending"></i>
+                                        <i data-lucide="clipboard-check" class="report-box__icon text-success"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="2% Lower than last month">
                                                 2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i>
@@ -174,7 +174,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="clipboard-x" class="report-box__icon text-success"></i>
+                                        <i data-lucide="clipboard-x" class="report-box__icon text-danger"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month">
                                                 22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
@@ -234,25 +234,25 @@
                 </div>
                 <!-- END: Payments by Month (GRAPH) -->
                 <!-- BEGIN: Payment Methods (PIE CHART)-->
-                <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
+                {{-- <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Payment Methods</h2>
                     </div>
                     <div class="intro-y box p-5 mt-5">
-                        {{-- <div class="mt-3">
-                            <div class="h-[213px]"> --}}
-                                {{-- <canvas id="report-pie-chart" data-regularcheckup-percentage="{{ $regularCheckupPercentage }}" data-emergency-percentage="{{ $emergencyPercentage }}" data-cleaning-percentage="{{ $cleaningPercentage }}">></canvas> --}}
-                            {{-- </div>
-                        </div> --}}
-                        {{-- <div class="card">
+                        <div class="mt-3">
+                            <div class="h-[213px]">
+                                <canvas id="report-pie-chart" data-regularcheckup-percentage="{{ $regularCheckupPercentage }}" data-emergency-percentage="{{ $emergencyPercentage }}" data-cleaning-percentage="{{ $cleaningPercentage }}">></canvas>
+                            </div>
+                        </div>
+                        <div class="card">
                             <div class="card-body">
                                 <canvas id="payment-method-chart"></canvas>
                             </div>
-                        </div> --}}
+                        </div>
 
-                        {{-- <canvas id="payment-methods-chart" width="400" height="400"></canvas> --}}
+                        <canvas id="payment-methods-chart" width="400" height="400"></canvas>
 
-                        {{-- <canvas id="payment-methods-chart"></canvas> --}}
+                        <canvas id="payment-methods-chart"></canvas>
 
 
                         
@@ -260,8 +260,39 @@
 
 
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: BEGIN: Payment Methods (PIE CHART)-->
+
+                <!-- BEGIN: Payment Methods (TABLE)-->
+                <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
+                    <div class="intro-y flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-5">Payment Methods</h2>
+                    </div>
+                    <div class="intro-y box p-5 mt-5">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Payment Method</th>
+                                            <th>Count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($paymentMethods as $paymentMethod)
+                                            <tr>
+                                                <td>{{ $paymentMethod->payment_method }}</td>
+                                                <td>{{ $paymentMethod->count }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>    
+                    </div>
+                </div>          
+                <!-- END: Payment Methods (TABLE)-->
 
                 <!-- BEGIN: Payment Status (TABLE)-->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
@@ -292,40 +323,8 @@
                         </div>   
 
                     </div>
-                </div>
-                
+                </div>            
                 <!-- END: Payment Status (TABLE)--> 
-                <!-- BEGIN: Payment Methods (TABLE)-->
-                <div class="col-span-12 sm:col-span-6 lg:col-span-6 mt-8">
-                    <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Payment Methods</h2>
-                    </div>
-                    <div class="intro-y box p-5 mt-5">
-
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Payment Method</th>
-                                            <th>Count</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($paymentMethods as $paymentMethod)
-                                            <tr>
-                                                <td>{{ $paymentMethod->payment_method }}</td>
-                                                <td>{{ $paymentMethod->count }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-                
-                <!-- END: Payment Methods (TABLE)-->
                 
             </div>
         </div>
@@ -453,13 +452,11 @@
                                         <div class="py-0.5 rounded relative">21</div>
                                         <div class="py-0.5 rounded relative">22</div>
                                         <div class="py-0.5 rounded relative">23</div>
-                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">24</div>
+                                        <div class="py-0.5 rounded relative">24</div>
                                         <div class="py-0.5 rounded relative">25</div>
                                         <div class="py-0.5 rounded relative">26</div>
                                         <div class="py-0.5 rounded relative">27</div>
-                                        <div class="py-0.5 rounded relative">28</div>
-                                        <div class="py-0.5 rounded relative">29</div>
-                                        <div class="py-0.5 rounded relative">30</div>
+                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">28</div>
                                         <div class="py-0.5 rounded relative text-slate-500">1</div>
                                         <div class="py-0.5 rounded relative text-slate-500">2</div>
                                         <div class="py-0.5 rounded relative text-slate-500">3</div>
@@ -469,6 +466,8 @@
                                         <div class="py-0.5 rounded relative text-slate-500">7</div>
                                         <div class="py-0.5 rounded relative text-slate-500">8</div>
                                         <div class="py-0.5 rounded relative text-slate-500">9</div>
+                                        <div class="py-0.5 rounded relative text-slate-500">10</div>
+                                        <div class="py-0.5 rounded relative text-slate-500">11</div>
                                     </div>
                                 </div>
                                 {{-- <div class="border-t border-slate-200/60 p-5">
