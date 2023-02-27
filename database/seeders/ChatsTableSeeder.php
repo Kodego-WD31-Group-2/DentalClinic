@@ -22,7 +22,7 @@ class ChatsTableSeeder extends Seeder
                 'last_name' => $faker->lastName,
                 'chat_message' => $faker->sentence(10),
                 'chat_email' => $faker->email,
-                'chat_hours' => $faker->numberBetween(0, 12),
+                'chat_hours' => $faker->numberBetween(3, 7),
                 'chat_minutes' => $faker->numberBetween(0, 59),
                 'chat_notification' => $faker->numberBetween(0, 10),
                 'chat_image' => $faker->imageUrl(640, 480),
