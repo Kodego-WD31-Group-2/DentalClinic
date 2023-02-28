@@ -2,9 +2,6 @@ import helper from "./helper";
 import colors from "./colors";
 import Chart from "chart.js/auto";
 
-
-
-
 (function () {
     "use strict";
 
@@ -155,13 +152,10 @@ import Chart from "chart.js/auto";
         });
     }
 
-
     //-----------------GENDER CHART-----------------------
 
     if ($("#report-pie-chart-2").length) {
-        let malePercentage = $("#report-pie-chart-2").data(
-            "male-percentage"
-        );
+        let malePercentage = $("#report-pie-chart-2").data("male-percentage");
         let femalePercentage = $("#report-pie-chart-2").data(
             "female-percentage"
         );
@@ -173,10 +167,7 @@ import Chart from "chart.js/auto";
                 labels: ["Male", "Female"],
                 datasets: [
                     {
-                        data: [
-                            malePercentage,
-                            femalePercentage,
-                        ],
+                        data: [malePercentage, femalePercentage],
                         backgroundColor: [
                             colors.primary(0.9),
                             colors.warning(0.9),
@@ -256,7 +247,6 @@ import Chart from "chart.js/auto";
             },
         });
     }
-
 
     //------------------
     if ($("#report-donut-chart-2").length) {
@@ -399,47 +389,37 @@ import Chart from "chart.js/auto";
     }
 
     if ($("#report-bar-chart-1").length) {
+        let prevMonth = $("#report-bar-chart-1").data("prevmonth-count");
+
+        let thisMonth = $("#report-bar-chart-1").data("thismonth-count");
+
+        let nextMonth = $("#report-bar-chart-1").data("nextmonth-count");
+
         let ctx = $("#report-bar-chart-1")[0].getContext("2d");
         let myChart = new Chart(ctx, {
             type: "bar",
             data: {
-                labels: [
-                    "Jan",
-                    "Feb",
-                    "Mar",
-                    "Apr",
-                    "May",
-                    "Jun",
-                    "Jul",
-                    "Aug",
-                    "Sep",
-                    "Oct",
-                    "Nov",
-                    "Dec",
-                ],
+                labels: ["Jan", "Feb", "Mar"],
                 datasets: [
                     {
-                        label: "Html Template",
-                        barThickness: 8,
-                        maxBarThickness: 6,
-                        data: [
-                            60, 150, 30, 200, 180, 50, 180, 120, 230, 180, 250,
-                            270,
-                        ],
+                        label: "Month Total Payment",
+                        barThickness: 50,
+                        maxBarThickness: 50,
+                        data: [prevMonth, thisMonth, nextMonth],
                         backgroundColor: colors.primary(0.9),
                     },
-                    {
-                        label: "VueJs Template",
-                        barThickness: 8,
-                        maxBarThickness: 6,
-                        data: [
-                            50, 135, 40, 180, 190, 60, 150, 90, 250, 170, 240,
-                            250,
-                        ],
-                        backgroundColor: $("html").hasClass("dark")
-                            ? colors.darkmode["400"]()
-                            : colors.slate["300"](),
-                    },
+                    // {
+                    //     label: "VueJs Template",
+                    //     barThickness: 8,
+                    //     maxBarThickness: 6,
+                    //     data: [
+                    //         50, 135, 40, 180, 190, 60, 150, 90, 250, 170, 240,
+                    //         250,
+                    //     ],
+                    //     backgroundColor: $("html").hasClass("dark")
+                    //         ? colors.darkmode["400"]()
+                    //         : colors.slate["300"](),
+                    // },
                 ],
             },
             options: {
@@ -1402,12 +1382,4 @@ import Chart from "chart.js/auto";
             },
         });
     }
-
-    
-
-   
-    
-    
-
-    
 })();

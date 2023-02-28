@@ -37,7 +37,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="clipboard-check" class="report-box__icon text-pending"></i>
+                                        <i data-lucide="clipboard-check" class="report-box__icon text-success"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="2% Lower than last month">
                                                 2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i>
@@ -69,7 +69,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="clipboard-x" class="report-box__icon text-success"></i>
+                                        <i data-lucide="clipboard-x" class="report-box__icon text-danger"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month">
                                                 22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
@@ -113,7 +113,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="clipboard-check" class="report-box__icon text-pending"></i>
+                                        <i data-lucide="clipboard-check" class="report-box__icon text-success"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="2% Lower than last month">
                                                 2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i>
@@ -145,7 +145,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="clipboard-x " class="report-box__icon text-success"></i>
+                                        <i data-lucide="clipboard-x " class="report-box__icon text-danger"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month">
                                                 22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
@@ -403,13 +403,11 @@
                                         <div class="py-0.5 rounded relative">21</div>
                                         <div class="py-0.5 rounded relative">22</div>
                                         <div class="py-0.5 rounded relative">23</div>
-                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">24</div>
+                                        <div class="py-0.5 rounded relative">24</div>
                                         <div class="py-0.5 rounded relative">25</div>
                                         <div class="py-0.5 rounded relative">26</div>
                                         <div class="py-0.5 rounded relative">27</div>
-                                        <div class="py-0.5 rounded relative">28</div>
-                                        <div class="py-0.5 rounded relative">29</div>
-                                        <div class="py-0.5 rounded relative">30</div>
+                                        <div class="py-0.5 bg-pending/20 dark:bg-pending/30 rounded relative">28</div>
                                         <div class="py-0.5 rounded relative text-slate-500">1</div>
                                         <div class="py-0.5 rounded relative text-slate-500">2</div>
                                         <div class="py-0.5 rounded relative text-slate-500">3</div>
@@ -419,6 +417,8 @@
                                         <div class="py-0.5 rounded relative text-slate-500">7</div>
                                         <div class="py-0.5 rounded relative text-slate-500">8</div>
                                         <div class="py-0.5 rounded relative text-slate-500">9</div>
+                                        <div class="py-0.5 rounded relative text-slate-500">10</div>
+                                        <div class="py-0.5 rounded relative text-slate-500">11</div>
                                     </div>
                                 </div>
                             </div>
