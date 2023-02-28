@@ -558,7 +558,7 @@
                                         <tr>
                                             <td>{{ $transaction->appointment->appointment_date }}</td>
                                             <td>{{ $transaction->appointment->first_name }} {{ $transaction->appointment->last_name }}</td>
-                                            <td>Php {{ number_format($transaction->getTotalCostAttribute(), 2, '.', ',') }}</td>
+                                            <td>{{ $transaction->getTotalCostAttribute() }}</td>
                                             <td>Completed</td>
                                         </tr>
                                         @endforeach

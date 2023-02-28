@@ -194,7 +194,7 @@
                 <!-- BEGIN: Auth - Upcoming Appt  -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                        <h2 class="font-medium text-base mr-auto">Upcoming Appointments</h2>
+                        <h2 class="font-medium text-base mr-auto">Previous Appointments</h2>
                         <div class="dropdown ml-auto">
                             <button class="btn btn-outline-secondary hidden sm:flex">
                                 <a href="appointments/book-appointment">
@@ -312,7 +312,7 @@
                 <!-- BEGIN: Previous -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                        <h2 class="font-medium text-base mr-auto">Previous Appointments</h2>
+                        <h2 class="font-medium text-base mr-auto">Upcoming Appointments</h2>
                         <div class="dropdown ml-auto">
                             <button class="btn btn-outline-secondary hidden sm:flex">
                                 <a href="appointments/book-appointment">
@@ -558,7 +558,7 @@
                                         <tr>
                                             <td>{{ $transaction->appointment->appointment_date }}</td>
                                             <td>{{ $transaction->appointment->first_name }} {{ $transaction->appointment->last_name }}</td>
-                                            <td>Php {{ number_format($transaction->getTotalCostAttribute(), 2, '.', ',') }}</td>
+                                            <td>{{ $transaction->getTotalCostAttribute() }}</td>
                                             <td>Completed</td>
                                         </tr>
                                         @endforeach
