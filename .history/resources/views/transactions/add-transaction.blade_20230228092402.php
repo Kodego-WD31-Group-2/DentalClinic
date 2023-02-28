@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Add a Transaction - Smileville Dental Services</title>
+    <title>Transaction Detail - Smileville Dental Services</title>
 @endsection
 
 @section('subcontent')
